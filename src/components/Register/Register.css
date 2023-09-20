@@ -1,0 +1,55 @@
+.form__input {
+  margin: 0;
+  padding: 46px 0 10px;
+  border: 0;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  width: 396px;
+}
+
+@media screen and (max-width: 600px) {
+  .form__input {
+    padding: 75px 0 18px;
+  }
+}
+
+.form__input_loginRegistrationForm {
+  padding-bottom: 190px;  
+}
+
+.form__label {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-height: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form__item {
+  margin: 0;
+  padding: 0 0 9px 0;
+  border: 0;
+  border-bottom: 1px solid rgba(232, 232, 232, 1);
+  box-sizing: border-box;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 122%;
+}
+
+.form__item_type_loginRegistrationForm {
+  
+  border-bottom: 2px solid rgba(204, 204, 204, 1);
+  color: rgba(204, 204, 204, 1);
+}
+
+.form__item_type_error {
+  border-bottom: 1px solid #FF0000;
+}
+
+
