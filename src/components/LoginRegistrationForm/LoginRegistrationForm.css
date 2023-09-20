@@ -1,19 +1,3 @@
-/*.loginRegistrationForm {
-  width: 358px;
-  display: flex; 
-  flex-direction: column;
-  box-sizing: border-box;
-  align-content: center;
-  margin: 0;
-  padding: 0;
- }
-
- @media screen and (max-width: 400px) {
-    .loginRegistrationForm {
-      width: 260px;
-    }
-  }*/
-
   .loginRegistrationForm {
     width: 100%;
     height: 700px;
@@ -53,6 +37,13 @@
   text-decoration: none;
 }
 
+.loginRegistrationForm__link_exit {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16px;
+  color: rgba(255, 48, 85, 1);
+}
+
 .loginRegistrationForm__title {
   color: rgba(0, 0, 0, 1);
   font-family: Inter, Arial, sans-serif;
@@ -60,6 +51,11 @@
   font-weight: 500;
   line-height: 30px;
   letter-spacing: 0em;
+  width: 396px;
+  text-align: left;
+}
+
+.loginRegistrationForm__title_profile {
   text-align: center;
 }
 
@@ -121,6 +117,24 @@
   background-size: contain;
   background-repeat: no-repeat;
   box-sizing: border-box;
+}
+
+.form__btn-enter_profile {
+  border: none;
+  background-color: inherit;
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+  color: rgba(0, 0, 0, 1);
+}
+
+.form__btn-enter_profile:hover {
+  background-color: transparent;
+}
+
+.form__btn-enter_profile_inactive {
+  cursor: auto;
 }
 
 .button:hover {
