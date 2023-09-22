@@ -4,24 +4,22 @@ import PageNotFound from '../PageNotFound/PageNotFound';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
 import Profile from '../Profile/Profile';
+import Promo from '../Promo/Promo';
 
 function App() {
   return (
     <div className="App">
       <Header
                     
-              />
+      />
+   
+      
+      
 
-      <Profile
-      /> 
+   <Promo
+/>
 
-       <Register
           
-        />
-     
-        <Login
-          
-        />       
 
       <PageNotFound />        
     </div>
@@ -29,3 +27,12 @@ function App() {
 }
 
 export default App;
+/*<Profile
+> 
+<Register
+          
+/>
+
+<Login
+  
+/>   */

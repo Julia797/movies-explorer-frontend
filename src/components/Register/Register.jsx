@@ -23,10 +23,11 @@ function Register({ handleRegister }) {
     
     <fieldset className="form__input form__input_loginRegistrationForm">
       <label className="form__label">
+      <span className="form__input-span">Имя</span>
         <input
           type="text"
           id="name-input"
-          placeholder="Имя"
+         // placeholder="Имя"
           className={`form__item form__item_type_name ${isInputValid.username === undefined || isInputValid.username ? '' : 'form__item_type_error'}`}
           name="username"
           required
@@ -39,10 +40,11 @@ function Register({ handleRegister }) {
       </label>
         
       <label className="form__label">
+      <span className="form__input-span">E-mail</span>
         <input
           type="email"
           id="email"
-          placeholder="E-mail"
+          //placeholder="E-mail"
           className={`form__item form__item_type_loginRegistrationForm form__item_type_email ${isInputValid.email === undefined || isInputValid.email ? '' : 'form__item_type_error'}`}
           name="email"
           required
@@ -54,10 +56,11 @@ function Register({ handleRegister }) {
         <span className="form__input-error name-input-error">{errors.email}</span>
       </label>
       <label className="form__label">
+      <span className="form__input-span">Пароль</span>
         <input
           type="password"
           id="contact-password"
-          placeholder="Пароль"
+          //placeholder="Пароль"
           className={`form__item form__item_type_loginRegistrationForm form__item_type_password ${isInputValid.password === undefined || isInputValid.password ? '' : 'form__item_type_error'}`}
           name="password"
           required

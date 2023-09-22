@@ -22,10 +22,11 @@ function Login({ handleLogin, isSending }) {
   >
     <fieldset className="form__input form__input_loginRegistrationForm">
       <label className="form__label">
+        <span className="form__input-span">E-mail</span>
         <input
           type="email"
           id="email"
-          placeholder="Email"
+          //placeholder="Email"
           className={`form__item form__item_type_loginRegistrationForm form__item_type_email ${isInputValid.email === undefined || isInputValid.email ? '' : 'form__item_type_error'}`}
           name="email"
           required
@@ -37,10 +38,11 @@ function Login({ handleLogin, isSending }) {
         <span className="form__input-error name-input-error">{errors.email}</span>
       </label>
       <label className="form__label">
+        <span className="form__input-span">Пароль</span>
         <input
           type="password"
           id="contact-password"
-          placeholder="Пароль"
+          //placeholder="Пароль"
           className={`form__item form__item_type_loginRegistrationForm form__item_type_password ${isInputValid.password === undefined || isInputValid.password ? '' : 'form__item_type_error'}`}
           name="password"
           required

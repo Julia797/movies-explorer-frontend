@@ -22,10 +22,11 @@ function Profile({ handleRegister }) {
   >
     <fieldset className="form__input form__input_loginRegistrationForm">
       <label className="form__label">
+      <span className="form__input-span">Имя</span>
         <input
           type="text"
           id="name-input"
-          placeholder="Имя"
+          //placeholder="Имя"
           className={`form__item form__item_type_name ${isInputValid.username === undefined || isInputValid.username ? '' : 'form__item_type_error'}`}
           name="username"
           required
@@ -38,10 +39,11 @@ function Profile({ handleRegister }) {
     </label>  
         
     <label className="form__label">
+      <span className="form__input-span">E-mail</span>
       <input
         type="email"
         id="email"
-        placeholder="Email"
+        //placeholder="Email"
         className={`form__item form__item_type_loginRegistrationForm form__item_type_email ${isInputValid.email === undefined || isInputValid.email ? '' : 'form__item_type_error'}`}
         name="email"
         required

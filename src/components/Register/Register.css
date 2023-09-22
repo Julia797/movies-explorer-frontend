@@ -13,11 +13,21 @@
 @media screen and (max-width: 600px) {
   .form__input {
     padding: 75px 0 18px;
+    width: 260px;
   }
 }
 
 .form__input_loginRegistrationForm {
-  padding-bottom: 190px;  
+  padding-top: 40px; 
+  padding-bottom: 140px; 
+  gap: 13px;
+}
+
+@media screen and (max-width: 600px) {
+  .form__input_loginRegistrationForm {
+    padding-top: 80px;
+    padding-bottom: 300px;
+  }
 }
 
 .form__label {
@@ -52,4 +62,11 @@
   border-bottom: 1px solid #FF0000;
 }
 
-
+.form__input-span {
+  font-family: Inter, Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 12px;
+  text-align: left;
+  color: rgba(160, 160, 160, 1);
+}
