@@ -6,6 +6,8 @@ import Register from '../Register/Register';
 import Profile from '../Profile/Profile';
 import Promo from '../Promo/Promo';
 import AboutProject from '../AboutProject/AboutProject';
+import Techs from '../Techs/Techs';
+import AboutMe from '../AboutMe/AboutMe';
 
 
 function App() {
@@ -18,14 +20,14 @@ function App() {
       
       
 
-   <Promo
-/>
+      <Promo
+      />
 
-<AboutProject
-/>
+      <AboutProject
+      />
 
-          
-
+      <Techs />    
+      <AboutMe/>
       <PageNotFound />        
     </div>
   );
