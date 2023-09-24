@@ -20,7 +20,7 @@
 
 @media screen and (max-width: 320px) {
   .promo {
-    padding: 70px 0 32px;
+    padding: 70px 0 30px;
     gap: 44px;
   }
 }

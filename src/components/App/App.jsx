@@ -5,6 +5,8 @@ import Login from '../Login/Login';
 import Register from '../Register/Register';
 import Profile from '../Profile/Profile';
 import Promo from '../Promo/Promo';
+import AboutProject from '../AboutProject/AboutProject';
+
 
 function App() {
   return (
@@ -17,6 +19,9 @@ function App() {
       
 
    <Promo
+/>
+
+<AboutProject
 />
 
           
