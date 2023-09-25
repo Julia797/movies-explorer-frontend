@@ -1,9 +1,6 @@
 .portfolio {
-  background-color: #073042;
-  display: flex;
-  justify-content: space-between;
   box-sizing: border-box;
-  padding: 75px 70px;
+  padding: 75px 70px 75px;
   margin: 0;
   width: 100%;
   min-height: 574px;
@@ -23,4 +20,67 @@
     padding: 70px 0 30px;
     gap: 44px;
   }
+}
+
+.portfolio__brief {
+  font-family: Inter, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+  color: #A0A0A0;
+  margin: 0;
+  padding: 0;
+}
+
+.portfolio__navigation {
+  width: 100%;
+}
+
+.portfolio__lists {
+  margin: 0;
+  padding: 29px 0 0;
+  list-style: none;
+}
+
+.portfolio__list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.portfolio__link {
+  text-decoration: none;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 50px;
+  letter-spacing: -0.04em;
+  text-align: left;
+  color: #000000;
+  border-bottom: 1px solid #E8E8E8;
+  padding: 20px 0;
+
+}
+
+.portfolio__link:hover {
+  opacity: .7;
+  transition: 1s;
+}
+
+.portfolio__button {
+  background-image: url(../../images/button-strelka.svg);
+  background-position: 4px 18px;
+  background-size: 20px 18px;
+  width: 29px;
+  height: 60px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+}
+
+.portfolio__button:hover {
+  opacity: .7;
+  transition: 1s;
+  cursor: pointer;
 }

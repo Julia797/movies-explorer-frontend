@@ -1,4 +1,4 @@
-.aboutProject {
+.about-project {
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
@@ -8,18 +8,18 @@
 }
 
 @media screen and (max-width: 1100px) {
-  .aboutProject {
+  .about-project {
     padding: 90px 50px;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .aboutProject {
+  .about-project {
     padding: 70px 18px 69px;
   }
 }
 
-.aboutProject__brief {
+.about-project__brief {
   display: flex;
   font-family: Inter, Arial, sans-serif;
   font-size: 22px;
@@ -34,14 +34,14 @@
 }
 
 @media screen and (max-width: 320px) {
-  .aboutProject__brief {
+  .about-project__brief {
     font-size: 18px;
     line-height: 22px;
     padding-bottom: 28px;
   }
 }
 
-.aboutProject__conteiners {
+.about-project__conteiners {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -50,7 +50,7 @@
   justify-content: space-between;
 }
 
-.aboutProject__conteiner {
+.about-project__conteiner {
   display: flex;
   width: 550px;
   font-family: Inter, Arial, sans-serif;
@@ -61,19 +61,25 @@
   justify-content: space-between;
 }
 
+@media screen and (max-width: 1280px) {
+  .about-project__conteiner {
+    width: calc(319px + (550 - 319) * (100vw - 1100px) / (1280 - 1100));
+  }
+}
+
 @media screen and (max-width: 1100px) {
-  .aboutProject__conteiner {
+  .about-project__conteiner {
     width: 319px;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .aboutProject__conteiner {
+  .about-project__conteiner {
     width: 284px;
   }
 }
 
-.aboutProject__title {
+.about-project__title {
   font-size: 20px;
   line-height: 24px;
   font-weight: 400;
@@ -84,13 +90,13 @@
 }
 
 @media screen and (max-width: 1100px) {
-  .aboutProject__title {
+  .about-project__title {
      padding-bottom: 22px;
   }
 }
 
-@media screen and (max-width: 320px) {
-  .aboutProject__title {
+@media screen and (max-width: 736px) {
+  .about-project__title {
     font-size: 18px;
     line-height: 22px;
     padding-top: 59px;
@@ -98,7 +104,7 @@
   }
 }
 
-.aboutProject__subtitle {
+.about-project__subtitle {
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
@@ -107,43 +113,43 @@
   padding: 0 0 110px 0;
 }
 
-@media screen and (max-width: 1100px) {
-  .aboutProject__subtitle {
+@media screen and (max-width: 768px) {
+  .about-project__subtitle {
     font-size: 12px;
     line-height: 18px;
     padding-bottom: 94px;
   }
 }
 
-@media screen and (max-width: 320px) {
-  .aboutProject__subtitle {
+@media screen and (max-width: 736px) {
+  .about-project__subtitle {
     font-size: 11px;
     line-height: 16px;
     padding-bottom: 0;
   }
 }
 
-.aboutProject__conteiner_time1 {
+.about-project__conteiner_time1 {
   width: 20%;
 }
 
 @media screen and (max-width: 320px) {
-  .aboutProject__conteiner_time1 {
+  .about-project__conteiner_time1 {
     width: 35%;
   }
 }
 
-.aboutProject__conteiner_time4 {
+.about-project__conteiner_time4 {
   width: 80%;
 }
 
 @media screen and (max-width: 320px) {
-  .aboutProject__conteiner_time4 {
+  .about-project__conteiner_time4 {
     width: 65%;
   }
 }
 
-.aboutProject__time{
+.about-project__time{
   color: #000000;
   font-weight: 400;
   padding: 9px 14px;
@@ -155,8 +161,8 @@
   line-height: 17px;
 }
 
-@media screen and (max-width: 320px) {
-  .aboutProject__time {
+@media screen and (max-width: 736px) {
+  .about-project__time {
     font-size: 11px;
     line-height: 13px;
     margin-top: 60px;
@@ -164,7 +170,7 @@
   }
 }
 
-.aboutProject__text {
+.about-project__text {
   color: #A0A0A0;
   font-weight: 500;
   margin: 0;
@@ -176,7 +182,7 @@
 }
 
 @media screen and (max-width: 320px) {
-  .aboutProject__text {
+  .about-project__text {
     font-size: 11px;
     line-height: 13px;
     padding: 11px 0;
@@ -184,6 +190,6 @@
 }
 
 
-.aboutProject__time_gray {
+.about-project__time_gray {
   background: #F2F2F2;
 }

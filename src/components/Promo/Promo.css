@@ -127,6 +127,12 @@
 
 }
 
+.promo__link:hover {
+  opacity: .7;
+  transition: 1s;
+  cursor: pointer;
+}
+
 .landing__logo {
   width: 310px;
   height: 304px;

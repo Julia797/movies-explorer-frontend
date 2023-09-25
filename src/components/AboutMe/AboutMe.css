@@ -1,26 +1,25 @@
-.aboutMe {
+.about-me {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  padding: 110px 70px;
+  padding: 110px 70px 27px;
   margin: 0;
   width: 100%;
-  background: #F5F5F5;
 }
 
 @media screen and (max-width: 1100px) {
-  .aboutMe {
+  .about-me {
    
   }
 }
 
 @media screen and (max-width: 320px) {
-  .aboutMe {
+  .about-me {
  
   }
 }
 
-.techs__brief {
+.about-me__brief {
   display: flex;
   font-family: Inter, Arial, sans-serif;
   font-size: 22px;
@@ -35,10 +34,92 @@
 }
 
 @media screen and (max-width: 320px) {
-  .techs__brief {
+  .about-me__brief {
     font-size: 18px;
     line-height: 22px;
     padding-bottom: 28px;
   }
 }
 
+.about-me__conteiners {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 66px 0 0;
+}
+
+.about-me__conteiner {
+  max-width: 600px;
+}
+
+@media screen and (max-width: 768px) {
+  .about-me__conteiner {
+    width: 364px;
+  }
+}
+
+.about-me__name {
+  font-family: Inter, Arial, sans-serif;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: -0.04em;
+  text-align: left;
+  margin: 0;
+  padding: 0 0 18px;
+}
+
+.about-me__job {
+  font-family: Inter, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.about-me__history {
+  font-family: Inter, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  text-align: left;
+  margin: 0;
+  padding: 26px 0 99px;
+}
+
+.about-me__github {
+  font-family: Inter, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  text-align: left;
+  text-decoration: none;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+}
+
+.about-me__github:hover {
+  opacity: .7;
+  transition: 1s;
+  cursor: pointer;
+}
+
+.about-me__foto {
+  object-fit: cover;
+  width: 270px;
+  height: 327px;
+  border-radius: 10px;
+  display: block;
+}
+
+@media screen and (max-width: 768px) {
+  .about-me__foto {
+    width: 255px;
+    height: 307px;
+  }
+}
