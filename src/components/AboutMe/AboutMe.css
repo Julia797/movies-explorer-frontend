@@ -7,15 +7,15 @@
   width: 100%;
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 768px) {
   .about-me {
-   
+    padding: 92px 50px 50px;
   }
 }
 
 @media screen and (max-width: 320px) {
   .about-me {
- 
+    padding: 70px 14px;
   }
 }
 
@@ -37,6 +37,7 @@
   .about-me__brief {
     font-size: 18px;
     line-height: 22px;
+    letter-spacing: -0.04em;
     padding-bottom: 28px;
   }
 }
@@ -50,13 +51,26 @@
   padding: 66px 0 0;
 }
 
+@media screen and (max-width: 320px) {
+  .about-me__conteiners {
+    flex-direction: column-reverse;
+    padding-top: 60px;
+  }
+}
+
 .about-me__conteiner {
   max-width: 600px;
 }
 
 @media screen and (max-width: 768px) {
   .about-me__conteiner {
-    width: 364px;
+    max-width: 364px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .about-me__conteiner {
+    width: 100%;
   }
 }
 
@@ -71,6 +85,23 @@
   padding: 0 0 18px;
 }
 
+@media screen and (max-width: 768px) {
+  .about-me__name {
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -0.04em;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .about-me__name {
+    font-size: 30px;
+    line-height: 36px;
+    letter-spacing: -0.04em;
+    padding-top: 40px;
+  }
+}
+
 .about-me__job {
   font-family: Inter, Arial, sans-serif;
   font-size: 18px;
@@ -81,6 +112,20 @@
   padding: 0;
 }
 
+@media screen and (max-width: 768px) {
+  .about-me__job {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .about-me__job {
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
+
 .about-me__history {
   font-family: Inter, Arial, sans-serif;
   font-size: 14px;
@@ -89,6 +134,24 @@
   text-align: left;
   margin: 0;
   padding: 26px 0 99px;
+}
+
+@media screen and (max-width: 768px) {
+  .about-me__history {
+   font-size: 12px;
+   line-height: 18px;
+   padding-top: 19px;
+   padding-bottom: 86px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .about-me__history {
+    font-size: 11px;
+    line-height: 16px;
+    padding-top: 20px;
+   padding-bottom: 40px;
+  }
 }
 
 .about-me__github {
@@ -117,9 +180,16 @@
   display: block;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
   .about-me__foto {
     width: 255px;
     height: 307px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .about-me__foto {
+    width: 292px;
+    height: 352px;
   }
 }

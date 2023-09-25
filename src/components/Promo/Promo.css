@@ -89,7 +89,7 @@
   font-weight: 400;
   line-height: 16px;
   color: rgba(255, 255, 255, .5);
-  margin: 0 0 111px 0;
+  margin: 0 0 111px;
   padding: 0;
   max-width: 310px;
 }
@@ -97,14 +97,14 @@
 @media screen and (max-width: 1100px) {
   .promo__subtitle {
     text-align: center;
-    margin: 17px 0 94px 0;
+    margin: 17px 0 94px;
     max-width: 260px;
   }
 }
 
 @media screen and (max-width: 320px) {
   .promo__subtitle {
-    margin: 24px 0 80px 0;
+    margin: 24px 0 80px;
   }
 }
 
