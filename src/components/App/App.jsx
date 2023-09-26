@@ -1,3 +1,4 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Header from '../Header/Header';
 import PageNotFound from '../PageNotFound/PageNotFound';
@@ -9,29 +10,65 @@ import AboutProject from '../AboutProject/AboutProject';
 import Techs from '../Techs/Techs';
 import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
+import Footer from '../Footer/Footer';
 
+import Main from '../Main/Main';
 
 function App() {
   return (
     <div className="App">
-      <Header
-                    
-      />
-   
+
+      <Routes>
+
+        <Route path='/' element={
+          <>
+            <Header 
+              name='home' />
+            <Main 
+              name='mainHomePage' />
+            <Footer />
+          </>
+        } />
       
+      <Route path='/sign-up' element={
+          
+          <Main
+            name='mainSignUp'
+            /> 
+        
+      } />     
+
+      <Route path='sign-in' element={
+        
+          <Main
+            name='mainSignIn'
+          />   
+        
+      } />  
       
+      <Route path='/sign-up' element={
+          
+          <Main
+            name='mainSignUp'
+            /> 
+        
+      } />
 
-      <Promo
-      />
+      <Route path='/profile' element={
+          
+          <Main
+            name='mainProfile'
+            /> 
+        
+      } />   
 
-      <AboutProject
-      />
-
-      <Techs />    
-      <AboutMe/>
-      <Portfolio/>
-
-      <PageNotFound />        
+      <Route path='*' element={
+          
+            <Main name='pageNotFound' />
+          
+        } />
+        
+      </Routes>        
     </div>
   );
 }
@@ -45,4 +82,25 @@ export default App;
 
 <Login
   
-/>   */
+/>   
+
+
+
+
+<Route path='/sign-up' element={
+          
+            <Main
+              name='MainSignUp'
+              /> 
+          
+        } />     
+
+        <Route path='sign-in' element={
+          
+            <Main
+              name='MainSignIn'
+            />   
+          
+        } />  
+
+*/

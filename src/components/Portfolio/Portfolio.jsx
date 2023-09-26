@@ -19,7 +19,7 @@ function Portfolio() {
             </a>
           </li> 
           <li className="portfolio__list">
-            <a className="portfolio__link" href="https://github.com/Julia797/react-mesto-auth" target="_blank" rel="noreferrer">
+            <a className="portfolio__link portfolio__link_end" href="https://github.com/Julia797/react-mesto-auth" target="_blank" rel="noreferrer">
               <p className="portfolio__site">Одностраничное приложение</p>
               <button className="portfolio__button" type="button"></button>
             </a>
