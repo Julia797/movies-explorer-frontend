@@ -51,7 +51,7 @@
   padding: 66px 0 0;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 600px) {
   .about-me__conteiners {
     flex-direction: column-reverse;
     padding-top: 60px;
@@ -68,7 +68,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 600px) {
   .about-me__conteiner {
     width: 100%;
   }
@@ -93,7 +93,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 600px) {
   .about-me__name {
     font-size: 30px;
     line-height: 36px;
