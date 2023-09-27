@@ -1,5 +1,4 @@
 import './Main.css';
-
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import Promo from '../Promo/Promo';
@@ -9,6 +8,8 @@ import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
 import Profile from '../Profile/Profile';
 import PageNotFound from '../PageNotFound/PageNotFound';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import { movies, savedMovies } from '../../utils/initialMovies';
 
 function Main({ name, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onDeleteClick, cards, onCardLike, isLoading, handleRegister,  handleLogin, isSending }) {
  
@@ -16,7 +17,6 @@ function Main({ name, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onDe
     <main className="main">
       {name ==='mainHomePage' ?
         <><Promo /><AboutProject /><Techs /><AboutMe /><Portfolio /></>
-       
       :
       name ==='mainSignUp' ?
         <Register />
@@ -27,14 +27,23 @@ function Main({ name, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onDe
       name ==='mainProfile' ?
         <Profile />
       :
-      name ==='pageNotFound' ?
-        <PageNotFound />
+      name ==='mainMovies' ?
+      <MoviesCardList
+        movies={movies}
+      /> 
+      :
+      name ==='mainSavedMovies' ?
+      <MoviesCardList
+        movies={savedMovies}
+      /> 
 
       :
-        <Register />
+       <PageNotFound />
       }
     </main>
   );
 }
 
 export default Main;
+//name ==='pageNotFound' ?
+//<PageNotFound />

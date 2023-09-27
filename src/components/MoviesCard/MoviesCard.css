@@ -1,0 +1,51 @@
+.element__item {
+  width: 100%;
+}
+
+.element__link {
+
+}
+
+.element__foto {
+  width: 100%;
+}
+
+.element__info {
+
+}
+
+.element__title {
+
+}
+
+.element__save-del {
+
+}
+
+.element__button {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-image: url(../../images/button-savenactive.svg);
+  
+}
+
+.element__button {
+  opacity: .7;
+  transition: 1s;
+  cursor: pointer;
+}
+
+.element__button_likes {
+  background-image: url(../../images/button-save.svg);
+}
+
+.element__button_delete {
+  background-image: url(../../images/button-delete.svg);
+}
+
+.element__duration {
+
+}

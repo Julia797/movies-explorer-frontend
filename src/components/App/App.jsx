@@ -1,17 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Header from '../Header/Header';
-import PageNotFound from '../PageNotFound/PageNotFound';
-import Login from '../Login/Login';
-import Register from '../Register/Register';
-import Profile from '../Profile/Profile';
-import Promo from '../Promo/Promo';
-import AboutProject from '../AboutProject/AboutProject';
-import Techs from '../Techs/Techs';
-import AboutMe from '../AboutMe/AboutMe';
-import Portfolio from '../Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
-
 import Main from '../Main/Main';
 
 function App() {
@@ -62,45 +52,33 @@ function App() {
         
       } />   
 
+      <Route path='/movies' element={
+          
+          <Main
+            name='mainMovies'
+            /> 
+        
+      } />  
+
+       <Route path='/saved-movies' element={
+          
+          <Main
+            name='mainMovies'
+            /> 
+        
+      } />   
+
       <Route path='*' element={
           
             <Main name='pageNotFound' />
           
         } />
-        
+            
       </Routes>        
     </div>
-  );
+
+  )
+
 }
 
 export default App;
-/*<Profile
-> 
-<Register
-          
-/>
-
-<Login
-  
-/>   
-
-
-
-
-<Route path='/sign-up' element={
-          
-            <Main
-              name='MainSignUp'
-              /> 
-          
-        } />     
-
-        <Route path='sign-in' element={
-          
-            <Main
-              name='MainSignIn'
-            />   
-          
-        } />  
-
-*/
