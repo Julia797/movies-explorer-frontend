@@ -13,9 +13,10 @@ function MoviesCardList({ movies }) {
             return (
               <MoviesCard 
                 key = {data._id}
-                name={data.name} 
+                name={data.nameRu} 
                 src={data.image} 
                 trailerLink={data.trailerLink}
+                duration={data.duration}
               />
             )
           })}

@@ -20,8 +20,9 @@ function MoviesCard({ key, name, src, trailerLink, duration }) {
           <button className="element__button element__button_delete" type="button" aria-label="удалить"  />
         }
         </div>
+        </div>  
         <span className='element__duration'>{duration}</span>
-      </div>
+      
     </li>
   )
 }

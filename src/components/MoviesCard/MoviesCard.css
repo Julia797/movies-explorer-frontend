@@ -3,22 +3,43 @@
 }
 
 .element__link {
+  width: 100%;
 
 }
 
 .element__foto {
   width: 100%;
+  object-fit: cover;
+  display: block;
+  height: 151px;
+  cursor: pointer;
+  margin: 0;
+  display: block;
+
 }
 
 .element__info {
-
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #E8E8E8;
+  margin: 0;
 }
 
 .element__title {
-
+  font-family: Inter, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: left;
+  padding: 14px 0 30px;
+  margin: 0;
+  max-width: 295px;
+  
 }
 
 .element__save-del {
+
 
 }
 
@@ -29,10 +50,11 @@
   background-repeat: no-repeat;
   background-color: transparent;
   background-image: url(../../images/button-savenactive.svg);
+  margin-top: 10px;
   
 }
 
-.element__button {
+.element__button:hover {
   opacity: .7;
   transition: 1s;
   cursor: pointer;
@@ -47,5 +69,16 @@
 }
 
 .element__duration {
+  font-family: Inter, Arial, sans-serif;
+  
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 13px;
+  text-align: left;
+  color: #A0A0A0;
+  
+  box-sizing: border-box;
+
+  
 
 }
