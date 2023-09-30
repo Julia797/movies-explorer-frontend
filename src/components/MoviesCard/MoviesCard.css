@@ -15,7 +15,18 @@
   cursor: pointer;
   margin: 0;
   display: block;
+}
 
+@media screen and (max-width: 900px) {
+  .element__foto {
+    height: 190px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .element__foto {
+    height: 168px;
+  }
 }
 
 .element__info {
@@ -35,7 +46,14 @@
   padding: 14px 0 30px;
   margin: 0;
   max-width: 295px;
-  
+}
+
+@media screen and (max-width: 320px) {
+  .element__title {
+    font-size: 12px;
+    line-height: 15px;
+    padding: 15px 0 29px;
+  }
 }
 
 .element__save-del {
@@ -51,7 +69,6 @@
   background-color: transparent;
   background-image: url(../../images/button-savenactive.svg);
   margin-top: 10px;
-  
 }
 
 .element__button:hover {
@@ -70,15 +87,17 @@
 
 .element__duration {
   font-family: Inter, Arial, sans-serif;
-  
   font-size: 11px;
   font-weight: 400;
   line-height: 13px;
   text-align: left;
   color: #A0A0A0;
-  
   box-sizing: border-box;
+}
 
-  
-
+@media screen and (max-width: 320px) {
+  .element__duration {
+    font-size: 10px;
+    line-height: 13px;
+  }
 }

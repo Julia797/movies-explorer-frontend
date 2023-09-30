@@ -10,6 +10,7 @@ import Profile from '../Profile/Profile';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import { movies, savedMovies } from '../../utils/initialMovies';
+import Checkbox from '../Checkbox/Checkbox'
 
 function Main({ name, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onDeleteClick, cards, onCardLike, isLoading, handleRegister,  handleLogin, isSending }) {
  
@@ -28,14 +29,18 @@ function Main({ name, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onDe
         <Profile />
       :
       name ==='mainMovies' ?
-      <MoviesCardList
-        movies={movies}
-      /> 
+      <>
+        <Checkbox />
+        <MoviesCardList
+          movies={movies} />
+      </> 
       :
       name ==='mainSavedMovies' ?
-      <MoviesCardList
-        movies={savedMovies}
-      /> 
+      <>
+        <Checkbox />
+        <MoviesCardList
+          movies={savedMovies} />
+      </> 
 
       :
        <PageNotFound />
