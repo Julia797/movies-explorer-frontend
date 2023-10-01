@@ -4,7 +4,20 @@
   padding: 33px 0 48px;
   display: flex;
   align-items: center;
-  
+}
+
+@media screen and (max-width: 768px) {
+  .checkbox-container {
+    flex-direction: row-reverse;
+    padding-bottom: 61px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .checkbox-container {
+    justify-content: center;
+    padding-bottom: 51px;
+  }
 }
 
 /* The switch - the box around the slider */
@@ -79,5 +92,20 @@ input:checked + .slider:before {
   margin: 0;
   padding-left: 15px;
   vertical-align: top;
-
 }
+
+@media screen and (max-width: 768px) {
+  .slider__subtitle {
+    padding: 0 17px 0 0;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .slider__subtitle {
+    font-size: 11px;
+    line-height: 18px;
+    text-align: left;
+    padding-right: 13px;
+  }
+}
+

@@ -1,73 +1,36 @@
 .form__input {
   margin: 0;
-  padding: 46px 0 10px;
   border: 0;
-  min-height: 180px;
+  min-height: 266px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   box-sizing: border-box;
   width: 396px;
+  gap: 2px;
 }
 
 @media screen and (max-width: 600px) {
   .form__input {
-    padding: 75px 0 18px;
-    width: 260px;
+    
   }
 }
 
-.form__input_loginRegistrationForm {
-  padding-bottom: 140px; 
-  gap: 13px; 
-  padding-top: 40px;
+.form__input_profileForm {
+  padding: 123px 0 220px;
+  width: 410px;
 }
 
 @media screen and (max-width: 600px) {
-  .form__input_loginRegistrationForm {
-    padding-top: 80px;
-    padding-bottom: 300px;
+  .form__input_profileForm {
+    
   }
 }
 
-.form__label {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  min-height: 56px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.form__item {
-  margin: 0;
-  padding: 0 0 9px 0;
-  border: 0;
-  border-bottom: 1px solid rgba(232, 232, 232, 1);
-  box-sizing: border-box;
-  font-family: Inter, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 122%;
-}
-
-/*.form__item_type_loginRegistrationForm {
-  
-  border-bottom: 2px solid rgba(204, 204, 204, 1);
-  color: rgba(204, 204, 204, 1);
-}*/
-
-.form__item_type_error {
-  border-bottom: 1px solid #FF0000;
-}
-.form__input-span {
-  font-family: Inter, Arial, sans-serif;
-  font-size: 10px;
-  font-weight: 400;
-  line-height: 12px;
+.form__item_profile {
+  padding-bottom: 16px;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 13px;
   text-align: left;
-  color: rgba(160, 160, 160, 1);
 }
-
-

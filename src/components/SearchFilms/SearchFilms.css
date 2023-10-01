@@ -1,0 +1,54 @@
+.searchFilms {
+  width: 100%;
+ 
+}
+
+@media screen and (max-width: 768px) {
+  .searchFilms {
+    
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .searchFilms {
+   
+  }
+}
+ 
+.searchFilms__conteiner {
+  width: 100%;
+}
+
+.searchFilms__form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.searchFilms__input {
+
+}
+
+.searchFilms__button {
+  transition: background-color 1s ease;
+  cursor: pointer;
+  border-radius: 40%;
+  border-bottom: none;
+  background: #3456F3;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 18px;
+  text-align: center;
+  color: #FFF;
+  width: 58px;
+  height: 34px;
+  
+  
+
+}
+
+
+.searchFilms__button:hover {
+  background-color: rgba(52, 86, 243, 0.8);
+}

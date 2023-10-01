@@ -53,19 +53,19 @@ function App() {
       } />   
 
       <Route path='/movies' element={
-          
-          <Main
-            name='mainMovies'
-            /> 
-        
+
+        <>
+          <Header /><Main
+            name='mainMovies' />
+          <Footer /></>
       } />  
 
        <Route path='/saved-movies' element={
-          
-          <Main
-            name='mainMovies'
-            /> 
-        
+
+        <>
+          <Header /><Main
+            name='mainMovies' />
+          <Footer /></>
       } />   
 
       <Route path='*' element={

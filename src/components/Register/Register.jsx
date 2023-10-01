@@ -1,9 +1,10 @@
 import LoginRegistrationForm from "../LoginRegistrationForm/LoginRegistrationForm";
 import useFormValidation from "../../hooks/useFormValidation";
 import './Register.css';
+import Input from "../Input/Input";
 
 function Register({ handleRegister }) {
-  const { values, errors, isValid, isInputValid } = useFormValidation()
+  const { values, errors, isValid, isInputValid, handleChange } = useFormValidation()
  
   //function handleSubmit(evt) {
    // evt.preventDefault()
@@ -21,7 +22,51 @@ function Register({ handleRegister }) {
   //onSubmit={handleSubmit}
   >
     
-    <fieldset className="form__input form__input_loginRegistrationForm">
+    <fieldset className="form__input form__input_registrationForm">
+      <Input
+          name='username'
+          type='text'
+          title='Имя'
+          value={values.username}
+          isInputValid={isInputValid.username}
+          error={errors.username}
+          minLength="2"
+          maxLength="40"
+          id="email"
+          onChange={handleChange}
+        />
+       <Input
+        name='email'
+        type='email'
+        title='E-mail'
+        value={values.email}
+        isInputValid={isInputValid.email}
+        error={errors.email}
+        minLength="2"
+        maxLength="40"
+        id="email"
+        onChange={handleChange}
+      />
+      <Input
+        name='password'
+        type='password'
+        title='Пароль'
+        value={values.password}
+        isInputValid={isInputValid.password}
+        error={errors.password}
+        minLength = '3'
+        id="contact-password"
+        onChange={handleChange}
+      />
+    </fieldset>
+  </LoginRegistrationForm>
+  );
+}
+
+export default Register;
+
+/*
+<fieldset className="form__input form__input_loginRegistrationForm">
       <label className="form__label">
       <span className="form__input-span">Имя</span>
         <input
@@ -71,9 +116,4 @@ function Register({ handleRegister }) {
         />
         <span className="form__input-error contact-input-error">{errors.password}</span>
       </label>
-    </fieldset>
-  </LoginRegistrationForm>
-  );
-}
-
-export default Register;
+    </fieldset>*/

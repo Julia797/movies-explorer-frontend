@@ -87,7 +87,7 @@
   font-size: 24px;
   font-weight: 500;
   line-height: 30px;
-  margin: 38px 0 0;
+  margin: 39px 0 0;
 }
 
 @media screen and (max-width: 320px) {
@@ -102,7 +102,7 @@
 }
 
 .loginRegistrationForm__subtitle {
-  margin: 15px 0 0 0;
+  margin: 16px 0 0 0;
   padding: 0;
   font-family: Inter, Arial, sans-serif;
   color: rgba(160, 160, 160, 1);

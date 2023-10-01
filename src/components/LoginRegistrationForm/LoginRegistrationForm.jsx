@@ -2,11 +2,12 @@ import { Link } from 'react-router-dom';
 import logo from '../../images/header-logo.svg';
 import './LoginRegistrationForm.css';
 
-function LoginRegistrationForm({ nameForm, title, nameButton, children, isValid=true }) {
- 
+function LoginRegistrationForm({ nameForm, title, nameButton, onSubmit, children, isValid=true }) {
+
+   
   return (
     <section className="loginRegistrationForm">
-      <form className={`form form_${nameForm}`} noValidate name={nameForm} >
+      <form className={`form form_${nameForm}`} noValidate name={nameForm} onSubmit={onSubmit} >
         <div className='loginRegistrationForm__logog'>
           <img className={nameForm === 'profile' ? 'loginRegistrationForm__logo loginRegistrationForm__logo_profile' : 'loginRegistrationForm__logo'} src={logo} alt="логотип сайта"/>
         </div>
