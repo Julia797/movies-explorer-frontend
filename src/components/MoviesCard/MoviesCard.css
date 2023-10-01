@@ -10,7 +10,6 @@
 .element__foto {
   width: 100%;
   object-fit: cover;
-  display: block;
   height: 151px;
   cursor: pointer;
   margin: 0;

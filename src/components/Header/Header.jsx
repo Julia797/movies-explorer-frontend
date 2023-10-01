@@ -19,11 +19,11 @@ function Header({ nameHeader, userEmail }) {
   );*/
 // переделать на нав
   return (
-    <header className="header header_themeBlue indent">
+    <header className={nameHeader === "movies" ? "header indent" : "header header_themeBlue indent"}>
       <img className="header__logo" src={logo} alt="логотип сайта"/>
       <ul className="header__navigation">
-          <li><a href="#" className="header__films">Фильмы</a></li>
-          <li><a href="#" className="header__films-save link">Сохранённые фильмы</a></li>
+          <li><a href="#" className={nameHeader === "movies" ? "header__films header__films_white" : "header__films"}>Фильмы</a></li>
+          <li><a href="#" className={nameHeader === "movies" ? "header__films-save header__films-save_white" : "header__films-save link"}>Сохранённые фильмы</a></li>
         </ul>
      
       <p className="header__account">Аккаунт</p>

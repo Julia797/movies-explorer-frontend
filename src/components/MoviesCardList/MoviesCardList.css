@@ -21,6 +21,14 @@
   justify-content: center;
   list-style: none;
 }
+
+@media screen and (max-width: 1170px) {
+  .element {
+    grid-template-columns: repeat(3, 270px);
+    column-gap: 20px;
+    row-gap: 30px;
+  }
+}
   
 @media screen and (max-width: 900px) {
   .element {
@@ -30,7 +38,7 @@
   }
 }
   
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .element {
     grid-template-columns: 300px;
     row-gap: 34px;

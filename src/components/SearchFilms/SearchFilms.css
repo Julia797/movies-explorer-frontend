@@ -1,5 +1,7 @@
 .searchFilms {
   width: 100%;
+  margin: 0;
+  padding: 69px 0 0;
  
 }
 
@@ -17,6 +19,9 @@
  
 .searchFilms__conteiner {
   width: 100%;
+  margin: 0;
+  padding-bottom: 13px;
+  border-bottom: 1px solid #E8E8E8;
 }
 
 .searchFilms__form {
@@ -26,14 +31,19 @@
 }
 
 .searchFilms__input {
-
+  font-family: Inter, Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 34px;
+  text-align: left;
+  border: 0;
 }
 
 .searchFilms__button {
   transition: background-color 1s ease;
   cursor: pointer;
   border-radius: 40%;
-  border-bottom: none;
+  border: none;
   background: #3456F3;
   font-family: Inter, Arial, sans-serif;
   font-size: 11px;
@@ -43,11 +53,7 @@
   color: #FFF;
   width: 58px;
   height: 34px;
-  
-  
-
 }
-
 
 .searchFilms__button:hover {
   background-color: rgba(52, 86, 243, 0.8);

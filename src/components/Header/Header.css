@@ -39,6 +39,10 @@
   font-weight: 400;
   line-height: 18px;
 }
+ 
+.header__films_white {
+  color: #000;
+}
 
 .header__films-save {
   text-decoration: none;
@@ -46,6 +50,10 @@
   font-size: 13px;
   font-weight: 400;
   line-height: 18px;
+}
+
+.header__films-save_white {
+  color: #000;
 }
 
 .link {
