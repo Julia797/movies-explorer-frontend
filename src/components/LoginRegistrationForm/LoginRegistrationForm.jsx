@@ -15,11 +15,9 @@ function LoginRegistrationForm({ nameForm, title, nameButton, onSubmit, children
         {children}
         <button className={nameForm === 'profile' ? 'form__btn-enter form__btn-enter_profile' : 'form__btn-enter'} type="submit" aria-label={nameButton}>{nameButton}</button>
       </form>
-      {nameForm === `signup` ? <p className="loginRegistrationForm__subtitle">Уже зарегистрированы? <a href="#" className="loginRegistrationForm__link button" >Войти</a></p> : nameForm === `signin` ? <p className="loginRegistrationForm__subtitle">Ещё не зарегистрированы? <a href="#" className="loginRegistrationForm__link button" >Регистрация</a></p> : <a href="#" className="loginRegistrationForm__link  loginRegistrationForm__link_exit button" >Выйти из аккаунта</a>}
+      {nameForm === `signup` ? <p className="loginRegistrationForm__subtitle">Уже зарегистрированы? <Link className="loginRegistrationForm__link button" to={'/sign-in'}>Войти</Link></p> : nameForm === `signin` ? <p className="loginRegistrationForm__subtitle" >Ещё не зарегистрированы? <Link className="loginRegistrationForm__link button" to={'/sign-up'}>Регистрация</Link></p> : <Link className="loginRegistrationForm__link  loginRegistrationForm__link_exit button" to={'/'} >Выйти из аккаунта</Link>}
     </section>
   );
 }
 
 export default LoginRegistrationForm;
-
-//<button className={`form__btn-enter ${isValid ? '' : 'form__btn-enter_inactive'} }`} type="submit" aria-label={nameButton}>{nameButton}</button>

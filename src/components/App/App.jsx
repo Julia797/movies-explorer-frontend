@@ -3,8 +3,12 @@ import './App.css';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
+import { useState } from 'react';
 
 function App() {
+
+  const [loggedIn, setLoggedIn] = useState(false)
+
   return (
     <div className="App">
 
@@ -13,7 +17,7 @@ function App() {
         <Route path='/' element={
           <>
             <Header 
-              nameHeader='home' />
+              nameHeader='home'  loggedIn={loggedIn} />
             <Main 
               name='mainHomePage' />
             <Footer />

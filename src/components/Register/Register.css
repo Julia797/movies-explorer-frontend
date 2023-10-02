@@ -26,5 +26,6 @@
   .form__input_registrationForm {
     padding-top: 80px;
     padding-bottom: 300px;
+    width: 260px;
   }
 }

@@ -1,6 +1,6 @@
 import LoginRegistrationForm from "../LoginRegistrationForm/LoginRegistrationForm";
 import useFormValidation from "../../hooks/useFormValidation";
-import './Profile.css';
+//import './Profile.css';
 import Input from "../Input/Input";
 
 function Profile({ handleRegister }) {
