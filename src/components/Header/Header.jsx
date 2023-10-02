@@ -22,19 +22,21 @@ function Header({ nameHeader, userEmail }) {
     <header className={nameHeader === "movies" || nameHeader === "saved-movies" ? "header indent" : "header header_themeBlue indent"}>
       <img className="header__logo" src={logo} alt="логотип сайта"/>
       <ul className="header__navigation">
-          <li><a href="#" className={nameHeader === "movies" || nameHeader === "saved-movies" ? "header__films" : "header__films header__none"}>Фильмы</a></li>
-          <li><a href="#" className={nameHeader === "movies" || nameHeader === "saved-movies" ? "header__films-save" : "header__films-save header__none"}>Сохранённые фильмы</a></li>
+          <li>
+            <Link to={'/movies'} className={nameHeader === "movies" ? "header__films header__films_bold" : nameHeader === "saved-movies" ? "header__films" : "header__films header__none"}>Фильмы</Link></li>
+          <li>
+            <Link to={'/saved-movies'} className={nameHeader === "movies" ? "header__films-save" : nameHeader === "saved-movies" ? "header__films-save header__filmsfilms-save_bold" : "header__films-save header__none"}>Сохранённые фильмы</Link></li>
         </ul>
      
         <Link to={'/profile'} className={nameHeader === "movies" || nameHeader === "saved-movies" ? "header__linkAcc" : "header__none"}>Аккаунт <div className='header__account'></div></Link>
      
 
       <ul className={nameHeader === "movies" || nameHeader === "saved-movies" ? "header__loginRegistration header__none" : "header__loginRegistration"}>
-          <li><a href="#" className="header__registration active_link">Регистрация</a></li>
-          <li><a href="#" className="header__login link">Войти</a></li>
+          <li><Link to={'/sign-up'} className="header__registration active_link">Регистрация</Link></li>
+          <li><Link to={'/sign-in'} className="header__login link">Войти</Link></li>
       </ul>
 
-      <img className="header__burger" src={burger} alt="кнопка"/>
+      <img className={nameHeader === "home" ? "header__burger header__burger_close" : "header__burger"} src={burger} alt="кнопка"/>
     </header>
   );
 }

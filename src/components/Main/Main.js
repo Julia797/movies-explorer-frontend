@@ -10,7 +10,6 @@ import Profile from '../Profile/Profile';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import { movies, savedMovies } from '../../utils/initialMovies';
-import Checkbox from '../Checkbox/Checkbox'
 import SearchFilms from '../SearchFilms/SearchFilms';
 
 function Main({ name, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onDeleteClick, cards, onCardLike, isLoading, handleRegister,  handleLogin, isSending }) {
