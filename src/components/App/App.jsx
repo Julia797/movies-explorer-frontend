@@ -13,7 +13,7 @@ function App() {
         <Route path='/' element={
           <>
             <Header 
-              name='home' />
+              nameHeader='home' />
             <Main 
               name='mainHomePage' />
             <Footer />
@@ -66,7 +66,9 @@ function App() {
        <Route path='/saved-movies' element={
 
         <>
-          <Header />
+          <Header 
+            nameHeader = 'saved-movies'
+          />
           <Main
             name='mainMovies' />
           <Footer /></>

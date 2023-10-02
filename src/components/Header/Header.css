@@ -16,13 +16,12 @@
 
 .header__navigation {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin: 0;
-  padding: 0;
+  padding: 0 0 0 60px;
   list-style-type: none;
   font-family: Inter, Arial, sans-serif;
-  width: 211px;
+  gap: 16px;
   height: 18px;
 }
 
@@ -34,26 +33,18 @@
 
 .header__films {
   text-decoration: none;
-  color: #FFF;
+  color: #000;
   font-size: 13px;
   font-weight: 400;
   line-height: 18px;
 }
  
-.header__films_white {
-  color: #000;
-}
-
 .header__films-save {
   text-decoration: none;
-  color: #FFF;
+  color: #000;
   font-size: 13px;
   font-weight: 400;
   line-height: 18px;
-}
-
-.header__films-save_white {
-  color: #000;
 }
 
 .link {
@@ -69,8 +60,8 @@
   font-family: Inter, Arial, sans-serif;
   width: 143px;
   height: 13px;
- 
 }
+
 .header__registration {
   color: #FFF;
   text-decoration: none;
@@ -97,7 +88,6 @@
   font-size: 18px;
   font-weight: 400;
   line-height: 22px;
-  color: #FFF;
   text-decoration: none;
 }
 
@@ -109,6 +99,15 @@
 
 .header__burger {
   display: none;
+  margin: 0;
+  width: 44px;
+  height: 44px;
+  border: none;
+  padding: 0;
+  transition: background-color 1s ease;
+  background-color: transparent;
+  background-image: url('../../images/header-burger.svg');
+  background-position: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -121,22 +120,49 @@
 
 @media screen and (max-width: 320px) {
   .header__burger {
+    background-image: url('../../images/header-burgermini.svg');
     width: 40px;
-    height: 44px;
+    height: 43px;
     display: block;
   }
 }
 
-.header__account {
-  margin: 0;
-  box-sizing: border-box;
+.header__none {
+  display: none;
+}
+
+.header__linkAcc {
+  text-decoration: none;
   font-family: Inter, Arial, sans-serif;
-  color: #FFF;
-  text-align: right;
-  /*display: none;*/
   font-size: 13px;
   font-weight: 500;
   line-height: 12px;
+  color: #000;
+  transition: background-color 1s ease;
+  display: flex;
+  width: 100px;
+  height: 32px;
+  align-items: center;
+  border-radius: 40px;
+  box-shadow: 0px 3px 14px 0px #00000014;
+  justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  .header__linkAcc {
+    display: none;
+  }
+}
+
+.header__account {
+  width: 26px;
+  height: 26px;
+  background-color: #F9F9F9;
+  margin-left: 7px;
+  border-radius: 50%;
+  background-image: url(../../images/header-acc.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 @media screen and (max-width: 768px) {

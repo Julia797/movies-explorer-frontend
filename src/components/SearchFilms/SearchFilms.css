@@ -1,19 +1,20 @@
 .searchFilms {
   width: 100%;
   margin: 0;
-  padding: 69px 0 0;
- 
+  padding: 69px 70px 0;
+  min-width: 320px;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 768px) {
   .searchFilms {
-    
+    padding: 80px 30px 0;
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 500px) {
   .searchFilms {
-   
+   padding: 85px 14px 0;
   }
 }
  
@@ -22,12 +23,23 @@
   margin: 0;
   padding-bottom: 13px;
   border-bottom: 1px solid #E8E8E8;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 500px) {
+  .searchFilms__conteiner {
+    padding-bottom: 8px;
+  }
 }
 
 .searchFilms__form {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  box-sizing: border-box;
 }
 
 .searchFilms__input {
@@ -37,12 +49,23 @@
   line-height: 34px;
   text-align: left;
   border: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 80%;
+}
+
+@media screen and (max-width: 500px) {
+  .searchFilms__input {
+    font-size: 18px;
+    line-height: 22px;
+  }
 }
 
 .searchFilms__button {
   transition: background-color 1s ease;
   cursor: pointer;
-  border-radius: 40%;
+  border-radius: 20px;
   border: none;
   background: #3456F3;
   font-family: Inter, Arial, sans-serif;
@@ -51,8 +74,8 @@
   line-height: 18px;
   text-align: center;
   color: #FFF;
-  width: 58px;
-  height: 34px;
+  width: 58.65px;
+  height: 34px
 }
 
 .searchFilms__button:hover {
