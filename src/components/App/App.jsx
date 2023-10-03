@@ -49,10 +49,13 @@ function App() {
       } />
 
       <Route path='/profile' element={
-          
+
+        <>
+          <Header
+            nameHeader='profile' />
           <Main
-            name='mainProfile'
-            /> 
+            name='mainProfile' />
+        </> 
         
       } />   
 

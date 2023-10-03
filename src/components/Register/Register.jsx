@@ -24,6 +24,7 @@ function Register({ handleRegister }) {
     
     <fieldset className="form__input form__input_registrationForm">
       <Input
+          nameinput='signup'
           name='username'
           type='text'
           title='Имя'
@@ -34,8 +35,10 @@ function Register({ handleRegister }) {
           maxLength="40"
           id="email"
           onChange={handleChange}
+          placeholder='Виталий'
         />
        <Input
+        nameinput='signup'
         name='email'
         type='email'
         title='E-mail'
@@ -46,8 +49,10 @@ function Register({ handleRegister }) {
         maxLength="40"
         id="email"
         onChange={handleChange}
+        placeholder='pochta@yandex.ru'
       />
       <Input
+        nameinput='signup'
         name='password'
         type='password'
         title='Пароль'

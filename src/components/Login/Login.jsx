@@ -23,6 +23,7 @@ function Login({ handleLogin, isSending }) {
   >
     <fieldset className="form__input form__input_loginForm">
       <Input
+        nameinput='signin'
         name='email'
         type='email'
         title='E-mail'
@@ -33,8 +34,10 @@ function Login({ handleLogin, isSending }) {
         maxLength="40"
         id="email"
         onChange={handleChange}
+        placeholder='pochta@yandex.ru'
       />
       <Input
+        nameinput='signin'
         name='password'
         type='password'
         title='Пароль'
