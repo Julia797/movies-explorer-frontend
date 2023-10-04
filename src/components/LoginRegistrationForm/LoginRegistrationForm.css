@@ -66,7 +66,6 @@
 
 @media screen and (max-width: 320px) {
   .loginRegistrationForm__link {
-   
     font-size: 12px;
     line-height: 15px;
   }
@@ -77,6 +76,15 @@
   font-weight: 500;
   line-height: 16px;
   color: rgba(255, 48, 85, 1);
+  padding-top: 3px;
+}
+
+@media screen and (max-width: 320px) {
+  .loginRegistrationForm__link_exit {
+   padding: 0;
+   font-size: 12px;
+   line-height: 15px;
+  }
 }
 
 .loginRegistrationForm__title {
@@ -102,7 +110,7 @@
 
 @media screen and (max-width: 320px) {
   .loginRegistrationForm__title_profile {
-    margin-top: 68px;
+    margin-top: 70px;
   }
 }
 
@@ -188,6 +196,13 @@
   font-weight: 400;
   line-height: 16px;
   color: rgba(0, 0, 0, 1);
+}
+
+@media screen and (max-width: 320px) {
+  .form__btn-enter_profile {
+   font-size: 12px;
+   line-height: 15px;
+  }
 }
 
 .form__btn-enter_profile:hover {

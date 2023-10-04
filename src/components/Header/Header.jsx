@@ -1,9 +1,19 @@
 import './Header.css';
 import { Link } from 'react-router-dom';
 import logo from '../../images/header-logo.svg';
+import { useState } from 'react';
 
-function Header({ nameHeader, loggedIn }) {
-  
+function Header({ nameHeader, loggedIn, onClick }) {
+  const [isOpen, setIsOpen] = useState(false)
+
+  function handleLikeClick() {
+
+    if (isOpen) {
+      setIsOpen(false)
+    } else {
+      setIsOpen(true)
+    }
+  }
 
   return (
     <header className={nameHeader === "movies" || nameHeader === "saved-movies" || nameHeader === "profile" ? "header indent" : "header header_themeBlue indent"}>
@@ -19,11 +29,11 @@ function Header({ nameHeader, loggedIn }) {
      
 
       <ul className={nameHeader === "movies" || nameHeader === "saved-movies" || nameHeader === "profile" ? "header__loginRegistration header__none" : nameHeader === 'home' && !loggedIn ? "header__loginRegistration header__none" : "header__loginRegistration"}>
-          <li><Link to={'/sign-up'} className="header__registration active_link">Регистрация</Link></li>
+          <li><Link to={'/sign-up'} className="header__registration">Регистрация</Link></li>
           <li><Link to={'/sign-in'} className="header__login link">Войти</Link></li>
       </ul>
 
-      <button type='button' className={nameHeader === 'home' && !loggedIn ? "header__burger header__burger_white" : nameHeader === "home" ? "header__burger header__burger_close" : "header__burger"} alt="кнопка"></button>
+      <button type='button' className={nameHeader === 'home' && !loggedIn ? "header__burger header__burger_white" : nameHeader === "home" ? "header__burger header__burger_close" : "header__burger"} alt="кнопка выадающего меню" onClick={onClick}></button>
     </header>
   );
 }

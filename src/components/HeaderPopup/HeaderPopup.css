@@ -1,0 +1,140 @@
+.headerPopup {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: rgb(0, 0, 0, .3);
+  z-index: 1;
+  display: none;
+  /*visibility: hidden;
+  opacity: 30
+   background: rgba(0, 0, 0, .5);*/
+  transition: visibility 1s, opacity 1s linear;
+  align-content: center;
+  justify-content: right;
+  box-sizing: border-box;
+}
+
+.headerPopup_opened {
+  display: flex;
+}
+
+
+.headerPopup__container {
+  margin: 0;
+  padding: 159px 0 0;
+  width: 520px;
+  height: 100%;
+  background-color: #d6b6b6;
+  box-sizing: border-box;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  }
+
+@media screen and (max-width: 600px) {
+  .headerPopup__container {
+    width: 320px;
+    padding: 144px 0 0;
+  }
+}
+
+.headerPopup__navigations {
+  display: flex;
+  flex-direction: column;
+  gap: 621px;
+  align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+  .headerPopup__navigations {
+   gap: 444px;
+  }
+}
+
+.headerPopup__navigation {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  gap: 28px;
+}
+
+@media screen and (max-width: 600px) {
+  .headerPopup__navigation {
+   gap: 24px;
+  }
+}
+
+.headerPopup__title {
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+.headerPopup__title_active {
+  border-bottom: 2px solid #000;
+}
+
+.headerPopup__btn-close {
+  margin: 0;
+  padding: 0;
+  height: 32px;
+  width: 32px;
+  background-image: url('../../images/close.svg');
+  background-color: transparent;
+  position: absolute;
+  background-size: cover;
+  object-position: center;
+  top: 22px;
+  right: 22px;
+  border: 0;
+  z-index: 2;
+  opacity: .6;
+  transition: 1s;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .headerPopup__btn-close {
+    top: 13px;
+    right: 13px;
+  }
+}
+
+.headerPopup__linkAcc {
+  text-decoration: none;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 12px;
+  color: #000;
+  transition: background-color 1s ease;
+  display: flex;
+  width: 100px;
+  height: 32px;
+  align-items: center;
+  border-radius: 40px;
+  box-shadow: 0px 3px 14px 0px #00000014;
+  justify-content: center;
+}
+
+.headerPopup__account {
+  width: 26px;
+  height: 26px;
+  background-color: #F9F9F9;
+  margin-left: 7px;
+  border-radius: 50%;
+  background-image: url(../../images/header-acc.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}

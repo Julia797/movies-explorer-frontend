@@ -9,17 +9,19 @@
   width: 410px;
   gap: 2px;
   padding: 123px 0 187px;
+  gap: 15px;
 }
 
 @media screen and (max-width: 768px) {
   .form__input-profile {
-    padding: 96px 0 187px;
+    padding: 96px 0 177px;
   }
 }
 
 @media screen and (max-width: 320px) {
   .form__input-profile {
-    padding: 79px 0 187px;
+    padding: 79px 0 348px;
+    width: 260px;
   }
 }
 

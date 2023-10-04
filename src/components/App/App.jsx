@@ -4,10 +4,31 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
 import { useState } from 'react';
+import HeaderPopup from '../HeaderPopup/HeaderPopup';
 
 function App() {
 
   const [loggedIn, setLoggedIn] = useState(false)
+
+  const [isOpen, setIsOpen] = useState(false)
+
+  function handleBurgerClick() {
+    setIsOpen(true)
+  }
+
+  function handleCloseClick() {
+    setIsOpen(false)   
+  }
+    
+  /*function handleCloseClick() {
+
+    console.log(isOpen);
+    if (isOpen) {
+      setIsOpen(false)
+    } else {
+      setIsOpen(true)
+    }
+  }*/
 
   return (
     <div className="App">
@@ -17,9 +38,15 @@ function App() {
         <Route path='/' element={
           <>
             <Header 
-              nameHeader='home'  loggedIn={loggedIn} />
+              nameHeader='home'  loggedIn={loggedIn}
+              onClick={handleBurgerClick}
+              />
             <Main 
               name='mainHomePage' />
+            <HeaderPopup 
+              isOpen={isOpen}
+              onClose={handleCloseClick}
+            />
             <Footer />
           </>
         } />
@@ -52,9 +79,15 @@ function App() {
 
         <>
           <Header
-            nameHeader='profile' />
+            nameHeader='profile'
+            onClick={handleBurgerClick}
+            />
           <Main
             name='mainProfile' />
+          <HeaderPopup 
+            isOpen={isOpen}
+            onClose={handleCloseClick}
+          />
         </> 
         
       } />   
@@ -64,10 +97,16 @@ function App() {
         <>
           <Header 
             nameHeader = 'movies'
+            onClick={handleBurgerClick}
           />
           <Main
             name='mainMovies' />
-          <Footer /></>
+          <Footer />
+          <HeaderPopup 
+            isOpen={isOpen}
+            onClose={handleCloseClick}
+          />
+          </>
       } />  
 
        <Route path='/saved-movies' element={
@@ -75,10 +114,16 @@ function App() {
         <>
           <Header 
             nameHeader = 'saved-movies'
+            onClick={handleBurgerClick}
           />
           <Main
             name='mainMovies' />
-          <Footer /></>
+          <Footer />
+          <HeaderPopup 
+            isOpen={isOpen}
+            onClose={handleCloseClick}
+          />
+          </>
       } />   
 
       <Route path='*' element={
