@@ -51,7 +51,6 @@
 }
 
 .promo__title {
-  font-family: Inter, Arial, sans-serif;
   font-size: 50px;
   font-weight: 400;
   text-align: left;
@@ -84,7 +83,6 @@
 }
 
 .promo__subtitle {
-  font-family: Inter, Arial, sans-serif;
   font-size: 13px;
   font-weight: 400;
   line-height: 16px;
@@ -109,7 +107,6 @@
 }
 
 .promo__link {
-  font-family: Inter, Arial, sans-serif;
   color: #FFFFFF;
   font-size: 12px;
   font-weight: 500;
@@ -124,7 +121,6 @@
   box-sizing: border-box;
   width: 129px;
   min-height: 36px;
-
 }
 
 .promo__link:hover {

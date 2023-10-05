@@ -4,7 +4,7 @@ import Checkbox from '../Checkbox/Checkbox';
 import useFormValidation from '../../hooks/useFormValidation';
 
 function SearchFilms({ onSubmit }) {
-  const {values, isValid, handleChange} = useFormValidation()
+  const {values, handleChange} = useFormValidation()
    
   return (
     <section className="searchFilms">

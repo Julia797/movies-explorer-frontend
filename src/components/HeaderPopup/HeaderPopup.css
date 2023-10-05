@@ -7,9 +7,6 @@
   background-color: rgb(0, 0, 0, .3);
   z-index: 1;
   display: none;
-  /*visibility: hidden;
-  opacity: 30
-   background: rgba(0, 0, 0, .5);*/
   transition: visibility 1s, opacity 1s linear;
   align-content: center;
   justify-content: right;
@@ -26,7 +23,7 @@
   padding: 159px 0 0;
   width: 520px;
   height: 100%;
-  background-color: #d6b6b6;
+  background-color: #fff;
   box-sizing: border-box;
   z-index: 2;
   display: flex;
@@ -75,7 +72,6 @@
   color: #000;
   text-align: center;
   text-decoration: none;
-  font-family: Inter;
   font-size: 18px;
   font-weight: 500;
   line-height: 22px;
@@ -113,7 +109,6 @@
 
 .headerPopup__linkAcc {
   text-decoration: none;
-  font-family: Inter, Arial, sans-serif;
   font-size: 13px;
   font-weight: 500;
   line-height: 12px;

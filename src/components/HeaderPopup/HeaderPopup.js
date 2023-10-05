@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './HeaderPopup.css';
 function HeaderPopup({ isOpen, onClose }) {
-  console.log(isOpen);
+  
   return (
     <>
       <div className={`headerPopup ${isOpen && 'headerPopup_opened'}`}>

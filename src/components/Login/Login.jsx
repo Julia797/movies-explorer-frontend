@@ -4,7 +4,7 @@ import './Login.css';
 import Input from "../Input/Input";
 
 function Login({ handleLogin, isSending }) {
-  const { values, errors, isValid, isInputValid, handleChange, resetForm } = useFormValidation()
+  const { values, errors, isValid, isInputValid, handleChange } = useFormValidation()
 
 //function handleSubmit(evt) {
  // evt.preventDefault()

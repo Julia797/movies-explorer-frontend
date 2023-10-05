@@ -43,7 +43,6 @@
 }
 
 .searchFilms__input {
-  font-family: Inter, Arial, sans-serif;
   font-size: 28px;
   font-weight: 500;
   line-height: 34px;
@@ -62,13 +61,17 @@
   }
 }
 
+.searchFilms__input:focus {
+  outline: 1px solid #3456F3;
+}
+
+
 .searchFilms__button {
   transition: background-color 1s ease;
   cursor: pointer;
   border-radius: 20px;
   border: none;
   background: #3456F3;
-  font-family: Inter, Arial, sans-serif;
   font-size: 11px;
   font-weight: 500;
   line-height: 18px;

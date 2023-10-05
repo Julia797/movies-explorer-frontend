@@ -30,7 +30,7 @@ function Input({ nameinput, name, placeholder, type, title, value, error, id, is
      
     :
       <label className="form__label ">
-        <span className="form__input-span">{title}</span>
+        <span className="form__input-span form__input-span_film">{title}</span>
         <input
           type={type}
           id={id}

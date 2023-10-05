@@ -5,12 +5,7 @@ import Input from "../Input/Input";
 
 function Register({ handleRegister }) {
   const { values, errors, isValid, isInputValid, handleChange } = useFormValidation()
- 
-  //function handleSubmit(evt) {
-   // evt.preventDefault()
-  //  handleRegister(values.password, values.email, resetForm)
-  //}
- 
+  
    return (
     <LoginRegistrationForm
   nameForm='signup'

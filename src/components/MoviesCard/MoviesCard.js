@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom';
 import './MoviesCard.css';
 
 
-function MoviesCard({ key, name, src, trailerLink, duration }) {
+function MoviesCard({ name, src, trailerLink, duration }) {
   const { pathname } = useLocation();
   
   return (

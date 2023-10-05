@@ -19,17 +19,7 @@ function App() {
   function handleCloseClick() {
     setIsOpen(false)   
   }
-    
-  /*function handleCloseClick() {
-
-    console.log(isOpen);
-    if (isOpen) {
-      setIsOpen(false)
-    } else {
-      setIsOpen(true)
-    }
-  }*/
-
+     
   return (
     <div className="App">
 

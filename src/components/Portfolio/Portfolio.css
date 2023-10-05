@@ -23,7 +23,6 @@
 }
 
 .portfolio__brief {
-  font-family: Inter, Arial, sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 20px;
@@ -65,7 +64,6 @@
   display: flex;
   justify-content: space-between;
   text-decoration: none;
-  font-family: Inter, Arial, sans-serif;
   font-size: 30px;
   font-weight: 400;
   line-height: 50px;

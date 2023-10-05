@@ -12,7 +12,7 @@ function MoviesCardList({ movies }) {
           {movies.map(data => {
             return (
               <MoviesCard 
-                key = {data._id}
+                key = {data.movieId}
                 name={data.nameRu} 
                 src={data.image} 
                 trailerLink={data.trailerLink}
