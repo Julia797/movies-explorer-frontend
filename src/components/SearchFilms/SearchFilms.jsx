@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import './SearchFilms.css';
 import Checkbox from '../Checkbox/Checkbox';
 import useFormValidation from '../../hooks/useFormValidation';

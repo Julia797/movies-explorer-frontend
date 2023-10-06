@@ -1,18 +1,19 @@
 import './PageNotFound.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function PageNotFound() {
   
-    
+  const navigate = useNavigate()
+
   return (
     <div className="not-found indent">
       <h1 className="not-found__title">404</h1>
       <p className="not-found__text">Страница не найдена</p>
-      <a className="not-found__link">Назад</a>
+      <Link className="not-found__link" onClick={() => navigate(-1)}>Назад</Link>
     </div>
-      
   );
 }
-    export default PageNotFound
 
-    //<Link to="/" className="not-found__link">Назад</Link>
+export default PageNotFound
+
+    

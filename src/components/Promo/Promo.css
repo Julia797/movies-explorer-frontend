@@ -129,7 +129,7 @@
   cursor: pointer;
 }
 
-.landing__logo {
+.promo__logo {
   width: 310px;
   height: 304px;
   background-image: url(../../images/landing-logo.svg);
@@ -137,7 +137,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .landing__logo {
+  .promo__logo {
     width: calc(209px + (310 - 209) * (100vw - 320px) / (768 - 320));
     height: calc(206px + (304 - 206) * (100vw - 320px) / (768 - 320));
   }

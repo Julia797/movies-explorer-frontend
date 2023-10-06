@@ -17,22 +17,18 @@ function Profile({ handleRegister }) {
     evt.preventDefault()
       setIsOpenEdit(true)
   }
-
-   console.log(isOpenEdit);
-   return (
+   
+  return (
 
     isOpenEdit ?
 
-   <LoginRegistrationForm
-   nameForm='profile-edit'
-   title='Привет, Виталий!'
-   nameButton='Сохранить'
-  //isSending={isSending}
-   //onChange={handleChange}
-   isValid={isValid}
-   //isOpenEdit={isOpenEdit}
-   onSubmit={onSubmitEdite}
->
+    <LoginRegistrationForm
+      nameForm='profile-edit'
+      title='Привет, Виталий!'
+      nameButton='Сохранить'
+      isValid={isValid}
+      onSubmit={onSubmitEdite}
+    >
       <fieldset className='form__input-profile'>
       <><Input
           nameinput='profile'
@@ -48,67 +44,60 @@ function Profile({ handleRegister }) {
           onChange={handleChange}
           placeholder='Виталий' />
         <Input
-            nameinput='profile'
-            name='email'
-            type='email'
-            title='E-mail'
-            value={values.email}
-            isInputValid={isInputValid.email}
-            error={errors.email}
-            minLength='2'
-            maxLength='40'
-            id='email'
-            onChange={handleChange}
-            placeholder='pochta@yandex.ru' /></>
-    </fieldset>
+           nameinput='profile'
+           name='email'
+           type='email'
+           title='E-mail'
+           value={values.email}
+           isInputValid={isInputValid.email}
+           error={errors.email}
+           minLength='2'
+           maxLength='40'
+           id='email'
+           onChange={handleChange}
+           placeholder='pochta@yandex.ru' /></>
+      </fieldset>
     </LoginRegistrationForm> 
-:
-
-<LoginRegistrationForm
-nameForm='profile'
-title='Привет, Виталий!'
-nameButton='Редактировать'
-//isSending={isSending}
-//onChange={handleChange}
-//isValid={isValid}
-//isOpenEdit={isOpenEdit}
-//onSubmit={handleButtonEditClick}
-onClick={handleButtonEditClick}
-
->
-  <fieldset className='form__input-profile'>
-    <Input
-      nameinput='profile'
-      name='username'
-      type='text'
-      title='Имя'
-      value={values.username}
-      isInputValid={isInputValid.username}
-      error={errors.username}
-      minLength='2'
-      maxLength='40'
-      id='email'
-      onChange={handleChange}
-      placeholder='Виталий'
-    />
-    <Input
-      nameinput='profile'
-      name='email'
-      type='email'
-      title='E-mail'
-      value={values.email}
-      isInputValid={isInputValid.email}
-      error={errors.email}
-      minLength='2'
-      maxLength='40'
-      id='email'
-      onChange={handleChange}
-      placeholder='pochta@yandex.ru'
-    />
-  </fieldset>
-
-</LoginRegistrationForm>
-);
+  :
+   
+    <LoginRegistrationForm
+      nameForm='profile'
+      title='Привет, Виталий!'
+      nameButton='Редактировать'
+      onClick={handleButtonEditClick}
+    >
+      <fieldset className='form__input-profile'>
+        <Input
+          nameinput='profile'
+          name='username'
+          type='text'
+          title='Имя'
+          value={values.username}
+          isInputValid={isInputValid.username}
+          error={errors.username}
+          minLength='2'
+          maxLength='40'
+          id='email'
+          onChange={handleChange}
+          placeholder='Виталий'
+        />
+        <Input
+          nameinput='profile'
+          name='email'
+          type='email'
+          title='E-mail'
+          value={values.email}
+          isInputValid={isInputValid.email}
+          error={errors.email}
+          minLength='2'
+          maxLength='40'
+          id='email'
+          onChange={handleChange}
+          placeholder='pochta@yandex.ru'
+        />
+       </fieldset>
+    </LoginRegistrationForm>
+  );
 }
 
 

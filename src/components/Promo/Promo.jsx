@@ -9,7 +9,7 @@ function Promo() {
         <p className="promo__subtitle">Листайте ниже, чтобы узнать больше про этот проект и его создателя.</p>
         <HashLink smooth to='#aboutProject' className="promo__link" href="#about-project">Узнать больше</HashLink>
       </div>
-      <div className="landing__logo rotation"></div>
+      <div className="promo__logo rotation"></div>
     </section>
   )
 }
