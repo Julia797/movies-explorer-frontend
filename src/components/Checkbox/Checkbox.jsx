@@ -1,9 +1,7 @@
 import './Checkbox.css'
 
-function Checkbox({ }) {
+function Checkbox() {
  
-
-
   return (
     <>
       <div className="checkbox">
