@@ -16,8 +16,8 @@ function LoginRegistrationForm({ nameForm, title, onSubmit, nameButton, isValid=
         onClick={onClick}
       />
 
-      {nameForm === `signup` ? <p className="loginRegistrationForm__subtitle">Уже зарегистрированы? 
-        <Link className="loginRegistrationForm__link button" to={'/sign-in'}>Войти</Link></p> : nameForm === `signin` ? 
+      {nameForm === `signup` ? <p className="loginRegistrationForm__subtitle">Уже зарегистрированы? <Link className="loginRegistrationForm__link button" 
+      to={'/sign-in'}>Войти</Link></p> : nameForm === `signin` ? 
         <p className="loginRegistrationForm__subtitle" >Ещё не зарегистрированы? <Link className="loginRegistrationForm__link button" 
         to={'/sign-up'}>Регистрация</Link></p> : nameForm === `profile-edit` ? 
         <Link className="loginRegistrationForm__link  loginRegistrationForm__link_exit loginRegistrationForm__link_none button" to={'/'} >Выйти из аккаунта</Link> : 

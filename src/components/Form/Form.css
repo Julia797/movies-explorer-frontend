@@ -5,28 +5,28 @@
   }
 
   @media screen and (max-width: 320px) {
-    .loginRegistrationForm__logog {
+    .form__logog {
       justify-content: center;
   }
 }
 
- .loginRegistrationForm__logo {
+ .form__logo {
   width: 100%;
   max-width: 38px;
   display: block;
 }
 
 @media screen and (max-width: 320px) {
-  .loginRegistrationForm__logo {
+  .form__logo {
     padding-top: 56px;
   }
 }
 
-.loginRegistrationForm__logo_profile {
+.form__logo_profile {
   display: none;
 }
  
-.loginRegistrationForm__title {
+.form__title {
   color: rgba(0, 0, 0, 1);
   font-size: 24px;
   font-weight: 500;
@@ -35,19 +35,19 @@
 }
 
 @media screen and (max-width: 320px) {
-  .loginRegistrationForm__title {
+  .form__title {
     margin: 50px 0 0;
     text-align: center;
   }
 }
 
-.loginRegistrationForm__title_profile {
+.form__title_profile {
   text-align: center;
   margin-top: 4px;
 }
 
 @media screen and (max-width: 320px) {
-  .loginRegistrationForm__title_profile {
+  .form__title_profile {
     margin-top: 70px;
   }
 }
@@ -89,11 +89,15 @@
 
 .form__btn-enter:disabled {
   background-color: #F8F8F8;
-  cursor: auto;
   color: #000;
   border-radius: 6px;
   font-size: 12px;
   line-height: 15px;
+}
+
+.form__btn-enter:disabled:hover {
+  cursor: auto;
+  opacity: 1;
 }
 
 .form__btn-enter_profile {
@@ -103,7 +107,7 @@
   font-weight: 400;
   line-height: 16px;
   color: rgba(0, 0, 0, 1);
-  
+  cursor: pointer;
 }
 
 @media screen and (max-width: 320px) {
@@ -115,8 +119,8 @@
 
 .form__btn-enter_profile:hover {
   transition: 1s;
-  cursor: pointer;
   background-color: #fff;
+  opacity: .6;
 }
 
 .form__btn-enter_profile:disabled {

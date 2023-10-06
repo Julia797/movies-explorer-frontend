@@ -6,10 +6,10 @@ function Checkbox({ }) {
 
   return (
     <>
-      <div className="checkbox__container">
+      <div className="checkbox">
         <label className="checkbox__switch">
           <input type="checkbox"></input>
-          <span className="slider round"></span>
+          <span className="checkbox__sl round"></span>
         </label>
         <span className="checkbox__slider">Короткометражки</span>
       </div>

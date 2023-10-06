@@ -1,4 +1,4 @@
-.checkbox__container {
+.checkbox {
   width: 100%;
   margin: 0;
   padding: 33px 0 48px;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .checkbox__container {
+  .checkbox {
     flex-direction: row-reverse;
     padding-bottom: 61px;
     padding-top: 28px;
@@ -16,7 +16,7 @@
 }
 
 @media screen and (max-width: 320px) {
-  .checkbox__container {
+  .checkbox {
     justify-content: center;
     padding-bottom: 51px;
     padding-top: 41px;
@@ -36,7 +36,7 @@
   height: 0;
 }
 
-.slider {
+.checkbox__sl {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -48,7 +48,7 @@
   transition: .4s;
 }
 
-.slider:before {
+.checkbox__sl:before {
   position: absolute;
   content: "";
   height: 10px;
@@ -60,26 +60,26 @@
   transition: .4s;
 }
 
-input:checked + .slider {
+input:checked + .checkbox__sl {
   background-color: #2BE080;
 }
 
-input:focus + .slider {
+input:focus + .checkbox__sl {
   box-shadow: 0 0 1px #2BE080;
 }
 
-input:checked + .slider:before {
+input:checked + .checkbox__sl:before {
   -webkit-transform: translateX(18px);
   -ms-transform: translateX(18px);
   transform: translateX(18px);
 }
 
 /* Rounded sliders */
-.slider.round {
+.round {
   border-radius: 20px;
 }
 
-.slider.round:before {
+.checkbox__sl.round:before {
   border-radius: 50%;
 }
 
