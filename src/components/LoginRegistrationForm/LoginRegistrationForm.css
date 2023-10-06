@@ -80,7 +80,7 @@
 }
 
 .button:hover {
-  opacity: .6;
+  opacity: .7;
   transition: 1s;
   cursor: pointer;
 }
