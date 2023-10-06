@@ -9,7 +9,7 @@ function Form({ nameForm, title, nameButton, onSubmit, children, isValid, onClic
         <img className={nameForm === 'profile' || nameForm === 'profile-edit' ? 
           'form__logo form__logo_profile' : 'form__logo'} src={logo} alt="логотип сайта"/>
       </div>
-    {nameForm === `profile` ? <p className="form__title form__title_profile">{title}</p> : 
+    {nameForm === `profile`|| nameForm === 'profile-edit' ? <p className="form__title form__title_profile">{title}</p> : 
       <p className="form__title">{title}</p>}
       {children}
       <button className={nameForm === 'profile' ? 'form__btn-enter form__btn-enter_profile' : 'form__btn-enter button'} 

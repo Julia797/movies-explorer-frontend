@@ -1,6 +1,6 @@
 import './Input.css';
          
-function Input({ nameinput, name, placeholder, type, title, value, error, id, isInputValid, minLength, maxLength, onChange }) {
+function Input({ nameinput, name, placeholder, type, title, value, error, id, isInputValid, minLength, maxLength, onChange, disabled }) {
   
   return (
    <>
@@ -16,6 +16,7 @@ function Input({ nameinput, name, placeholder, type, title, value, error, id, is
               ${isInputValid === undefined || isInputValid ? '' : 'form__item_type_error'}`}
              name={name}
              required
+             disabled={disabled}
              minLength={minLength || ''}
              maxLength={maxLength || ''}
              value={value ? value : ''}
