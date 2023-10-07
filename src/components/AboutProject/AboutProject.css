@@ -131,6 +131,13 @@
   width: 20%;
 }
 
+@media screen and (max-width: 768px) {
+  .about-project__conteiner_time1 {
+    width: 21%;
+  }
+}
+
+
 @media screen and (max-width: 320px) {
   .about-project__conteiner_time1 {
     width: 35%;
@@ -140,6 +147,13 @@
 .about-project__conteiner_time4 {
   width: 80%;
 }
+
+@media screen and (max-width: 768px) {
+  .about-project__conteiner_time4 {
+    width: 79%;
+  }
+}
+
 
 @media screen and (max-width: 320px) {
   .about-project__conteiner_time4 {

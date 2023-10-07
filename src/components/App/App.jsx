@@ -41,23 +41,18 @@ function App() {
         } />
       
       <Route path='/signup' element={
-          
-          <Main
-            name='mainSignUp'
-            /> 
-        
+        <Main
+          name='mainSignUp'
+        /> 
       } />     
 
       <Route path='signin' element={
-        
-          <Main
-            name='mainSignIn'
-          />   
-        
-      } />  
+        <Main
+          name='mainSignIn'
+        />   
+      }/>  
       
       <Route path='/profile' element={
-
         <>
           <Header
             nameHeader='profile'
@@ -70,11 +65,9 @@ function App() {
             onClose={handleCloseClick}
           />
         </> 
-        
       } />   
 
       <Route path='/movies' element={
-
         <>
           <Header 
             nameHeader = 'movies'
@@ -91,7 +84,6 @@ function App() {
       } />  
 
        <Route path='/saved-movies' element={
-
         <>
           <Header 
             nameHeader = 'saved-movies'
@@ -104,20 +96,16 @@ function App() {
             isOpen={isOpen}
             onClose={handleCloseClick}
           />
-          </>
-      } />   
+        </>
+      }/>   
 
       <Route path='*' element={
-          
-            <Main name='pageNotFound' />
-          
-        } />
+        <Main name='pageNotFound' />
+      } />
             
       </Routes>        
     </div>
-
   )
-
 }
 
 export default App;

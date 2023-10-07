@@ -1,19 +1,25 @@
 .loginRegistrationForm__logog {
     width: 100%;
     display: flex;
-    justify-content: start;
-  }
-
-  @media screen and (max-width: 320px) {
-    .form__logog {
-      justify-content: center;
-  }
 }
+
+  
 
  .form__logo {
   width: 100%;
   max-width: 38px;
   display: block;
+}
+
+.form__link {
+  display: flex;
+  justify-content: start;
+}
+
+@media screen and (max-width: 320px) {
+  .form__link {
+    justify-content: center;
+  }
 }
 
 @media screen and (max-width: 320px) {

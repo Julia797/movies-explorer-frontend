@@ -40,7 +40,7 @@ function Profile({ handleRegister }) {
           error={errors.username}
           minLength='2'
           maxLength='40'
-          id='email'
+          id='username'
           onChange={handleChange}
           placeholder='Виталий'
         />
