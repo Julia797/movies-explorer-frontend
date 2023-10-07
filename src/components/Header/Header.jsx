@@ -1,14 +1,15 @@
 import './Header.css';
 import { Link } from 'react-router-dom';
 import logo from '../../images/header-logo.svg';
-import { useState } from 'react';
 
 function Header({ nameHeader, loggedIn, onClick }) {
   
   return (
     <header className={nameHeader === "movies" || nameHeader === "saved-movies" || nameHeader === "profile" ?
       "header indent" : "header header_themeBlue indent"}>
-      <img className="header__logo" src={logo} alt="логотип сайта"/>
+           
+      <Link to={'/'} className="header__logo"><img className="header__img" src={logo} alt="логотип сайта"/></Link>
+      
       <ul className="header__navigation">
           <li>
             <Link to={'/movies'} className={nameHeader === "movies" || nameHeader === "profile" ? 
@@ -27,8 +28,8 @@ function Header({ nameHeader, loggedIn, onClick }) {
 
       <ul className={nameHeader === "movies" || nameHeader === "saved-movies" || nameHeader === "profile" ? 
         "header__loginRegistration header__none" : nameHeader === 'home' && loggedIn ? "header__loginRegistration header__none" : "header__loginRegistration"}>
-          <li><Link to={'/sign-up'} className="header__registration">Регистрация</Link></li>
-          <li><Link to={'/sign-in'} className="header__login link">Войти</Link></li>
+          <li><Link to={'/signup'} className="header__registration">Регистрация</Link></li>
+          <li><Link to={'/signin'} className="header__login link">Войти</Link></li>
       </ul>
 
       <button type='button' className={nameHeader === 'home' && loggedIn ? "header__burger header__burger_white" : nameHeader === "home" ?

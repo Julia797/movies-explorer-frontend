@@ -29,7 +29,7 @@ function Profile({ handleRegister }) {
       isValid={isValid}
       onSubmit={onSubmitEdite}
     >
-      <fieldset className='profile__input profile__input_edit'>
+      <fieldset className='profile profile_edit'>
       <><Input
           nameinput='profile'
           name='username'
@@ -60,7 +60,7 @@ function Profile({ handleRegister }) {
            placeholder='pochta@yandex.ru'
         /></>
       </fieldset>
-      <span className='profile__error-server'></span> 
+      <span className='error-server'></span> 
       </LoginRegistrationForm>
   :
    
@@ -70,7 +70,7 @@ function Profile({ handleRegister }) {
       nameButton='Редактировать'
       onClick={handleButtonEditClick}
     >
-      <fieldset className='profile__input'>
+      <fieldset className='profile'>
         <Input
           nameinput='profile'
           name='username'
@@ -81,7 +81,7 @@ function Profile({ handleRegister }) {
           error={errors.username}
           minLength='2'
           maxLength='40'
-          id='email'
+          id='username'
           onChange={handleChange}
           placeholder='Виталий'
           disabled={!isOpenEdit}

@@ -6,13 +6,13 @@ function Input({ nameinput, name, placeholder, type, title, value, error, id, is
    <>
       {nameinput === 'profile' ?
         <>
-         <label className="form__labelProfile">
+         <label className="input input_profile">
             <span className="form__input-span">{title}</span>
             <input
              type={type}
              id={id}
              placeholder={placeholder}
-             className={`form__itemProfile form__item_type_loginRegistrationForm form__item_type_${name} 
+             className={`form__item form__item_profile form__item_type_loginRegistrationForm form__item_type_${name} 
               ${isInputValid === undefined || isInputValid ? '' : 'form__item_type_error'}`}
              name={name}
              required
@@ -24,7 +24,7 @@ function Input({ nameinput, name, placeholder, type, title, value, error, id, is
          </label>
        </>
     :
-      <label className="form__label ">
+      <label className="input">
         <span className="form__input-span form__input-span_film">{title}</span>
         <input
           type={type}

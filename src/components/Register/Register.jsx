@@ -25,7 +25,7 @@ function Register({ handleRegister }) {
           error={errors.username}
           minLength="2"
           maxLength="40"
-          id="email"
+          id="username"
           onChange={handleChange}
           placeholder='Виталий'
         />
@@ -51,7 +51,8 @@ function Register({ handleRegister }) {
           value={values.password}
           isInputValid={isInputValid.password}
           error={errors.password}
-          minLength = '3'
+          minLength = '3' 
+          maxLength={20}
           id="contact-password"
           onChange={handleChange}
         />

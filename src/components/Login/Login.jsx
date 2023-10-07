@@ -37,6 +37,7 @@ function Login({ handleLogin, isSending }) {
         isInputValid={isInputValid.password}
         error={errors.password}
         minLength = '3'
+        maxLength={20}
         id="contact-password"
         onChange={handleChange}
       />

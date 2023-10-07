@@ -6,7 +6,7 @@ function SearchFilms({ onSubmit }) {
   const {values, handleChange} = useFormValidation()
    
   return (
-    <section className="searchFilms">
+    <section className="searchFilms" aria-label="поиск фильмов">
       <div className="searchFilms__conteiner">
         <form className="searchFilms__form" noValidate  onSubmit={onSubmit} name={'searchFilms'} value={values.search}>
           <input className="searchFilms__input" type="text" placeholder="Фильм" required onChange={handleChange} /> 

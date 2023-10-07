@@ -22,7 +22,6 @@ function App() {
      
   return (
     <div className="App">
-
       <Routes>
 
         <Route path='/' element={
@@ -41,7 +40,7 @@ function App() {
           </>
         } />
       
-      <Route path='/sign-up' element={
+      <Route path='/signup' element={
           
           <Main
             name='mainSignUp'
@@ -49,7 +48,7 @@ function App() {
         
       } />     
 
-      <Route path='sign-in' element={
+      <Route path='signin' element={
         
           <Main
             name='mainSignIn'
@@ -57,14 +56,6 @@ function App() {
         
       } />  
       
-      <Route path='/sign-up' element={
-          
-          <Main
-            name='mainSignUp'
-            /> 
-        
-      } />
-
       <Route path='/profile' element={
 
         <>

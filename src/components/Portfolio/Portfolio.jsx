@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Portfolio.css';
 
 function Portfolio() {
@@ -7,22 +8,22 @@ function Portfolio() {
       <nav className="portfolio__navigation">
         <ul className="portfolio__lists">
           <li className="portfolio__list">
-            <a className="portfolio__link" href="https://github.com/Julia797/react-mesto-auth" target="_blank" rel="noreferrer">
+            <Link to={"https://github.com/Julia797/react-mesto-api-full-gha"} className="portfolio__link" target="_blank" rel="noreferrer">
               <p className="portfolio__site">Статичный сайт</p>
               <button className="portfolio__button" type="button"></button>
-            </a>
+            </Link>
           </li> 
           <li className="portfolio__list">
-            <a className="portfolio__link" href="https://github.com/Julia797/react-mesto-auth" target="_blank" rel="noreferrer">
+          <Link to={"https://github.com/Julia797/russian-travel"} className="portfolio__link" target="_blank" rel="noreferrer">
               <p className="portfolio__site">Адаптивный сайт</p>
               <button className="portfolio__button" type="button"></button>
-            </a>
+            </Link>
           </li> 
           <li className="portfolio__list">
-            <a className="portfolio__link portfolio__link_end" href="https://github.com/Julia797/react-mesto-auth" target="_blank" rel="noreferrer">
+          <Link to={"https://github.com/Julia797/how-to-learn"} className="portfolio__link portfolio__link_end"  target="_blank" rel="noreferrer">
               <p className="portfolio__site">Одностраничное приложение</p>
               <button className="portfolio__button" type="button"></button>
-            </a>
+            </Link>
           </li> 
         </ul>
       </nav>

@@ -1,4 +1,4 @@
-.profile__input {
+.profile {
   margin: 0;
   border: 0;
   min-height: 266px;
@@ -7,29 +7,28 @@
   justify-content: flex-end;
   box-sizing: border-box;
   width: 410px;
-  gap: 2px;
   padding: 123px 0 187px;
-  gap: 15px;
+  gap: 18px;
 }
 
 @media screen and (max-width: 768px) {
-  .profile__input {
+  .profile {
     padding: 96px 0 177px;
   }
 }
 
 @media screen and (max-width: 450px) {
-  .profile__input {
+  .profile {
     padding: 79px 0 348px;
     width: 260px;
   }
 }
 
-.profile__input_edit {
+.profile_edit {
   padding-bottom: 166px;
 }
 
-.profile__error-server {
+.error-server {
   font-size: 11px;
   font-weight: 400;
   line-height: 13px;

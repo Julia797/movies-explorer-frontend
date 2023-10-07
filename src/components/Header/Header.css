@@ -140,10 +140,16 @@
   text-decoration: none;
 }
 
-.header__logo {
+.header__img {
   width: 100%;
   max-width: 38px;
   display: block;
+}
+
+.header__logo:hover {
+  opacity: .6;
+  transition: 1s;
+  cursor: pointer;
 }
 
 .header__burger {
