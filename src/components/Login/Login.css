@@ -1,0 +1,43 @@
+.form__input {
+  margin: 0;
+  border: 0;
+  min-height: 266px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  width: 396px;
+  gap: 2px;
+}
+
+@media screen and (max-width: 600px) {
+  .form__input {
+    padding: 75px 0 18px;
+    width: 260px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .form__input {
+    padding: 80px 0 217px;
+  }
+}
+
+.form__input_loginForm {
+  padding: 41px 0 197px;
+}
+
+@media screen and (max-width: 600px) {
+  .form__input_loginForm {
+    padding-top: 80px;
+    padding-bottom: 300px;
+    width: 260px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .form__input_loginForm {
+    padding-bottom: 286px;
+  }
+}
+

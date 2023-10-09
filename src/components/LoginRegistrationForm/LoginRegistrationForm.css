@@ -1,0 +1,87 @@
+.loginRegistrationForm {
+  width: 100%;
+  height: 700px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding-top: 70px;
+  padding-bottom: 70px;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 768px) {
+  .loginRegistrationForm {
+    padding-top: 232px;
+    height: 1024px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .loginRegistrationForm {
+    padding-top: 0;
+    height: 780px;
+  }
+}
+.loginRegistrationForm__link {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  color: rgba(52, 86, 243, 1);
+  text-decoration: none;
+}
+
+@media screen and (max-width: 320px) {
+  .loginRegistrationForm__link {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+.loginRegistrationForm__link_exit {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16px;
+  color: rgba(255, 48, 85, 1);
+  padding-top: 3px;
+}
+
+.loginRegistrationForm__link_none {
+  display: none;
+}
+
+@media screen and (max-width: 320px) {
+  .loginRegistrationForm__link_exit {
+   padding: 0;
+   font-size: 12px;
+   line-height: 15px;
+  }
+}
+
+.loginRegistrationForm__subtitle {
+  margin: 16px 0 0 0;
+  padding: 0;
+  color: rgba(160, 160, 160, 1);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  text-align: center;
+}
+
+@media screen and (max-width: 320px) {
+  .loginRegistrationForm__subtitle {
+    margin: 14px 0 0 0;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+.button:hover {
+  opacity: .7;
+  transition: 1s;
+  cursor: pointer;
+}
+

@@ -1,0 +1,94 @@
+.element__item {
+  width: 100%;
+}
+
+.element__link {
+  width: 100%;
+}
+
+.element__foto {
+  width: 100%;
+  object-fit: cover;
+  height: 151px;
+  cursor: pointer;
+  margin: 0;
+  display: block;
+}
+
+@media screen and (max-width: 900px) {
+  .element__foto {
+    height: 190px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .element__foto {
+    height: 168px;
+  }
+}
+
+.element__info {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #E8E8E8;
+  margin: 0;
+}
+
+.element__title {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: left;
+  padding: 14px 0 30px;
+  margin: 0;
+  max-width: 295px;
+}
+
+@media screen and (max-width: 320px) {
+  .element__title {
+    font-size: 12px;
+    line-height: 15px;
+    padding: 15px 0 29px;
+  }
+}
+
+.element__button {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-image: url(../../images/button-savenactive.svg);
+  margin-top: 10px;
+}
+
+.element__button:hover {
+  opacity: .7;
+  transition: 1s;
+  cursor: pointer;
+}
+
+.element__button_likes {
+  background-image: url(../../images/button-save.svg);
+}
+
+.element__button_delete {
+  background-image: url(../../images/button-delete.svg);
+}
+
+.element__duration {
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 13px;
+  text-align: left;
+  color: #A0A0A0;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 320px) {
+  .element__duration {
+    font-size: 10px;
+    line-height: 13px;
+  }
+}

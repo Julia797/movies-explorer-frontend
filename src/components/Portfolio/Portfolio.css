@@ -1,0 +1,139 @@
+.portfolio {
+  box-sizing: border-box;
+  padding: 75px 70px 75px;
+  margin: 0;
+  width: 100%;
+ 
+}
+
+@media screen and (max-width: 768px) {
+  .portfolio {
+    padding: 42px 50px 38px;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 51px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .portfolio {
+    padding: 0px 14px 20px;
+    gap: 44px;
+  }
+}
+
+.portfolio__brief {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+  color: #A0A0A0;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 520px) {
+  .portfolio__brief {
+    font-size: 14px;
+  }
+}
+
+.portfolio__navigation {
+  width: 100%;
+}
+
+.portfolio__lists {
+  margin: 0;
+  padding: 29px 0 0;
+  list-style: none;
+}
+
+@media screen and (max-width: 520px) {
+  .portfolio__lists {
+    padding-top: 21px;
+  }
+}
+
+.portfolio__list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.portfolio__link {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 50px;
+  letter-spacing: -0.04em;
+  text-align: left;
+  color: #000000;
+  border-bottom: 1px solid #E8E8E8;
+  padding: 20px 0 10px;
+}
+
+.portfolio__link_end {
+  border-bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .portfolio__link {
+    font-size: 28px;
+    padding-bottom: 9px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .portfolio__link {
+    font-size: 18px;
+    line-height: 28px;
+    padding-bottom: 19px;
+  }
+}
+
+.portfolio__link:hover {
+  opacity: .7;
+  transition: 1s;
+}
+
+.portfolio__site {
+  margin: 0;
+  padding: 0;
+}
+
+.portfolio__button {
+  background-image: url(../../images/button-strelka.svg);
+  background-position: 4px 18px;
+  background-size: 20px 18px;
+  width: 29px;
+  height: 60px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 768px) {
+  .portfolio__button {
+    width: 27px;
+    height: 60px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .portfolio__button {
+    width: 18px;
+    height: 28px;
+    background-position: 4px 6px;
+    background-size: 10px 10px;
+  }
+}
+
+.portfolio__button:hover {
+  opacity: .7;
+  transition: 1s;
+  cursor: pointer;
+}
+
