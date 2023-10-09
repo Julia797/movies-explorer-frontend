@@ -5,10 +5,11 @@ import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
 import { useState } from 'react';
 import HeaderPopup from '../HeaderPopup/HeaderPopup';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 function App() {
-
-  const [loggedIn, setLoggedIn] = useState(false)
+  
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -23,11 +24,10 @@ function App() {
   return (
     <div className="App">
       <Routes>
-
         <Route path='/' element={
           <>
             <Header 
-              nameHeader='home'  loggedIn={loggedIn}
+              nameHeader='home'  isLoggedIn={isLoggedIn}
               onClick={handleBurgerClick}
               />
             <Main 
@@ -38,12 +38,74 @@ function App() {
             />
             <Footer />
           </>
-        } />
-      
+        }/>
+                  
+      <Route path='/profile' element={
+        <ProtectedRoute 
+          isLoggedIn={isLoggedIn}
+          element={
+            <>
+              <Header
+                nameHeader='profile'
+                onClick={handleBurgerClick}
+              />
+              <Main
+                name='mainProfile' />
+              <HeaderPopup 
+                isOpen={isOpen}
+                onClose={handleCloseClick}
+              />
+            </> 
+          }
+        />
+      }/>   
+
+      <Route path='/movies' element={
+        <ProtectedRoute 
+          isLoggedIn={isLoggedIn}
+          element={
+            <>
+              <Header 
+                nameHeader = 'movies'
+                onClick={handleBurgerClick}
+              />
+              <Main
+                name='mainMovies' />
+              <Footer />
+              <HeaderPopup 
+                isOpen={isOpen}
+                onClose={handleCloseClick}
+              />
+            </>
+          }
+        />
+      }/>  
+
+      <Route path='/saved-movies' element={
+        <ProtectedRoute 
+          isLoggedIn={isLoggedIn}
+          element={
+            <>
+              <Header 
+                nameHeader = 'saved-movies'
+                onClick={handleBurgerClick}
+              />
+              <Main
+                name='mainMovies' />
+              <Footer />
+              <HeaderPopup 
+                isOpen={isOpen}
+                onClose={handleCloseClick}
+              />
+            </>
+          }
+        />
+      }/>   
+
       <Route path='/signup' element={
-        <Main
-          name='mainSignUp'
-        /> 
+          <Main
+            name='mainSignUp'
+          /> 
       } />     
 
       <Route path='signin' element={
@@ -51,53 +113,6 @@ function App() {
           name='mainSignIn'
         />   
       }/>  
-      
-      <Route path='/profile' element={
-        <>
-          <Header
-            nameHeader='profile'
-            onClick={handleBurgerClick}
-            />
-          <Main
-            name='mainProfile' />
-          <HeaderPopup 
-            isOpen={isOpen}
-            onClose={handleCloseClick}
-          />
-        </> 
-      } />   
-
-      <Route path='/movies' element={
-        <>
-          <Header 
-            nameHeader = 'movies'
-            onClick={handleBurgerClick}
-          />
-          <Main
-            name='mainMovies' />
-          <Footer />
-          <HeaderPopup 
-            isOpen={isOpen}
-            onClose={handleCloseClick}
-          />
-          </>
-      } />  
-
-       <Route path='/saved-movies' element={
-        <>
-          <Header 
-            nameHeader = 'saved-movies'
-            onClick={handleBurgerClick}
-          />
-          <Main
-            name='mainMovies' />
-          <Footer />
-          <HeaderPopup 
-            isOpen={isOpen}
-            onClose={handleCloseClick}
-          />
-        </>
-      }/>   
 
       <Route path='*' element={
         <Main name='pageNotFound' />
