@@ -8,11 +8,13 @@ import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
 import Profile from '../Profile/Profile';
 import PageNotFound from '../PageNotFound/PageNotFound';
-import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import { movies, savedMovies } from '../../utils/initialMovies';
-import SearchFilms from '../SearchFilms/SearchFilms';
+import Movies from '../Movies/Movies';
+import SavedMovies from '../SavedMovies/SavedMovies';
+//import MoviesCardList from '../MoviesCardList/MoviesCardList';
+//import { movies, savedMovies } from '../../utils/initialMovies';
+//import SearchFilms from '../SearchFilms/SearchFilms';
 
-function Main({ name, onCardClick, onDeleteClick, cards, onCardLike, isLoading, handleRegister,  handleLogin, outOfAccount, isSending, handleButtonEditClick, isOpenEdit, setIsOpenEdit, handleUpdateUser }) {
+function Main({ name, onCardClick, onDeleteClick, saveMovies, onCardLike, isLoading, handleRegister,  handleLogin, outOfAccount, isSending, handleButtonEditClick, isOpenEdit, setIsOpenEdit, handleUpdateUser }) {
  
   return (
     <main className="main">
@@ -39,6 +41,26 @@ function Main({ name, onCardClick, onDeleteClick, cards, onCardLike, isLoading, 
         />
       :
       name ==='mainMovies' ?
+      <Movies
+        savedMovies={saveMovies}
+      />
+      :
+      name ==='mainSavedMovies' ?
+      <SavedMovies 
+        saveMovies={saveMovies}
+      />
+
+      :
+       <PageNotFound />
+      }
+    </main>
+  );
+}
+
+export default Main;
+
+/*:
+      name ==='mainMovies' ?
       <>
         <SearchFilms />
         <MoviesCardList
@@ -50,13 +72,4 @@ function Main({ name, onCardClick, onDeleteClick, cards, onCardLike, isLoading, 
         <SearchFilms />
         <MoviesCardList
           movies={savedMovies} />
-      </> 
-
-      :
-       <PageNotFound />
-      }
-    </main>
-  );
-}
-
-export default Main;
+      </> */

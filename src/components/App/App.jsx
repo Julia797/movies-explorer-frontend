@@ -8,6 +8,7 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 import HeaderPopup from '../HeaderPopup/HeaderPopup';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { autorize, getContent, getMovies, getUserInfo, register, setUserInfo } from '../../utils/MainApi'
+import Preloader from '../Preloader/Preloader';
 
 function App() {
   
@@ -19,7 +20,7 @@ function App() {
   //const [username, setUsername] = useState('')
   const [currentUser, setCurrentUser] = useState({})
   const [isOpenEdit, setIsOpenEdit] = useState(false)
-  const [initialSaveMovie, setInitialSaveMovie] = useState(false)
+  const [saveMovies, setSaveMovies] = useState(false)
   const navigate = useNavigate()
 
   function handleBurgerClick() {
@@ -52,8 +53,8 @@ function App() {
       setCurrentUser(dataUserInfo)
       setIsLoggedIn(true)
       setIsCheckToken(false)
-      setInitialSaveMovie(dataInitialSavedMovie)
-     // setIsLoadingCards(false)
+      setSaveMovies(dataInitialSavedMovie.reverse())
+     // setIsLoadingMovies(false)
     })
     .catch((err) => {
       console.log('Ошибка. Начальные данные не созданы: ', err);
@@ -63,7 +64,7 @@ function App() {
   } else {
       setIsLoggedIn(false)
       setIsCheckToken(false)
-      localStorage.clear()
+      //localStorage.clear()
   }
   }, [isLoggedIn])
   
@@ -115,14 +116,14 @@ function App() {
       .finally(() => setIsSending(false))
   }
   
-  useEffect(() => {
+  /*useEffect(() => {
     if(localStorage.token) {
       getContent(localStorage.token)
       .then(res => {
         setUserEmail(res.email)
         setIsLoggedIn(true)
         setIsCheckToken(false)
-        //navigate('/')
+       // navigate('/')
       })
       .catch((err) => {
         console.log('Ошибка. Войти по токену не получилось: ', err);
@@ -132,7 +133,7 @@ function App() {
         setIsCheckToken(false)
       }
       
-    },[navigate])
+    },[navigate])*/
 
     function outOfAccount() {
       localStorage.clear()
@@ -145,6 +146,7 @@ function App() {
   return (
 
     <div className="App">
+      {isCheckToken ? <Preloader /> :
       <CurrentUserContext.Provider value = {currentUser}>
 
       <Routes>
@@ -181,8 +183,7 @@ function App() {
                 setIsOpenEdit={setIsOpenEdit}
                 handleUpdateUser={handleUpdateUser}
                 outOfAccount={outOfAccount}
-
-                />
+              />
               <HeaderPopup 
                 isOpen={isOpen}
                 onClose={handleCloseClick}
@@ -202,7 +203,9 @@ function App() {
                 onClick={handleBurgerClick}
               />
               <Main
-                name='mainMovies' />
+                name='mainMovies'
+                saveMovies={saveMovies}
+              />
               <Footer />
               <HeaderPopup 
                 isOpen={isOpen}
@@ -223,7 +226,9 @@ function App() {
                 onClick={handleBurgerClick}
               />
               <Main
-                name='mainMovies' />
+                name='mainMovies' 
+                saveMovies={saveMovies}
+              />
               <Footer />
               <HeaderPopup 
                 isOpen={isOpen}
@@ -255,7 +260,8 @@ function App() {
       } />
             
       </Routes>
-      </CurrentUserContext.Provider>    
+      </CurrentUserContext.Provider> 
+    }     
     </div>
   )
 }

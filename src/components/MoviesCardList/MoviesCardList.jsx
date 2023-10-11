@@ -1,8 +1,9 @@
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
+import Preloader from '../Preloader/Preloader'
 
 
-function MoviesCardList({ movies }) {
+function MoviesCardList({ movies, saveMovies }) {
   
  
   return (

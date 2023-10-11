@@ -1,7 +1,7 @@
 .checkbox {
   width: 100%;
   margin: 0;
-  padding: 33px 0 48px;
+  padding: 0 0 48px;
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -11,7 +11,6 @@
   .checkbox {
     flex-direction: row-reverse;
     padding-bottom: 61px;
-    padding-top: 29px;
   }
 }
 
@@ -19,7 +18,7 @@
   .checkbox {
     justify-content: center;
     padding-bottom: 51px;
-    padding-top: 41px;
+    padding-top: 12px;
   }
 }
 
