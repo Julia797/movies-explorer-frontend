@@ -6,15 +6,17 @@ import Input from '../Input/Input';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import { useContext } from 'react';
 import { useEffect } from 'react';
-const currentUser = useContext(CurrentUserContext);
+//
 
 function Profile({ handleUpdateUser, isOpenEdit, setIsOpenEdit, handleButtonEditClick, outOfAccount }) {
   const { values, errors, isValid, isInputValid, handleChange, resetForm } = useFormValidation()
+  const currentUser = useContext(CurrentUserContext);
 
   useEffect(() => {
     resetForm({ username: currentUser.name, email: currentUser.email })
   }, [resetForm, currentUser, isOpenEdit])
- 
+
+  
   console.log(CurrentUserContext);
   function onSubmitEdite(evt) {
     evt.preventDefault()
@@ -46,7 +48,7 @@ function Profile({ handleUpdateUser, isOpenEdit, setIsOpenEdit, handleButtonEdit
           maxLength='40'
           id='username'
           onChange={handleChange}
-          placeholder='Виталий'
+          placeholder='Введите имя'
         />
           
         <Input
@@ -61,7 +63,7 @@ function Profile({ handleUpdateUser, isOpenEdit, setIsOpenEdit, handleButtonEdit
            maxLength='40'
            id='email'
            onChange={handleChange}
-           placeholder='pochta@yandex.ru'
+           placeholder='Введите электронную почту'
         /></>
       </fieldset>
       <span className='error-server'></span> 
@@ -70,7 +72,7 @@ function Profile({ handleUpdateUser, isOpenEdit, setIsOpenEdit, handleButtonEdit
    
     <LoginRegistrationForm
       nameForm='profile'
-      title='Привет, Виталий!'
+      title={`Привет, ${currentUser.name}!`}
       nameButton='Редактировать'
       onSubmit={handleButtonEditClick}
       outOfAccount={outOfAccount}
@@ -88,7 +90,7 @@ function Profile({ handleUpdateUser, isOpenEdit, setIsOpenEdit, handleButtonEdit
           maxLength='40'
           id='username'
           onChange={handleChange}
-          placeholder='Виталий'
+          placeholder='Введите имя'
           disabled={!isOpenEdit}
         />
         <Input
@@ -103,7 +105,7 @@ function Profile({ handleUpdateUser, isOpenEdit, setIsOpenEdit, handleButtonEdit
           maxLength='40'
           id='email'
           onChange={handleChange}
-          placeholder='pochta@yandex.ru'
+          placeholder='Введите электронную почту'
           disabled={!isOpenEdit}
         />
        </fieldset>

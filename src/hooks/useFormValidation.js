@@ -28,13 +28,21 @@ function useFormValidation() {
     setIsValid(form.checkValidity())
   }
 
-  function resetForm(newValues = {}, newErrors = {}, newIsValid = false, newIsInputValid = {}) {
+  /*function resetForm(newValues = {}, newErrors = {}, newIsValid = false, newIsInputValid = {}) {
     setValues(prevValues => ({ ...prevValues, ...newValues }));
     setErrors(newErrors);
     setIsValid(newIsValid);
     setIsInputValid(newIsInputValid);
-  }
-  const setValue = useCallback((name, value) => {
+  }*/
+
+  const resetForm = useCallback((data = {}) => {
+    setValues(data)
+    setErrors({})
+    setIsInputValid({})
+    setIsValid(false)
+  },[])
+
+    const setValue = useCallback((name, value) => {
     setValues((values) => {
       return { ...values, [name]: value }
     }) 

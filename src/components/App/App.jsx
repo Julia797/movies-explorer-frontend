@@ -16,6 +16,7 @@ function App() {
   const [isSending, setIsSending] = useState(false)
   const [isCheckToken, setIsCheckToken] = useState(true)
   const [userEmail, setUserEmail] = useState('')
+  //const [username, setUsername] = useState('')
   const [currentUser, setCurrentUser] = useState({})
   const [isOpenEdit, setIsOpenEdit] = useState(false)
   const [initialSaveMovie, setInitialSaveMovie] = useState(false)
@@ -29,19 +30,25 @@ function App() {
     setIsOpen(false)   
   }
 
-  
-
   function handleButtonEditClick(evt) {
     evt.preventDefault()
     setIsOpenEdit(true)
   }
   
+  /*useEffect(() => {
+    if (isOpenEdit) {
+      setUsername(currentUser.name);
+      setUserEmail(currentUser.email);
+    }
+  }, [isOpenEdit, currentUser.name, currentUser.email]);*/
+
   useEffect(() => {
 
     if (localStorage.token) {
     //setIsLoadingCards(true)
     Promise.all([getUserInfo(localStorage.token), getMovies(localStorage.token)])
     .then(([dataUserInfo, dataInitialSavedMovie]) => {
+      console.log(dataUserInfo);
       setCurrentUser(dataUserInfo)
       setIsLoggedIn(true)
       setIsCheckToken(false)
@@ -60,6 +67,7 @@ function App() {
   }
   }, [isLoggedIn])
   
+  console.log(currentUser.name);
 
 
   function handleRegister(username, email, password, resetForm) {
@@ -98,7 +106,7 @@ function App() {
     setUserInfo(username, email, localStorage.token)
       .then(res => {
         setCurrentUser(res)
-        //setIsOpenEdit(false)
+        setIsOpenEdit(false)
         resetForm()
        })
       .catch((err) => {
