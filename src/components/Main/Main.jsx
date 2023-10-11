@@ -12,7 +12,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import { movies, savedMovies } from '../../utils/initialMovies';
 import SearchFilms from '../SearchFilms/SearchFilms';
 
-function Main({ name, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onDeleteClick, cards, onCardLike, isLoading, handleRegister,  handleLogin, isSending }) {
+function Main({ name, onCardClick, onDeleteClick, cards, onCardLike, isLoading, handleRegister,  handleLogin, outOfAccount, isSending, handleButtonEditClick, isOpenEdit, setIsOpenEdit, handleUpdateUser }) {
  
   return (
     <main className="main">
@@ -20,13 +20,23 @@ function Main({ name, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onDe
         <><Promo /><AboutProject /><Techs /><AboutMe /><Portfolio /></>
       :
       name ==='mainSignUp' ?
-        <Register />
+        <Register 
+          handleRegister={handleRegister}
+        />
       :
       name ==='mainSignIn' ?
-        <Login />
+        <Login 
+          handleLogin={handleLogin}
+        />
       :
       name ==='mainProfile' ?
-        <Profile />
+        <Profile 
+        handleButtonEditClick={handleButtonEditClick}
+        isOpenEdit={isOpenEdit}
+        setIsOpenEdit={setIsOpenEdit}
+        handleUpdateUser={handleUpdateUser}
+        outOfAccount={outOfAccount}
+        />
       :
       name ==='mainMovies' ?
       <>
@@ -50,5 +60,3 @@ function Main({ name, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onDe
 }
 
 export default Main;
-//name ==='pageNotFound' ?
-//<PageNotFound />

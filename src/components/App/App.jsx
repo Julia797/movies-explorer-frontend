@@ -1,17 +1,25 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 import HeaderPopup from '../HeaderPopup/HeaderPopup';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import { autorize, getContent, getMovies, getUserInfo, register, setUserInfo } from '../../utils/MainApi'
 
 function App() {
   
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-
   const [isOpen, setIsOpen] = useState(false)
+  const [isSending, setIsSending] = useState(false)
+  const [isCheckToken, setIsCheckToken] = useState(true)
+  const [userEmail, setUserEmail] = useState('')
+  const [currentUser, setCurrentUser] = useState({})
+  const [isOpenEdit, setIsOpenEdit] = useState(false)
+  const [initialSaveMovie, setInitialSaveMovie] = useState(false)
+  const navigate = useNavigate()
 
   function handleBurgerClick() {
     setIsOpen(true)
@@ -20,9 +28,117 @@ function App() {
   function handleCloseClick() {
     setIsOpen(false)   
   }
+
+  
+
+  function handleButtonEditClick(evt) {
+    evt.preventDefault()
+    setIsOpenEdit(true)
+  }
+  
+  useEffect(() => {
+
+    if (localStorage.token) {
+    //setIsLoadingCards(true)
+    Promise.all([getUserInfo(localStorage.token), getMovies(localStorage.token)])
+    .then(([dataUserInfo, dataInitialSavedMovie]) => {
+      setCurrentUser(dataUserInfo)
+      setIsLoggedIn(true)
+      setIsCheckToken(false)
+      setInitialSaveMovie(dataInitialSavedMovie)
+     // setIsLoadingCards(false)
+    })
+    .catch((err) => {
+      console.log('Ошибка. Начальные данные не созданы: ', err);
+      setIsCheckToken(false)
+      localStorage.clear()
+    });
+  } else {
+      setIsLoggedIn(false)
+      setIsCheckToken(false)
+      localStorage.clear()
+  }
+  }, [isLoggedIn])
+  
+
+
+  function handleRegister(username, email, password, resetForm) {
+    setIsSending(true)
+    register(username, email, password)
+    .then(() => {
+      resetForm({ username: '', email: '', password: '' })
+      navigate('/movies')
+    })
+    .catch((err) => {
+      
+      console.log('Ошибка. Зарегистрировать пользователя на сервере не получилось: ', err);
+    })
+    .finally(() => setIsSending(false))
+  }
+  
+  function handleLogin(email, password, resetForm) {
+    setIsSending(true)
+    autorize(email, password)
+    .then(res => {
+      localStorage.setItem('token', res.token)
+      setIsLoggedIn(true)
+      resetForm({ email: '', password: '' })
+      window.scrollTo(0, 0)
+      navigate('/movies')
+    })
+    .catch((err) => {
+      console.log('Ошибка. Войти не получилось: ', err);
+    })
+    .finally(() => 
+    setIsSending(false))
+  }
+
+  function handleUpdateUser(username, email, resetForm) {
+    setIsSending(true)
+    setUserInfo(username, email, localStorage.token)
+      .then(res => {
+        setCurrentUser(res)
+        //setIsOpenEdit(false)
+        resetForm()
+       })
+      .catch((err) => {
+        console.log('Ошибка. Обновить данные пользователя на сервере не получилось: ', err);
+      })
+      .finally(() => setIsSending(false))
+  }
+  
+  useEffect(() => {
+    if(localStorage.token) {
+      getContent(localStorage.token)
+      .then(res => {
+        setUserEmail(res.email)
+        setIsLoggedIn(true)
+        setIsCheckToken(false)
+        //navigate('/')
+      })
+      .catch((err) => {
+        console.log('Ошибка. Войти по токену не получилось: ', err);
+      })}
+      else {
+        setIsLoggedIn(false)
+        setIsCheckToken(false)
+      }
+      
+    },[navigate])
+
+    function outOfAccount() {
+      localStorage.clear()
+      setIsLoggedIn(false)
+      navigate('/')
+    }
+
+
      
   return (
+
     <div className="App">
+      <CurrentUserContext.Provider value = {currentUser}>
+
       <Routes>
         <Route path='/' element={
           <>
@@ -43,6 +159,7 @@ function App() {
       <Route path='/profile' element={
         <ProtectedRoute 
           isLoggedIn={isLoggedIn}
+         
           element={
             <>
               <Header
@@ -50,7 +167,14 @@ function App() {
                 onClick={handleBurgerClick}
               />
               <Main
-                name='mainProfile' />
+                name='mainProfile' 
+                handleButtonEditClick={handleButtonEditClick}
+                isOpenEdit={isOpenEdit}
+                setIsOpenEdit={setIsOpenEdit}
+                handleUpdateUser={handleUpdateUser}
+                outOfAccount={outOfAccount}
+
+                />
               <HeaderPopup 
                 isOpen={isOpen}
                 onClose={handleCloseClick}
@@ -103,14 +227,18 @@ function App() {
       }/>   
 
       <Route path='/signup' element={
+        isLoggedIn ? <Navigate to='/movies' replace /> :
           <Main
             name='mainSignUp'
+            handleRegister={handleRegister}
           /> 
       } />     
 
       <Route path='signin' element={
+        isLoggedIn ? <Navigate to='/movies' replace /> :
         <Main
           name='mainSignIn'
+          handleLogin={handleLogin}
         />   
       }/>  
 
@@ -118,7 +246,8 @@ function App() {
         <Main name='pageNotFound' />
       } />
             
-      </Routes>        
+      </Routes>
+      </CurrentUserContext.Provider>    
     </div>
   )
 }

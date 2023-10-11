@@ -1,22 +1,26 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import LoginRegistrationForm from '../LoginRegistrationForm/LoginRegistrationForm';
 import useFormValidation from '../../hooks/useFormValidation';
 import './Profile.css';
 import Input from '../Input/Input';
-import { useState } from 'react';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
+import { useContext } from 'react';
+import { useEffect } from 'react';
+const currentUser = useContext(CurrentUserContext);
 
-function Profile({ handleRegister }) {
-  const { values, errors, isValid, isInputValid, handleChange } = useFormValidation()
+function Profile({ handleUpdateUser, isOpenEdit, setIsOpenEdit, handleButtonEditClick, outOfAccount }) {
+  const { values, errors, isValid, isInputValid, handleChange, resetForm } = useFormValidation()
+
+  useEffect(() => {
+    resetForm({ username: currentUser.name, email: currentUser.email })
+  }, [resetForm, currentUser, isOpenEdit])
  
-  const [isOpenEdit, setIsOpenEdit] = useState(false)
-
-  function handleButtonEditClick() {
-    setIsOpenEdit(true)
-  }
-
+  console.log(CurrentUserContext);
   function onSubmitEdite(evt) {
     evt.preventDefault()
-      setIsOpenEdit(true)
+      handleUpdateUser(values.username, values.email)
   }
+
    
   return (
 
@@ -24,7 +28,7 @@ function Profile({ handleRegister }) {
 
     <LoginRegistrationForm
       nameForm='profile-edit'
-      title='Привет, Виталий!'
+      title={`Привет, ${currentUser.name}!`}
       nameButton='Сохранить'
       isValid={isValid}
       onSubmit={onSubmitEdite}
@@ -68,7 +72,8 @@ function Profile({ handleRegister }) {
       nameForm='profile'
       title='Привет, Виталий!'
       nameButton='Редактировать'
-      onClick={handleButtonEditClick}
+      onSubmit={handleButtonEditClick}
+      outOfAccount={outOfAccount}
     >
       <fieldset className='profile'>
         <Input

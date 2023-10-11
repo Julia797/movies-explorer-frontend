@@ -8,7 +8,7 @@ class MoviesApi {
   }
 
   getMovies(token) {
-    return fetch(`${this._baseUrl}/cards`, {
+    return fetch(`${this._baseUrl}/movies`, {
       headers: {
         'Authorization' : `Bearer ${token}`,
       }

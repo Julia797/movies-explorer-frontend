@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import './LoginRegistrationForm.css';
 import Form from "../Form/Form";
 
-function LoginRegistrationForm({ nameForm, title, onSubmit, nameButton, isValid=true, onClick, children}) {
+function LoginRegistrationForm({ nameForm, title, onSubmit, nameButton, isValid=true, onClick, children, outOfAccount }) {
    
   return (
     <section className="loginRegistrationForm">
@@ -21,7 +21,7 @@ function LoginRegistrationForm({ nameForm, title, onSubmit, nameButton, isValid=
         <p className="loginRegistrationForm__subtitle" >Ещё не зарегистрированы? <Link className="loginRegistrationForm__link button" 
         to={'/signup'}>Регистрация</Link></p> : nameForm === `profile-edit` ? 
         <Link className="loginRegistrationForm__link  loginRegistrationForm__link_exit loginRegistrationForm__link_none" to={'/'} >Выйти из аккаунта</Link> : 
-        <Link className="loginRegistrationForm__link  loginRegistrationForm__link_exit button" to={'/'} >Выйти из аккаунта</Link>}
+        <Link className="loginRegistrationForm__link  loginRegistrationForm__link_exit button" to={'/'} onClick={outOfAccount} >Выйти из аккаунта</Link>}
     </section>
   );
 }

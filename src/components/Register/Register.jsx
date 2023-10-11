@@ -4,7 +4,12 @@ import './Register.css';
 import Input from "../Input/Input";
 
 function Register({ handleRegister }) {
-  const { values, errors, isValid, isInputValid, handleChange } = useFormValidation()
+  const { values, errors, isValid, isInputValid, handleChange, resetForm } = useFormValidation()
+
+  function handleSubmit(evt) {
+    evt.preventDefault()
+    handleRegister(values.username, values.email, values.password, resetForm)
+  }
   
    return (
     <LoginRegistrationForm
@@ -12,6 +17,8 @@ function Register({ handleRegister }) {
       title='Добро пожаловать!'
       nameButton='Зарегистрироваться'
       isValid={isValid}
+      onSubmit={handleSubmit}
+      onChange={handleChange}
     >
     
       <fieldset className="form__input form__input_registrationForm">
@@ -27,7 +34,7 @@ function Register({ handleRegister }) {
           maxLength="40"
           id="username"
           onChange={handleChange}
-          placeholder='Виталий'
+          placeholder='Введите имя'
         />
         <Input
           nameinput='signup'
@@ -41,7 +48,7 @@ function Register({ handleRegister }) {
           maxLength="40"
           id="email"
           onChange={handleChange}
-          placeholder='pochta@yandex.ru'
+          placeholder='Введите электронную почту'
         />
         <Input
           nameinput='signup'

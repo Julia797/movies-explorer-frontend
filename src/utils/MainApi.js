@@ -1,32 +1,59 @@
 
-export const BASE_URL = 'https://api.mestoforever.nomoredomainsicu.ru';
+export const BASE_URL = 'https://api.bestfilms.julia.nomoredomainsicu.ru';
 
 function checkResponse(res) {
   return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
 }
 
-export const register = (password, email) => {
+export const register = (username, email, password) => {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      password: password, 
+      name: username,
       email: email,
+      password: password,
     })
   })
   .then(res => checkResponse(res))
 };
 
-export const autorize = (password, email) => {
+export const autorize = (email, password) => {
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      password: password, 
+      email: email,
+      password: password,
+    })
+  })
+  .then(res => checkResponse(res))
+};
+
+export const getUserContent = (token) => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization' : `Bearer ${token}`
+    },
+  })
+  .then(res => checkResponse(res))
+};
+
+export const setUserInfo = (username, email, token) => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization' : `Bearer ${token}`
+    },
+    body: JSON.stringify({
+      name: username,
       email: email,
     })
   })
@@ -44,20 +71,20 @@ export const getContent = (token) => {
   .then(res => checkResponse(res))
 };
 
-export const setUserInfo = (data, token) => {
-  return fetch(`${BASE_URL}/users/me`, {
-    method: 'PATCH',
+export const getMovies = (token) => {
+  return fetch(`${BASE_URL}/movies`, {
     headers: {
-      'Content-Type': 'application/json',
       'Authorization' : `Bearer ${token}`
-    },
-    body: JSON.stringify({
-      name: data.username,
-      email: data.email,
-    })
+    }
   })
   .then(res => checkResponse(res))
 };
 
-
-
+export const getUserInfo = (token) => {
+  return fetch(`${BASE_URL}/users/me`, {
+    headers: {
+      'Authorization' : `Bearer ${token}`
+    }
+  })
+  .then(res => checkResponse(res))
+}
