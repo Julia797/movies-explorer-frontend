@@ -13,9 +13,9 @@ function MoviesCardList({ movies, saveMovies }) {
           {movies.map(data => {
             return (
               <MoviesCard 
-                key = {data.movieId}
-                name={data.nameRu} 
-                src={data.image} 
+                key = {data.id}
+                name={data.nameRU} 
+                src={`https://api.nomoreparties.co${data.image.url}`} 
                 trailerLink={data.trailerLink}
                 duration={data.duration}
               />

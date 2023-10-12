@@ -7,11 +7,8 @@ class MoviesApi {
     return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
   }
 
-  getMovies(token) {
-    return fetch(`${this._baseUrl}/movies`, {
-      headers: {
-        'Authorization' : `Bearer ${token}`,
-      }
+  getMovies() {
+    return fetch(`${this._baseUrl}/`, {
     })
     .then(this._checkResponse)
   };
