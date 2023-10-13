@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import HeaderPopup from '../HeaderPopup/HeaderPopup';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import { autorize, getContent, getMovies, getUserInfo, register, setUserInfo } from '../../utils/MainApi'
+import { autorize, deleteMovie, getContent, getMovies, getUserInfo, register, setUserInfo } from '../../utils/MainApi'
 import Preloader from '../Preloader/Preloader';
 
 function App() {
@@ -23,6 +23,7 @@ function App() {
   const [saveMovies, setSaveMovies] = useState(false)
   const navigate = useNavigate()
 
+
   function handleBurgerClick() {
     setIsOpen(true)
   }
@@ -35,6 +36,47 @@ function App() {
     evt.preventDefault()
     setIsOpenEdit(true)
   }
+
+
+не доделала еще
+
+
+
+  function handleMovieLike(movie) {
+    const isLiked = movie.likes.some(item => item._id === currentUser._id);
+    if (isLiked) {
+      deleteMovie(movie._id)
+      .then((newCard) => {
+        setCards((state) => state.map((c) => c._id === movie._id ? newCard : c))
+      }) 
+      .catch((err) => {
+        console.log('Ошибка. Удалить лайк не получилось: ', err);
+      });
+    } else {
+        addMovie(movie._id)
+      .then((newCard) => {
+        setCards((state) => state.map((c) => c._id === movie._id ? newCard : c))
+      })
+      .catch((err) => {
+        console.log('Ошибка. Поставить лайк не получилось: ', err);
+      });
+    }
+  }
+
+
+  
+
+  function handleDeleteMovie(movieId) {
+     //setIsLoadingCards(true)
+     deleteMovie(movieId, localStorage.token)
+      .then(() => {
+        setSaveMovies(saveMovies.filter(movie => { return movie._id !== movieId }))
+      })
+      .catch((err) => console.error('Ошибка. Удалить фильм не получилось' , err))
+      //.finally(() =>  setIsLoadingMovies(false))
+    }
+  }
+
   
   /*useEffect(() => {
     if (isOpenEdit) {

@@ -3,7 +3,7 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 import Preloader from '../Preloader/Preloader'
 
 
-function MoviesCardList({ movies, saveMovies }) {
+function MoviesCardList({ movies, saveMovies, addMovie, isLoadingMovies }) {
   
  
   return (

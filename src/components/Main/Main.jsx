@@ -14,7 +14,7 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 //import { movies, savedMovies } from '../../utils/initialMovies';
 //import SearchFilms from '../SearchFilms/SearchFilms';
 
-function Main({ name, onCardClick, onDeleteClick, saveMovies, onCardLike, isLoading, handleRegister,  handleLogin, outOfAccount, isSending, handleButtonEditClick, isOpenEdit, setIsOpenEdit, handleUpdateUser }) {
+function Main({ name, addMovie, deleteMovies, saveMovies, onCardLike, isLoading, handleRegister,  handleLogin, outOfAccount, isSending, handleButtonEditClick, isOpenEdit, setIsOpenEdit, handleUpdateUser }) {
  
   return (
     <main className="main">
@@ -43,11 +43,13 @@ function Main({ name, onCardClick, onDeleteClick, saveMovies, onCardLike, isLoad
       name ==='mainMovies' ?
       <Movies
         savedMovies={saveMovies}
+        addMovie={addMovie}
       />
       :
       name ==='mainSavedMovies' ?
       <SavedMovies 
         saveMovies={saveMovies}
+        deleteMovies={deleteMovies}
       />
 
       :

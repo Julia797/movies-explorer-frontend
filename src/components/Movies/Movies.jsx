@@ -1,30 +1,16 @@
 import SearchFilms from '../SearchFilms/SearchFilms';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-//import { movies, savedMovies } from '../../utils/initialMovies';
 import MoviesApi from '../../utils/MoviesApi';
 import { useCallback, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-//import useFormValidation from '../../hooks/useFormValidation'
 
-
-function Movies({ saveMovies }) {
+function Movies({ saveMovies, addMovie }) {
   const [downloadedMovies, setDownloadedMovies] = useState([]) // все фильмы, загруженные с beatfilm-movies.
   const [isSearchFilms, setIsSearchFilms] = useState('')  // текст в строке поиска фильмов.
   const [isChecked, setIsChecked] = useState(false); // состояние чекбокса.
   const [isLoadingMovies, setIsLoadingMovies] = useState(false) // прелоадер при загрузке фильмов.
   const [error, setError] = useState(false) // вывод ошибки сервера при первой загрузке фильмов.
   const [selectedFilms, setSelectedFilms] = useState([]) //отобранные фильмы по строке поиска и чекбоксу
-  const { pathname } = useLocation()
-  //const { values, handleChange, resetForm } = useFormValidation()
   
-   /* function addInLocalStorage(movies, isSearchFilms, isChecked) {
-      localStorage.setItem('searchfilms', JSON.stringify(isSearchFilms))
-      localStorage.setItem('checkbox', JSON.stringify(isChecked))
-      localStorage.setItem('downloadedmovies', JSON.stringify(movies))
-    }*/
-   
-    /**/
-
     const selectionOfFilms = useCallback((input, isChecked, movies) => {
       //setIsSearchFilms(input)
       //addInLocalStorage(movies, input, isChecked)
@@ -62,16 +48,6 @@ function Movies({ saveMovies }) {
       function searchForMovies(input) {
         if (localStorage.downloadedmovies && localStorage.searchfilms && localStorage.checkbox) {
           const movies = JSON.parse(localStorage.downloadedmovies)
-          //const search = JSON.parse(localStorage.searchfilms)
-          //const checked = JSON.parse(localStorage.checkbox)
-          //console.log(movies);
-          //console.log(search);
-          //console.log(checked);
-         
-          //setIsSearchFilms(search)
-         // console.log(isSearchFilms);
-          //setIsChecked(checked)
-          //getLocalStorageData()
           setDownloadedMovies(movies)
           selectionOfFilms(input, isChecked, movies)
         } else {
@@ -124,6 +100,8 @@ function Movies({ saveMovies }) {
         <MoviesCardList
           movies={selectedFilms} 
           saveMovies={saveMovies}
+          addMovie={addMovie}
+          isLoadingMovies
           />
       </> 
   )
