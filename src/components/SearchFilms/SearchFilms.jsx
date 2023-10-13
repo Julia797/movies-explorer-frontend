@@ -1,11 +1,12 @@
 import './SearchFilms.css';
 import Checkbox from '../Checkbox/Checkbox';
 import useFormValidation from '../../hooks/useFormValidation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom'
 
-function SearchFilms({ isChecked, setIsChecked, searchForMovies }) {
+function SearchFilms({ isChecked, setIsChecked, searchForMovies, checked, downloadedMovies, selectionOfFilms, isLoadingMovies, isSearchFilms, searchForMoviescheckbox, searchForMoviesFirst }) {
   const { values, handleChange, resetForm } = useFormValidation()
-
+  const { pathname } = useLocation()
   const [isValid, setIsValid] = useState(true)
 
   function handleSubmit(evt) {
@@ -17,11 +18,31 @@ function SearchFilms({ isChecked, setIsChecked, searchForMovies }) {
       setIsValid(false)
     }
   }
-           
+
+  console.log(isChecked);
+
+  useEffect(() => {
+    if ((pathname === '/saved-movies' && downloadedMovies.length === 0)) {
+      //const movies = JSON.parse(localStorage.downloadedmovies)
+     // const search = JSON.parse(localStorage.searchfilms)
+      //const checked = JSON.parse(localStorage.checkbox)
+      resetForm({ searchFilms: '' })
+      //setSearchFilms(searchFilms)
+     // selectionOfFilms(searchFilms, isChecked, downloadedMovies)
+    } else {
+
+      console.log('hhhhh')
+      resetForm({ searchFilms: isSearchFilms })
+           //selectionOfFilms(isSearchFilms, isChecked, downloadedMovies)
+    }
+  }
+
+    , [downloadedMovies, isSearchFilms, pathname, resetForm])
+
   return (
     <section className="searchFilms" aria-label="поиск фильмов">
       
-        <form className="searchFilms__form" noValidate onSubmit={handleSubmit} name={'searchFilms'} value={values.searchFilms || ''}>
+        <form className="searchFilms__form" noValidate onSubmit={handleSubmit} name={'searchFilms'}>
         <div className="searchFilms__conteiner">
           <input 
           className="searchFilms__input" 
@@ -31,13 +52,17 @@ function SearchFilms({ isChecked, setIsChecked, searchForMovies }) {
           onChange={(evt) => {
             handleChange(evt)
             setIsValid(true)}} 
-          name='searchFilms'/> 
+          name='searchFilms'
+          value={values.searchFilms || ''}
+          /> 
           <button type="submit" className="searchFilms__button">Найти</button>
         </div>
         <span className={isValid ? "searchFilms_error" : "searchFilms_error search__error_active"} >Введите ключевое слово</span>
         <Checkbox 
           isChecked={isChecked}
           setIsChecked={setIsChecked}
+          searchForMoviescheckbox={searchForMoviescheckbox}
+          checked={checked}
         />
           
         </form>

@@ -68,9 +68,6 @@ function App() {
   }
   }, [isLoggedIn])
   
-  console.log(currentUser.name);
-
-
   function handleRegister(username, email, password, resetForm) {
     setIsSending(true)
     register(username, email, password)
@@ -116,32 +113,11 @@ function App() {
       .finally(() => setIsSending(false))
   }
   
-  /*useEffect(() => {
-    if(localStorage.token) {
-      getContent(localStorage.token)
-      .then(res => {
-        setUserEmail(res.email)
-        setIsLoggedIn(true)
-        setIsCheckToken(false)
-       // navigate('/')
-      })
-      .catch((err) => {
-        console.log('Ошибка. Войти по токену не получилось: ', err);
-      })}
-      else {
-        setIsLoggedIn(false)
-        setIsCheckToken(false)
-      }
-      
-    },[navigate])*/
-
     function outOfAccount() {
       localStorage.clear()
       setIsLoggedIn(false)
       navigate('/')
     }
-
-
      
   return (
 

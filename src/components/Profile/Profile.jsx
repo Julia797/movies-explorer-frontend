@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import LoginRegistrationForm from '../LoginRegistrationForm/LoginRegistrationForm';
 import useFormValidation from '../../hooks/useFormValidation';
 import './Profile.css';
@@ -6,7 +5,6 @@ import Input from '../Input/Input';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import { useContext } from 'react';
 import { useEffect } from 'react';
-//
 
 function Profile({ handleUpdateUser, isOpenEdit, setIsOpenEdit, handleButtonEditClick, outOfAccount }) {
   const { values, errors, isValid, isInputValid, handleChange, resetForm } = useFormValidation()
@@ -15,14 +13,12 @@ function Profile({ handleUpdateUser, isOpenEdit, setIsOpenEdit, handleButtonEdit
   useEffect(() => {
     resetForm({ username: currentUser.name, email: currentUser.email })
   }, [resetForm, currentUser, isOpenEdit])
-
   
   console.log(CurrentUserContext);
   function onSubmitEdite(evt) {
     evt.preventDefault()
       handleUpdateUser(values.username, values.email)
   }
-
    
   return (
 
