@@ -32,8 +32,9 @@ function MoviesCard({ data, src, trailerLink, handleDeleteMovie, handleMovieLike
       handleMovieLike(data)
       setIsLiked(false)
     }
-    
   }
+  //onClick={handleDeleteMovie(data._id)}
+
   
   function convertToTime(number) {
     const hours = Math.floor(number / 60)
@@ -53,7 +54,7 @@ function MoviesCard({ data, src, trailerLink, handleDeleteMovie, handleMovieLike
         {pathname === '/movies' ?
           <button className={`element__button element__button_likes ${isLiked ? 'element__button_likesActive' : ''}`} onClick={handleLikeClick} type="button" aria-label="лайк"  />
         :
-          <button className="element__button element__button_delete" type="button" onClick={handleDeleteMovie} aria-label="удалить"  />
+          <button className="element__button element__button_delete" type="button" onClick={() => handleDeleteMovie(data._id)} aria-label="удалить"  />
         }
         </div>
         </div>  

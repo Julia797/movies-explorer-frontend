@@ -20,7 +20,7 @@ function MoviesCardList({ movies, saveMovies, handleMovieLike, handleDeleteMovie
                     src={`https://api.nomoreparties.co${data.image.url}`}
                     handleMovieLike={handleMovieLike}
                     saveMovies={saveMovies}
-                    key={data._id}
+                    //key={data._id}
                   />
                 )             
             }) : movies.length !== 0 ?
@@ -30,7 +30,7 @@ function MoviesCardList({ movies, saveMovies, handleMovieLike, handleDeleteMovie
                       data={data}
                       src={data.image}
                       handleDeleteMovie={handleDeleteMovie}
-                      key={data._id}
+                      //key={data._id}
                     />
                   )  
                 }) : error ?

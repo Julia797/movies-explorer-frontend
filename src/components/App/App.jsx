@@ -62,13 +62,13 @@ function App() {
     }
   }*/
   function handleMovieLike(data) {
-    addMovie(data, localStorage.token)
+    addMovie (data, localStorage.token)
   }
 
-  function handleDeleteMovie(movieId) {
-    //setIsLoadingCards(true)
-    deleteMovie(movieId, localStorage.token)
-  }
+function handleDeleteMovie(movieId) {
+     //setIsLoadingCards(true)
+     deleteMovie(movieId, localStorage.token)
+}
 
   /*function handleDeleteMovie(movieId) {
      //setIsLoadingCards(true)
