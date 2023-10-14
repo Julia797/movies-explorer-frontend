@@ -10,12 +10,9 @@ import Profile from '../Profile/Profile';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
-//import MoviesCardList from '../MoviesCardList/MoviesCardList';
-//import { movies, savedMovies } from '../../utils/initialMovies';
-//import SearchFilms from '../SearchFilms/SearchFilms';
 
-function Main({ name, addMovie, deleteMovies, saveMovies, onCardLike, isLoading, handleRegister,  handleLogin, outOfAccount, isSending, handleButtonEditClick, isOpenEdit, setIsOpenEdit, handleUpdateUser }) {
- 
+function Main({ name, handleMovieLike, handleDeleteMovie, deleteMovies, saveMovies, onCardLike, isLoading, handleRegister,  handleLogin, outOfAccount, isSending, handleButtonEditClick, isOpenEdit, setIsOpenEdit, handleUpdateUser }) {
+  console.log(saveMovies);
   return (
     <main className="main">
       {name ==='mainHomePage' ?
@@ -42,14 +39,14 @@ function Main({ name, addMovie, deleteMovies, saveMovies, onCardLike, isLoading,
       :
       name ==='mainMovies' ?
       <Movies
-        savedMovies={saveMovies}
-        addMovie={addMovie}
+        saveMovies={saveMovies}
+        handleMovieLike={handleMovieLike}
       />
       :
       name ==='mainSavedMovies' ?
       <SavedMovies 
         saveMovies={saveMovies}
-        deleteMovies={deleteMovies}
+        handleDeleteMovie={handleDeleteMovie}
       />
 
       :

@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import HeaderPopup from '../HeaderPopup/HeaderPopup';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import { autorize, deleteMovie, getContent, getMovies, getUserInfo, register, setUserInfo } from '../../utils/MainApi'
+import { addMovie, autorize, deleteMovie, getContent, getMovies, getUserInfo, register, setUserInfo } from '../../utils/MainApi'
 import Preloader from '../Preloader/Preloader';
 
 function App() {
@@ -21,6 +21,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({})
   const [isOpenEdit, setIsOpenEdit] = useState(false)
   const [saveMovies, setSaveMovies] = useState(false)
+  const [movies, setMovies] = useState([])
   const navigate = useNavigate()
 
 
@@ -38,16 +39,14 @@ function App() {
   }
 
 
-не доделала еще
 
-
-
-  function handleMovieLike(movie) {
+  
+  /*function handleMovieLike(movie) {
     const isLiked = movie.likes.some(item => item._id === currentUser._id);
     if (isLiked) {
       deleteMovie(movie._id)
       .then((newCard) => {
-        setCards((state) => state.map((c) => c._id === movie._id ? newCard : c))
+        setMovies((state) => state.map((c) => c._id === movie._id ? newCard : c))
       }) 
       .catch((err) => {
         console.log('Ошибка. Удалить лайк не получилось: ', err);
@@ -55,18 +54,23 @@ function App() {
     } else {
         addMovie(movie._id)
       .then((newCard) => {
-        setCards((state) => state.map((c) => c._id === movie._id ? newCard : c))
+        setMovies((state) => state.map((c) => c._id === movie._id ? newCard : c))
       })
       .catch((err) => {
         console.log('Ошибка. Поставить лайк не получилось: ', err);
       });
     }
+  }*/
+  function handleMovieLike(data) {
+    addMovie(data, localStorage.token)
   }
 
-
-  
-
   function handleDeleteMovie(movieId) {
+    //setIsLoadingCards(true)
+    deleteMovie(movieId, localStorage.token)
+  }
+
+  /*function handleDeleteMovie(movieId) {
      //setIsLoadingCards(true)
      deleteMovie(movieId, localStorage.token)
       .then(() => {
@@ -74,8 +78,7 @@ function App() {
       })
       .catch((err) => console.error('Ошибка. Удалить фильм не получилось' , err))
       //.finally(() =>  setIsLoadingMovies(false))
-    }
-  }
+  }*/
 
   
   /*useEffect(() => {
@@ -223,6 +226,7 @@ function App() {
               <Main
                 name='mainMovies'
                 saveMovies={saveMovies}
+                handleMovieLike={handleMovieLike}
               />
               <Footer />
               <HeaderPopup 
@@ -244,8 +248,9 @@ function App() {
                 onClick={handleBurgerClick}
               />
               <Main
-                name='mainMovies' 
+                name='mainSavedMovies' 
                 saveMovies={saveMovies}
+                handleDeleteMovie={handleDeleteMovie}
               />
               <Footer />
               <HeaderPopup 

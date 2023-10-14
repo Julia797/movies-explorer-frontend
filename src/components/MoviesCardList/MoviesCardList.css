@@ -51,4 +51,8 @@
     row-gap: 34px;
   }
 }
+
+.element__error {
+  text-align: center;
+}
   

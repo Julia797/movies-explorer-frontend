@@ -70,8 +70,13 @@
 }
 
 .element__button_likes {
+  background-image: url(../../images/button-savenactive.svg);
+}
+
+.element__button_likesActive {
   background-image: url(../../images/button-save.svg);
 }
+
 
 .element__button_delete {
   background-image: url(../../images/button-delete.svg);

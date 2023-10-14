@@ -4,7 +4,7 @@ import useFormValidation from '../../hooks/useFormValidation';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom'
 
-function SearchFilms({ isChecked, setIsChecked, searchForMovies, checked, downloadedMovies, selectionOfFilms, isLoadingMovies, isSearchFilms, searchForMoviescheckbox, searchForMoviesFirst }) {
+function SearchFilms({ isChecked, setIsChecked, saveMovies, searchForMovies, checked, downloadedMovies, selectionOfFilms, isLoadingMovies, isSearchFilms, searchForMoviescheckbox, searchForMoviesFirst }) {
   const { values, handleChange, resetForm } = useFormValidation()
   const { pathname } = useLocation()
   const [isValid, setIsValid] = useState(true)
@@ -12,32 +12,20 @@ function SearchFilms({ isChecked, setIsChecked, searchForMovies, checked, downlo
   function handleSubmit(evt) {
     evt.preventDefault()
     if (evt.target.searchFilms.value) {
-      searchForMovies(evt.target.searchFilms.value)
+      console.log(evt.target.searchFilms.value);
+      searchForMovies(evt.target.searchFilms.value, isChecked, downloadedMovies )
       setIsValid(true)
     } else {
       setIsValid(false)
     }
   }
-
-  console.log(isChecked);
-
+  
   useEffect(() => {
-    if ((pathname === '/saved-movies' && downloadedMovies.length === 0)) {
-      //const movies = JSON.parse(localStorage.downloadedmovies)
-     // const search = JSON.parse(localStorage.searchfilms)
-      //const checked = JSON.parse(localStorage.checkbox)
-      resetForm({ searchFilms: '' })
-      //setSearchFilms(searchFilms)
-     // selectionOfFilms(searchFilms, isChecked, downloadedMovies)
-    } else {
-
-      console.log('hhhhh')
+    if ((pathname === '/movies')) {
       resetForm({ searchFilms: isSearchFilms })
-           //selectionOfFilms(isSearchFilms, isChecked, downloadedMovies)
     }
   }
-
-    , [downloadedMovies, isSearchFilms, pathname, resetForm])
+    , [isSearchFilms, pathname, resetForm])
 
   return (
     <section className="searchFilms" aria-label="поиск фильмов">
