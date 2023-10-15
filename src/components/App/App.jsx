@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import HeaderPopup from '../HeaderPopup/HeaderPopup';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import { addMovie, autorize, deleteMovie, getContent, getMovies, getUserInfo, register, setUserInfo } from '../../utils/MainApi'
+import { addMovie, autorize, deleteMovie, getMovies, getUserInfo, register, setUserInfo } from '../../utils/MainApi'
 import Preloader from '../Preloader/Preloader';
 
 function App() {
@@ -16,11 +16,9 @@ function App() {
   const [isOpen, setIsOpen] = useState(false)
   const [isSending, setIsSending] = useState(false)
   const [isCheckToken, setIsCheckToken] = useState(true)
-  //const [userEmail, setUserEmail] = useState('')
   const [currentUser, setCurrentUser] = useState({})
   const [isOpenEdit, setIsOpenEdit] = useState(false)
   const [saveMovies, setSaveMovies] = useState(false)
- // const [movies, setMovies] = useState([])
   const navigate = useNavigate()
 
   function handleBurgerClick() {
@@ -44,14 +42,16 @@ function App() {
      .catch((err) => console.error('Ошибка. Удалить фильм не получилось' , err))
  }
   
-  const handleMovieLike = (movie) => {
+  function handleMovieLike(movie)  {
     const isSaved = saveMovies.some((item) => movie.id === item.movieId);
-    if (isSaved) {
+      if (isSaved) {
       const updatedMovies = saveMovies.filter(item => item.movieId === movie.id);
       handleDeleteMovie(updatedMovies[0]._id)
     } else {
       addMovie(movie, localStorage.token)
-        .then((res) => {
+        .then(res => {
+          console.log(res)
+          console.log([res, ...saveMovies])
           setSaveMovies([res, ...saveMovies]);
         })
         .catch((err) => {

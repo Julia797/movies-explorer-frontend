@@ -13,16 +13,11 @@ function MoviesCard({ data, src, trailerLink, handleDeleteMovie, handleMovieLike
     setIsLiked(saveMovies.some(item => data.id === item.movieId))
   }, [saveMovies, setIsLiked, pathname, data.id])
 
-  function handleLikeClick () {
-    if (saveMovies.some(item => data.id === item.movieId)) {
-      setIsLiked(true)
-      handleMovieLike(data)
-    } else {
-      setIsLiked(false)
-      handleMovieLike(data)
-    }
+  function handleLikeClick() {
+    handleMovieLike(data)
+    setIsLiked(!isLiked);
   }
-    
+  
   function convertToTime(number) {
     const hours = Math.floor(number / 60)
     const minutes = number % 60

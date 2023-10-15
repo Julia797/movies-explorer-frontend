@@ -14,7 +14,6 @@ function Profile({ handleUpdateUser, isOpenEdit, setIsOpenEdit, handleButtonEdit
     resetForm({ username: currentUser.name, email: currentUser.email })
   }, [resetForm, currentUser, isOpenEdit])
   
-  console.log(CurrentUserContext);
   function onSubmitEdite(evt) {
     evt.preventDefault()
       handleUpdateUser(values.username, values.email)

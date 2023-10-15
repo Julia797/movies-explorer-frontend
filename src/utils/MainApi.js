@@ -120,4 +120,5 @@ export const addMovie = (data, token) => {
       nameEN: data.nameEN
     })
   })
+  .then(res => checkResponse(res))
 }

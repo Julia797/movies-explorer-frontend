@@ -8,7 +8,7 @@ function Movies({ saveMovies, handleMovieLike,  handleDeleteMovie}) {
   const [isSearchFilms, setIsSearchFilms] = useState('')  // текст в строке поиска фильмов.
   const [isChecked, setIsChecked] = useState(false); // состояние чекбокса.
   const [isLoadingMovies, setIsLoadingMovies] = useState(false) // прелоадер при загрузке фильмов.
-  const [error, setError] = useState(false) // вывод ошибки сервера при первой загрузке фильмов.
+  const [errorNoMovie, setErrorNoMovie] = useState(false) // вывод ошибки сервера при первой загрузке фильмов.
   const [selectedFilms, setSelectedFilms] = useState([]) //отобранные фильмы по строке поиска и чекбоксу
   
     const selectionOfFilms = useCallback((input, isChecked, movies) => {
@@ -30,11 +30,12 @@ function Movies({ saveMovies, handleMovieLike,  handleDeleteMovie}) {
       setIsLoadingMovies(true)
       MoviesApi.getMovies()
         .then((res) => {
+          setErrorNoMovie(false)
           setDownloadedMovies(res)
           selectionOfFilms(input, isChecked, res)
         })
         .catch(err => {
-          setError(true)
+          setErrorNoMovie(true)
           console.log('Ошибка. Поиск фильмов завершился неудачей: ', err);
         })
         .finally(() => setIsLoadingMovies(false))
@@ -46,7 +47,6 @@ function Movies({ saveMovies, handleMovieLike,  handleDeleteMovie}) {
            
         } else {
           searchForMoviesFirst(input)
-          console.log('ошибка  не тут');
         }
     }
 
@@ -59,6 +59,7 @@ function Movies({ saveMovies, handleMovieLike,  handleDeleteMovie}) {
           setIsSearchFilms(search)
           setIsChecked(checked)
           selectionOfFilms(search, checked, movies)
+          setErrorNoMovie(false)
         }
     }, [isChecked, setDownloadedMovies, selectionOfFilms])
   
@@ -89,9 +90,8 @@ function Movies({ saveMovies, handleMovieLike,  handleDeleteMovie}) {
         <MoviesCardList
           movies={selectedFilms} 
           handleMovieLike={handleMovieLike}
-          //error={error}
+          errorNoMovie={errorNoMovie}
           saveMovies={saveMovies}
-         /// handleDeleteMovie={handleDeleteMovie}
         />
       </> 
   )

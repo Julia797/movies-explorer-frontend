@@ -27,14 +27,7 @@ function useFormValidation() {
     
     setIsValid(form.checkValidity())
   }
-
-  /*function resetForm(newValues = {}, newErrors = {}, newIsValid = false, newIsInputValid = {}) {
-    setValues(prevValues => ({ ...prevValues, ...newValues }));
-    setErrors(newErrors);
-    setIsValid(newIsValid);
-    setIsInputValid(newIsInputValid);
-  }*/
-
+ 
   const resetForm = useCallback((data = {}) => {
     setValues(data)
     setErrors({})
