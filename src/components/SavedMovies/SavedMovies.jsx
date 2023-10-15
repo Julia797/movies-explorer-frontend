@@ -50,6 +50,7 @@ function SavedMovies({ saveMovies, handleDeleteMovie }) {
         <MoviesCardList
           movies={selectedFilms}
           handleDeleteMovie={handleDeleteMovie}
+          //saveMovies={saveMovies}
         />
       </> 
   )

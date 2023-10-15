@@ -20,7 +20,7 @@ function MoviesCardList({ movies, saveMovies, handleMovieLike, handleDeleteMovie
                     src={`https://api.nomoreparties.co${data.image.url}`}
                     handleMovieLike={handleMovieLike}
                     saveMovies={saveMovies}
-                    //key={data._id}
+                    key={data.id}
                   />
                 )             
             }) : movies.length !== 0 ?
@@ -30,7 +30,7 @@ function MoviesCardList({ movies, saveMovies, handleMovieLike, handleDeleteMovie
                       data={data}
                       src={data.image}
                       handleDeleteMovie={handleDeleteMovie}
-                      //key={data._id}
+                      key={data._id}
                     />
                   )  
                 }) : error ?
@@ -47,39 +47,3 @@ function MoviesCardList({ movies, saveMovies, handleMovieLike, handleDeleteMovie
 
 export default MoviesCardList;
 
-/*
-return (
-  <>
-    <section className="elements" aria-label="видеофильм">
-      <ul className="element">
-        {isLoadingMovies ? <Preloader /> :
-          (pathname === '/movies') ?
-            movies.map(data => {
-              return (
-                <MoviesCard 
-                  data={data}
-                  src={`https://api.nomoreparties.co${data.image.url}`}
-                  handleMovieLike={handleMovieLike}
-                  saveMovies={saveMovies}
-                  //key={data._id}
-                />
-              )             
-          }) : (pathname === '/saved-movies') ?
-          saveMovies.map(data => {
-                return (
-                  <MoviesCard 
-                    data={data}
-                    src={data.image}
-                    handleDeleteMovie={handleDeleteMovie}
-                   // key={data._id}
-                  />
-                )  
-              }) : 
-                <span className="element__error">Во время запроса произошла ошибка. Возможно, проблема с 
-                  соединением или сервер недоступен. Подождите немного и попробуйте ещё раз</span>
-        } 
-      </ul>
-    </section>
-  </>
-)
-}*/

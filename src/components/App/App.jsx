@@ -16,14 +16,12 @@ function App() {
   const [isOpen, setIsOpen] = useState(false)
   const [isSending, setIsSending] = useState(false)
   const [isCheckToken, setIsCheckToken] = useState(true)
-  const [userEmail, setUserEmail] = useState('')
-  //const [username, setUsername] = useState('')
+  //const [userEmail, setUserEmail] = useState('')
   const [currentUser, setCurrentUser] = useState({})
   const [isOpenEdit, setIsOpenEdit] = useState(false)
   const [saveMovies, setSaveMovies] = useState(false)
-  const [movies, setMovies] = useState([])
+ // const [movies, setMovies] = useState([])
   const navigate = useNavigate()
-
 
   function handleBurgerClick() {
     setIsOpen(true)
@@ -37,69 +35,40 @@ function App() {
     evt.preventDefault()
     setIsOpenEdit(true)
   }
-
-
-
+ 
+  function handleDeleteMovie(movieId) {
+    deleteMovie(movieId, localStorage.token)
+     .then(() => {
+       setSaveMovies(saveMovies.filter(movie => { return movie._id !== movieId }))
+     })
+     .catch((err) => console.error('Ошибка. Удалить фильм не получилось' , err))
+ }
   
-  /*function handleMovieLike(movie) {
-    const isLiked = movie.likes.some(item => item._id === currentUser._id);
-    if (isLiked) {
-      deleteMovie(movie._id)
-      .then((newCard) => {
-        setMovies((state) => state.map((c) => c._id === movie._id ? newCard : c))
-      }) 
-      .catch((err) => {
-        console.log('Ошибка. Удалить лайк не получилось: ', err);
-      });
+  const handleMovieLike = (movie) => {
+    const isSaved = saveMovies.some((item) => movie.id === item.movieId);
+    if (isSaved) {
+      const updatedMovies = saveMovies.filter(item => item.movieId === movie.id);
+      handleDeleteMovie(updatedMovies[0]._id)
     } else {
-        addMovie(movie._id)
-      .then((newCard) => {
-        setMovies((state) => state.map((c) => c._id === movie._id ? newCard : c))
-      })
-      .catch((err) => {
-        console.log('Ошибка. Поставить лайк не получилось: ', err);
-      });
+      addMovie(movie, localStorage.token)
+        .then((res) => {
+          setSaveMovies([res, ...saveMovies]);
+        })
+        .catch((err) => {
+          console.log('Ошибка. Сохранить фильм не получилось: ', err);
+        });
     }
-  }*/
-  function handleMovieLike(data) {
-    addMovie (data, localStorage.token)
-  }
-
-function handleDeleteMovie(movieId) {
-     //setIsLoadingCards(true)
-     deleteMovie(movieId, localStorage.token)
-}
-
-  /*function handleDeleteMovie(movieId) {
-     //setIsLoadingCards(true)
-     deleteMovie(movieId, localStorage.token)
-      .then(() => {
-        setSaveMovies(saveMovies.filter(movie => { return movie._id !== movieId }))
-      })
-      .catch((err) => console.error('Ошибка. Удалить фильм не получилось' , err))
-      //.finally(() =>  setIsLoadingMovies(false))
-  }*/
-
-  
-  /*useEffect(() => {
-    if (isOpenEdit) {
-      setUsername(currentUser.name);
-      setUserEmail(currentUser.email);
-    }
-  }, [isOpenEdit, currentUser.name, currentUser.email]);*/
+  };
 
   useEffect(() => {
 
     if (localStorage.token) {
-    //setIsLoadingCards(true)
-    Promise.all([getUserInfo(localStorage.token), getMovies(localStorage.token)])
-    .then(([dataUserInfo, dataInitialSavedMovie]) => {
-      console.log(dataUserInfo);
-      setCurrentUser(dataUserInfo)
-      setIsLoggedIn(true)
-      setIsCheckToken(false)
-      setSaveMovies(dataInitialSavedMovie.reverse())
-     // setIsLoadingMovies(false)
+      Promise.all([getUserInfo(localStorage.token), getMovies(localStorage.token)])
+        .then(([dataUserInfo, dataInitialSavedMovie]) => {
+          setCurrentUser(dataUserInfo)
+          setIsLoggedIn(true)
+          setIsCheckToken(false)
+          setSaveMovies(dataInitialSavedMovie.reverse())
     })
     .catch((err) => {
       console.log('Ошибка. Начальные данные не созданы: ', err);
@@ -109,7 +78,7 @@ function handleDeleteMovie(movieId) {
   } else {
       setIsLoggedIn(false)
       setIsCheckToken(false)
-      //localStorage.clear()
+    
   }
   }, [isLoggedIn])
   

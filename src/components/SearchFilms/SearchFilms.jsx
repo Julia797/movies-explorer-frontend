@@ -21,12 +21,13 @@ function SearchFilms({ isChecked, setIsChecked, saveMovies, searchForMovies, che
   }
   
   useEffect(() => {
-    if ((pathname === '/movies')) {
+    if ((pathname === 'saved-movies' && saveMovies.length === 0)) {
+      resetForm({ search: '' })
+    } else {
       resetForm({ searchFilms: isSearchFilms })
     }
-  }
-    , [isSearchFilms, pathname, resetForm])
-
+     }, [isSearchFilms, pathname, resetForm, saveMovies])
+  
   return (
     <section className="searchFilms" aria-label="поиск фильмов">
       

@@ -11,8 +11,7 @@ import PageNotFound from '../PageNotFound/PageNotFound';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 
-function Main({ name, handleMovieLike, handleDeleteMovie, deleteMovies, saveMovies, onCardLike, isLoading, handleRegister,  handleLogin, outOfAccount, isSending, handleButtonEditClick, isOpenEdit, setIsOpenEdit, handleUpdateUser }) {
-  console.log(saveMovies);
+function Main({ name, handleMovieLike, handleDeleteMovie, saveMovies, handleRegister,  handleLogin, outOfAccount, handleButtonEditClick, isOpenEdit, setIsOpenEdit, handleUpdateUser }) {
   return (
     <main className="main">
       {name ==='mainHomePage' ?
@@ -48,7 +47,6 @@ function Main({ name, handleMovieLike, handleDeleteMovie, deleteMovies, saveMovi
         saveMovies={saveMovies}
         handleDeleteMovie={handleDeleteMovie}
       />
-
       :
        <PageNotFound />
       }
@@ -58,17 +56,3 @@ function Main({ name, handleMovieLike, handleDeleteMovie, deleteMovies, saveMovi
 
 export default Main;
 
-/*:
-      name ==='mainMovies' ?
-      <>
-        <SearchFilms />
-        <MoviesCardList
-          movies={movies} />
-      </> 
-      :
-      name ==='mainSavedMovies' ?
-      <>
-        <SearchFilms />
-        <MoviesCardList
-          movies={savedMovies} />
-      </> */

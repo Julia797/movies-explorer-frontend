@@ -16,7 +16,6 @@ function Movies({ saveMovies, handleMovieLike,  handleDeleteMovie}) {
       localStorage.setItem('searchfilms', JSON.stringify(input))
       localStorage.setItem('checkbox', JSON.stringify(isChecked))
       localStorage.setItem('downloadedmovies', JSON.stringify(movies))
-      //setIsSearchFilms(input)
       setSelectedFilms(movies.filter((item) => {
         const searchName = item.nameRU.toLowerCase().includes(input.toLowerCase())
         if (isChecked) {
@@ -61,7 +60,7 @@ function Movies({ saveMovies, handleMovieLike,  handleDeleteMovie}) {
           setIsChecked(checked)
           selectionOfFilms(search, checked, movies)
         }
-    }, [downloadedMovies, isChecked,  selectionOfFilms])
+    }, [isChecked, setDownloadedMovies, selectionOfFilms])
   
     function searchForMoviescheckbox() {
       if (isChecked) {
@@ -82,7 +81,7 @@ function Movies({ saveMovies, handleMovieLike,  handleDeleteMovie}) {
           searchForMovies={searchForMovies}
           isChecked={isChecked}
           isSearchFilms={isSearchFilms}
-          error={error}
+          //error={error}
           searchForMoviescheckbox={searchForMoviescheckbox}
           selectionOfFilms={selectionOfFilms}
           saveMovies={saveMovies}
@@ -90,7 +89,9 @@ function Movies({ saveMovies, handleMovieLike,  handleDeleteMovie}) {
         <MoviesCardList
           movies={selectedFilms} 
           handleMovieLike={handleMovieLike}
-          error={error}
+          //error={error}
+          saveMovies={saveMovies}
+         /// handleDeleteMovie={handleDeleteMovie}
         />
       </> 
   )

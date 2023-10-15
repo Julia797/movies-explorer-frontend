@@ -1,41 +1,28 @@
 import { useLocation } from 'react-router-dom';
 import './MoviesCard.css';
-import { addMovie } from '../../utils/MainApi';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
 
-function MoviesCard({ data, src, trailerLink, handleDeleteMovie, handleMovieLike }) {
+function MoviesCard({ data, src, trailerLink, handleDeleteMovie, handleMovieLike, saveMovies}) {
   const { pathname } = useLocation();
   const [isLiked, setIsLiked] = useState(false)
 
-  /*useEffect(() => {
+  useEffect(() => {
     if (pathname === '/movies')
-      setClick(saveMovies.some(element => data.id === element.movieId))
-  }, [saveMovies, setClick, pathname, data.id])
+    setIsLiked(saveMovies.some(item => data.id === item.movieId))
+  }, [saveMovies, setIsLiked, pathname, data.id])
 
-  const handleLikeClick = () => {
-    if (saveMovies.some(element => data.id === element.movieId)) {
-      setClick(true)
-      addMovie(data)
-    } else {
-      setClick(false)
-      addMovie(data)
-    }
-  }*/
-  
-  const handleLikeClick = () => {
-    if (!isLiked) {
-      handleMovieLike(data)
+  function handleLikeClick () {
+    if (saveMovies.some(item => data.id === item.movieId)) {
       setIsLiked(true)
-    } else {
       handleMovieLike(data)
+    } else {
       setIsLiked(false)
+      handleMovieLike(data)
     }
   }
-  //onClick={handleDeleteMovie(data._id)}
-
-  
+    
   function convertToTime(number) {
     const hours = Math.floor(number / 60)
     const minutes = number % 60
