@@ -6,7 +6,7 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 import { useContext } from 'react';
 import { useEffect } from 'react';
 
-function Profile({ handleUpdateUser, isOpenEdit, isErrorAll, isSuccessful, handleButtonEditClick, outOfAccount }) {
+function Profile({ handleUpdateUser, isOpenEdit, isSuccessful, handleButtonEditClick, outOfAccount }) {
   const { values, errors, isValid, isInputValid, handleChange, resetForm } = useFormValidation()
   const currentUser = useContext(CurrentUserContext);
 
@@ -29,7 +29,6 @@ function Profile({ handleUpdateUser, isOpenEdit, isErrorAll, isSuccessful, handl
       nameButton='Сохранить'
       isValid={isValid}
       onSubmit={onSubmitEdite}
-      isErrorAll={isErrorAll}
       isSuccessful={isSuccessful}
     >
       <fieldset className='profile profile_edit'>

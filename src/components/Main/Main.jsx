@@ -34,7 +34,6 @@ function Main({ name, handleMovieLike, handleDeleteMovie, saveMovies, handleRegi
         setIsOpenEdit={setIsOpenEdit}
         handleUpdateUser={handleUpdateUser}
         outOfAccount={outOfAccount}
-        isErrorAll={isErrorAll}
         isSuccessful={isSuccessful}
         />
       :

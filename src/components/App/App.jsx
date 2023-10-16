@@ -121,12 +121,12 @@ function App() {
       .then(res => {
         setIsSuccessful(true)
         setCurrentUser(res)
-        setIsOpenEdit(false)
-        
-        resetForm()
-       })
+        setTimeout(() => {
+          setIsOpenEdit(false);
+          setIsSuccessful(false)
+        }, 2000);
+      })
       .catch((err) => {
-        setIsErrorAll(true)
         console.log('Ошибка. Обновить данные пользователя на сервере не получилось: ', err);
       })
       .finally(() => setIsSending(false))
@@ -179,7 +179,6 @@ function App() {
                 setIsOpenEdit={setIsOpenEdit}
                 handleUpdateUser={handleUpdateUser}
                 outOfAccount={outOfAccount}
-                isErrorAll={isErrorAll}
                 isSuccessful={isSuccessful}
               />
               <HeaderPopup 
