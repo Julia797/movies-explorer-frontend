@@ -11,13 +11,13 @@ function MoviesCardList({ movies, saveMovies, handleMovieLike, handleDeleteMovie
 
   const getCardsCount = () => {
     const screenWidth = window.innerWidth;
-    if (screenWidth >= 1280) {
+    if (screenWidth >= 1171) {
       return 16;
-    } else if (screenWidth >= 1168) {
+    } else if (screenWidth >= 901) {
       return 12;
-    } else if (screenWidth >= 768) {
+    } else if (screenWidth >= 751) {
       return 8;
-    } else if (screenWidth >= 749) {
+    } else if (screenWidth >= 481) {
       return 4;
     } else {
       return 5;
@@ -26,13 +26,13 @@ function MoviesCardList({ movies, saveMovies, handleMovieLike, handleDeleteMovie
  
   const сount = () => {
     const screenWidth = window.innerWidth;
-    if (screenWidth >= 1280) {
+    if (screenWidth >= 1171) {
       return 4;
-    } else if (screenWidth >= 1170) {
+    } else if (screenWidth >= 901) {
       return 3;
-    } else if (screenWidth >= 768) {
+    } else if (screenWidth >= 751) {
       return 2;
-    } else if (screenWidth >= 750) {
+    } else if (screenWidth >= 481) {
       return 1;
     } else {
       return 2;

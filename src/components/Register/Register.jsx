@@ -3,8 +3,8 @@ import useFormValidation from "../../hooks/useFormValidation";
 import './Register.css';
 import Input from "../Input/Input";
 
-function Register({ handleRegister }) {
-  const { values, errors, isValid, isInputValid, handleChange, resetForm, setIsErrorAll } = useFormValidation()
+function Register({ handleRegister, isErrorAll }) {
+  const { values, errors, isValid, isInputValid, handleChange, resetForm } = useFormValidation()
 
   function handleSubmit(evt) {
     evt.preventDefault()
@@ -19,6 +19,7 @@ function Register({ handleRegister }) {
       isValid={isValid}
       onSubmit={handleSubmit}
       onChange={handleChange}
+      isErrorAll={isErrorAll}
     >
     
       <fieldset className="form__input form__input_registrationForm">
@@ -33,10 +34,7 @@ function Register({ handleRegister }) {
           minLength="2"
           maxLength="40"
           id="username"
-          onChange={(evt) => {
-            handleChange(evt)
-            setIsErrorAll(false)
-          }}
+          onChange={handleChange}
           placeholder='Введите имя'
         />
         <Input
@@ -50,10 +48,7 @@ function Register({ handleRegister }) {
           minLength="2"
           maxLength="40"
           id="email"
-          onChange={(evt) => {
-            handleChange(evt)
-            setIsErrorAll(false)
-          }}
+          onChange={handleChange}
           placeholder='Введите электронную почту'
         />
         <Input
@@ -67,10 +62,7 @@ function Register({ handleRegister }) {
           minLength = '3' 
           maxLength='20'
           id="contact-password"
-          onChange={(evt) => {
-            handleChange(evt)
-            setIsErrorAll(false)
-          }}
+          onChange={handleChange}
           placeholder='Введите пароль'
         />
       </fieldset>

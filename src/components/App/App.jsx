@@ -106,6 +106,7 @@ function App() {
     .then((res) => {
       if (res) {
         handleLogin(email, password, resetForm)
+        setIsErrorAll(false)
       }
     })
     .catch((err) => {
@@ -246,7 +247,7 @@ function App() {
           <Main
             name='mainSignUp'
             handleRegister={handleRegister}
-            setIsErrorAll={setIsErrorAll}
+            isErrorAll={isErrorAll}
           /> 
       } />     
 

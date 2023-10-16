@@ -20,6 +20,7 @@ function Main({ name, handleMovieLike, handleDeleteMovie, saveMovies, handleRegi
       name ==='mainSignUp' ?
         <Register 
           handleRegister={handleRegister}
+          isErrorAll={isErrorAll}
         />
       :
       name ==='mainSignIn' ?
@@ -35,7 +36,7 @@ function Main({ name, handleMovieLike, handleDeleteMovie, saveMovies, handleRegi
         handleUpdateUser={handleUpdateUser}
         outOfAccount={outOfAccount}
         isSuccessful={isSuccessful}
-        />
+      />
       :
       name ==='mainMovies' ?
       <Movies
