@@ -26,7 +26,7 @@ function MoviesCard({ data, src, trailerLink, handleDeleteMovie, handleMovieLike
   
   return (
     <li className="element__item">
-      <a className="element__link" href={trailerLink} target="_blank" rel="noreferrer">
+      <a className="element__link" href={data.trailerLink} target="_blank" rel="noreferrer">
         <img className="element__foto" src={src} alt={data.nameRU} />
       </a>
       

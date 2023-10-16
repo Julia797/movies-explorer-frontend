@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 function MoviesCardList({ movies, saveMovies, handleMovieLike, handleDeleteMovie, isLoadingMovies, errorNoMovie }) {
   const { pathname } = useLocation()
   const [visibleMovies, setVisibleMovies] = useState([]);
-  const [showMoreButton, setShowMoreButton] = useState(false);
+  const [isButtonOn, setIsButtonOn] = useState(false);
 
   const getCardsCount = () => {
     const screenWidth = window.innerWidth;
@@ -41,7 +41,7 @@ function MoviesCardList({ movies, saveMovies, handleMovieLike, handleDeleteMovie
  
   useEffect(() => {
     setVisibleMovies(movies.slice(0, getCardsCount()));
-    setShowMoreButton(movies.length > getCardsCount());
+    setIsButtonOn(movies.length > getCardsCount());
   }, [movies]);
 
   const handleShowMore = () => {
@@ -51,11 +51,10 @@ function MoviesCardList({ movies, saveMovies, handleMovieLike, handleDeleteMovie
     ]);
 
     if (visibleMovies.length + getCardsCount() >= movies.length) {
-      setShowMoreButton(false);
+      setIsButtonOn(false);
     }
   };
-  
- 
+   
   return (
     <>
       <section className="elements" aria-label="видеофильм">
@@ -89,7 +88,7 @@ function MoviesCardList({ movies, saveMovies, handleMovieLike, handleDeleteMovie
                     <span className='element__error'>Ничего не найдено</span>
           } 
         </ul>
-        {showMoreButton && pathname === '/movies' && <button className="elements__more" type="button" name="more" onClick={handleShowMore}>Ещё</button>}
+        {isButtonOn && pathname === '/movies' && <button className="elements__more" type="button" name="more" onClick={handleShowMore}>Ещё</button>}
       </section>
     </>
   )

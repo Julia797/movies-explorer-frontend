@@ -19,6 +19,8 @@ function App() {
   const [currentUser, setCurrentUser] = useState({})
   const [isOpenEdit, setIsOpenEdit] = useState(false)
   const [saveMovies, setSaveMovies] = useState(false)
+  const [isErrorAll, setIsErrorAll] = useState(false)
+  const [isSuccessful, setIsSuccessful] = useState(false)
   const navigate = useNavigate()
 
   function handleBurgerClick() {
@@ -78,23 +80,8 @@ function App() {
   } else {
       setIsLoggedIn(false)
       setIsCheckToken(false)
-    
-  }
+    }
   }, [isLoggedIn])
-  
-  function handleRegister(username, email, password, resetForm) {
-    setIsSending(true)
-    register(username, email, password)
-    .then(() => {
-      resetForm({ username: '', email: '', password: '' })
-      navigate('/movies')
-    })
-    .catch((err) => {
-      
-      console.log('Ошибка. Зарегистрировать пользователя на сервере не получилось: ', err);
-    })
-    .finally(() => setIsSending(false))
-  }
   
   function handleLogin(email, password, resetForm) {
     setIsSending(true)
@@ -113,15 +100,33 @@ function App() {
     setIsSending(false))
   }
 
+  function handleRegister(username, email, password, resetForm) {
+    setIsSending(true)
+    register(username, email, password)
+    .then((res) => {
+      if (res) {
+        handleLogin(email, password, resetForm)
+      }
+    })
+    .catch((err) => {
+      setIsErrorAll(true)
+      console.log('Ошибка. Зарегистрировать пользователя на сервере не получилось: ', err);
+    })
+    .finally(() => setIsSending(false))
+  }
+  
   function handleUpdateUser(username, email, resetForm) {
     setIsSending(true)
     setUserInfo(username, email, localStorage.token)
       .then(res => {
+        setIsSuccessful(true)
         setCurrentUser(res)
         setIsOpenEdit(false)
+        
         resetForm()
        })
       .catch((err) => {
+        setIsErrorAll(true)
         console.log('Ошибка. Обновить данные пользователя на сервере не получилось: ', err);
       })
       .finally(() => setIsSending(false))
@@ -151,6 +156,7 @@ function App() {
             <HeaderPopup 
               isOpen={isOpen}
               onClose={handleCloseClick}
+              setIsOpen={setIsOpen}
             />
             <Footer />
           </>
@@ -173,10 +179,13 @@ function App() {
                 setIsOpenEdit={setIsOpenEdit}
                 handleUpdateUser={handleUpdateUser}
                 outOfAccount={outOfAccount}
+                isErrorAll={isErrorAll}
+                isSuccessful={isSuccessful}
               />
               <HeaderPopup 
                 isOpen={isOpen}
                 onClose={handleCloseClick}
+                setIsOpen={setIsOpen}
               />
             </> 
           }
@@ -201,6 +210,7 @@ function App() {
               <HeaderPopup 
                 isOpen={isOpen}
                 onClose={handleCloseClick}
+                setIsOpen={setIsOpen}
               />
             </>
           }
@@ -225,6 +235,7 @@ function App() {
               <HeaderPopup 
                 isOpen={isOpen}
                 onClose={handleCloseClick}
+                setIsOpen={setIsOpen}
               />
             </>
           }
@@ -236,6 +247,7 @@ function App() {
           <Main
             name='mainSignUp'
             handleRegister={handleRegister}
+            setIsErrorAll={setIsErrorAll}
           /> 
       } />     
 

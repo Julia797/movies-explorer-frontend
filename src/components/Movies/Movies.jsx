@@ -82,7 +82,6 @@ function Movies({ saveMovies, handleMovieLike,  handleDeleteMovie}) {
           searchForMovies={searchForMovies}
           isChecked={isChecked}
           isSearchFilms={isSearchFilms}
-          //error={error}
           searchForMoviescheckbox={searchForMoviescheckbox}
           selectionOfFilms={selectionOfFilms}
           saveMovies={saveMovies}

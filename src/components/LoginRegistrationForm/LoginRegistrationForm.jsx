@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import './LoginRegistrationForm.css';
 import Form from "../Form/Form";
 
-function LoginRegistrationForm({ nameForm, title, onSubmit, nameButton, isValid=true, onClick, children, outOfAccount }) {
+function LoginRegistrationForm({ nameForm, title, onSubmit, nameButton, isValid=true, onClick, children, outOfAccount, isErrorAll, isSuccessful }) {
    
   return (
     <section className="loginRegistrationForm">
@@ -14,6 +14,8 @@ function LoginRegistrationForm({ nameForm, title, onSubmit, nameButton, isValid=
         children={children} 
         isValid={isValid}
         onClick={onClick}
+        isErrorAll={isErrorAll}
+        isSuccessful={isSuccessful}
       />
 
       {nameForm === `signup` ? <p className="loginRegistrationForm__subtitle">Уже зарегистрированы? <Link className="loginRegistrationForm__link button" 

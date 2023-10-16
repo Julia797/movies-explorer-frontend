@@ -4,7 +4,7 @@ import './Register.css';
 import Input from "../Input/Input";
 
 function Register({ handleRegister }) {
-  const { values, errors, isValid, isInputValid, handleChange, resetForm } = useFormValidation()
+  const { values, errors, isValid, isInputValid, handleChange, resetForm, setIsErrorAll } = useFormValidation()
 
   function handleSubmit(evt) {
     evt.preventDefault()
@@ -33,7 +33,10 @@ function Register({ handleRegister }) {
           minLength="2"
           maxLength="40"
           id="username"
-          onChange={handleChange}
+          onChange={(evt) => {
+            handleChange(evt)
+            setIsErrorAll(false)
+          }}
           placeholder='Введите имя'
         />
         <Input
@@ -47,7 +50,10 @@ function Register({ handleRegister }) {
           minLength="2"
           maxLength="40"
           id="email"
-          onChange={handleChange}
+          onChange={(evt) => {
+            handleChange(evt)
+            setIsErrorAll(false)
+          }}
           placeholder='Введите электронную почту'
         />
         <Input
@@ -61,7 +67,10 @@ function Register({ handleRegister }) {
           minLength = '3' 
           maxLength='20'
           id="contact-password"
-          onChange={handleChange}
+          onChange={(evt) => {
+            handleChange(evt)
+            setIsErrorAll(false)
+          }}
           placeholder='Введите пароль'
         />
       </fieldset>

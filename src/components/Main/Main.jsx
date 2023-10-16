@@ -11,7 +11,7 @@ import PageNotFound from '../PageNotFound/PageNotFound';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 
-function Main({ name, handleMovieLike, handleDeleteMovie, saveMovies, handleRegister,  handleLogin, outOfAccount, handleButtonEditClick, isOpenEdit, setIsOpenEdit, handleUpdateUser }) {
+function Main({ name, handleMovieLike, handleDeleteMovie, saveMovies, handleRegister, handleLogin, outOfAccount, handleButtonEditClick, isOpenEdit, setIsOpenEdit, handleUpdateUser, isErrorAll, isSuccessful }) {
   return (
     <main className="main">
       {name ==='mainHomePage' ?
@@ -34,6 +34,8 @@ function Main({ name, handleMovieLike, handleDeleteMovie, saveMovies, handleRegi
         setIsOpenEdit={setIsOpenEdit}
         handleUpdateUser={handleUpdateUser}
         outOfAccount={outOfAccount}
+        isErrorAll={isErrorAll}
+        isSuccessful={isSuccessful}
         />
       :
       name ==='mainMovies' ?
