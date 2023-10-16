@@ -60,7 +60,7 @@ function MoviesCardList({ movies, saveMovies, handleMovieLike, handleDeleteMovie
       <section className="elements" aria-label="видеофильм">
         <ul className="element">
           {isLoadingMovies ? <Preloader /> :
-            (pathname === '/movies') ?
+            (pathname === '/movies' && movies.length !== 0) ?
             visibleMovies.map(data => {
                 return (
                   <MoviesCard 
@@ -82,10 +82,10 @@ function MoviesCardList({ movies, saveMovies, handleMovieLike, handleDeleteMovie
                       />
                     )  
                   }) : errorNoMovie ?
-                    <span className="element__error">Во время запроса произошла ошибка. Возможно, проблема с 
-                      соединением или сервер недоступен. Подождите немного и попробуйте ещё раз</span>
-                    : 
-                    <span className='element__error'>Ничего не найдено</span>
+                        <span className="element__error">Во время запроса произошла ошибка. Возможно, проблема с 
+                        соединением или сервер недоступен. Подождите немного и попробуйте ещё раз</span>
+                     : 
+                        <span className='element__error'>Ничего не найдено</span>
           } 
         </ul>
         {isButtonOn && pathname === '/movies' && <button className="elements__more" type="button" name="more" onClick={handleShowMore}>Ещё</button>}
