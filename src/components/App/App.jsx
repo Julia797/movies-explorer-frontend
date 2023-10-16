@@ -52,8 +52,6 @@ function App() {
     } else {
       addMovie(movie, localStorage.token)
         .then(res => {
-          console.log(res)
-          console.log([res, ...saveMovies])
           setSaveMovies([res, ...saveMovies]);
         })
         .catch((err) => {
