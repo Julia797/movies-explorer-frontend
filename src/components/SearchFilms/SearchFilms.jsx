@@ -12,7 +12,6 @@ function SearchFilms({ isChecked, setIsChecked, saveMovies, searchForMovies, che
   function handleSubmit(evt) {
     evt.preventDefault()
     if (evt.target.searchFilms.value) {
-      console.log(evt.target.searchFilms.value);
       searchForMovies(evt.target.searchFilms.value, isChecked, downloadedMovies )
       setIsValid(true)
     } else {

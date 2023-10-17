@@ -43,11 +43,11 @@ function App() {
      })
      .catch((err) => console.error('Ошибка. Удалить фильм не получилось' , err))
  }
-  
+ 
   function handleMovieLike(movie)  {
-    const isSaved = saveMovies.some((item) => movie.id === item.movieId);
-      if (isSaved) {
-      const updatedMovies = saveMovies.filter(item => item.movieId === movie.id);
+    const isSaved = saveMovies.some((item) => (movie.id + 100) === item.movieId);
+    if (isSaved) {
+      const updatedMovies = saveMovies.filter(item => item.movieId === (movie.id + 100));
       handleDeleteMovie(updatedMovies[0]._id)
     } else {
       addMovie(movie, localStorage.token)

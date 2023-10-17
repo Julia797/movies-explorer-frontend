@@ -115,7 +115,7 @@ export const addMovie = (data, token) => {
       image: `https://api.nomoreparties.co${data.image.url}`,
       trailerLink: data.trailerLink,
       thumbnail: `https://api.nomoreparties.co${data.image.formats.thumbnail.url}`,
-      movieId: data.id,
+      movieId: (data.id+100),
       nameRU: data.nameRU,
       nameEN: data.nameEN
     })

@@ -4,13 +4,13 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 
 
-function MoviesCard({ data, src, trailerLink, handleDeleteMovie, handleMovieLike, saveMovies}) {
+function MoviesCard({ data, src, handleDeleteMovie, handleMovieLike, saveMovies}) {
   const { pathname } = useLocation();
   const [isLiked, setIsLiked] = useState(false)
 
   useEffect(() => {
     if (pathname === '/movies')
-    setIsLiked(saveMovies.some(item => data.id === item.movieId))
+    setIsLiked(saveMovies.some(item => (data.id + 100) === item.movieId))
   }, [saveMovies, setIsLiked, pathname, data.id])
 
   function handleLikeClick() {
