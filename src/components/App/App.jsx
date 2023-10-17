@@ -45,9 +45,9 @@ function App() {
  }
  
   function handleMovieLike(movie)  {
-    const isSaved = saveMovies.some((item) => (movie.id + 100) === item.movieId);
+    const isSaved = saveMovies.some((item) => (movie.id + 200) === item.movieId);
     if (isSaved) {
-      const updatedMovies = saveMovies.filter(item => item.movieId === (movie.id + 100));
+      const updatedMovies = saveMovies.filter(item => item.movieId === (movie.id + 200));
       handleDeleteMovie(updatedMovies[0]._id)
     } else {
       addMovie(movie, localStorage.token)

@@ -11,8 +11,8 @@ function useFormValidation() {
     const value = e.target.value
     const form = e.target.form
     const validationMessage = e.target.validationMessage
-    const valid = e.target.validity.valid
-
+    const valid = e.target.checkValidity()
+  
     setValues((values) => {
       return { ...values, [name]: value }
     }) 

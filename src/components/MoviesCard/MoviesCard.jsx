@@ -10,7 +10,7 @@ function MoviesCard({ data, src, handleDeleteMovie, handleMovieLike, saveMovies}
 
   useEffect(() => {
     if (pathname === '/movies')
-    setIsLiked(saveMovies.some(item => (data.id + 100) === item.movieId))
+    setIsLiked(saveMovies.some(item => (data.id + 200) === item.movieId))
   }, [saveMovies, setIsLiked, pathname, data.id])
 
   function handleLikeClick() {

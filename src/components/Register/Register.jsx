@@ -2,6 +2,7 @@ import LoginRegistrationForm from "../LoginRegistrationForm/LoginRegistrationFor
 import useFormValidation from "../../hooks/useFormValidation";
 import './Register.css';
 import Input from "../Input/Input";
+import { emailTest } from "../../utils/constants";
 
 function Register({ handleRegister, isErrorAll }) {
   const { values, errors, isValid, isInputValid, handleChange, resetForm } = useFormValidation()
@@ -50,6 +51,7 @@ function Register({ handleRegister, isErrorAll }) {
           id="email"
           onChange={handleChange}
           placeholder='Введите электронную почту'
+          pattern={emailTest}
         />
         <Input
           nameinput='signup'

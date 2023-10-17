@@ -5,6 +5,7 @@ import Input from '../Input/Input';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import { useContext } from 'react';
 import { useEffect } from 'react';
+import { emailTest } from '../../utils/constants';
 
 function Profile({ handleUpdateUser, isOpenEdit, isSuccessful, handleButtonEditClick, outOfAccount }) {
   const { values, errors, isValid, isInputValid, handleChange, resetForm } = useFormValidation()
@@ -18,7 +19,7 @@ function Profile({ handleUpdateUser, isOpenEdit, isSuccessful, handleButtonEditC
     evt.preventDefault()
       handleUpdateUser(values.username, values.email)
   }
-   
+  
   return (
 
     isOpenEdit ?
@@ -60,6 +61,7 @@ function Profile({ handleUpdateUser, isOpenEdit, isSuccessful, handleButtonEditC
            id='email'
            onChange={handleChange}
            placeholder='Введите электронную почту'
+           pattern={emailTest}
         /></>
       </fieldset>
       
@@ -103,6 +105,7 @@ function Profile({ handleUpdateUser, isOpenEdit, isSuccessful, handleButtonEditC
           onChange={handleChange}
           placeholder='Введите электронную почту'
           disabled={!isOpenEdit}
+          pattern={emailTest}
         />
        </fieldset>
     </LoginRegistrationForm>

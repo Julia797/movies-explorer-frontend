@@ -2,6 +2,7 @@ import LoginRegistrationForm from "../LoginRegistrationForm/LoginRegistrationFor
 import useFormValidation from "../../hooks/useFormValidation";
 import './Login.css';
 import Input from "../Input/Input";
+import { emailTest } from "../../utils/constants";
 
 function Login({ handleLogin }) {
   const { values, errors, isValid, isInputValid, handleChange, resetForm } = useFormValidation()
@@ -19,6 +20,7 @@ function Login({ handleLogin }) {
       isValid={isValid}
       onSubmit={handleSubmit}
       onChange={handleChange}
+      
     >
     <fieldset className="form__input form__input_loginForm">
       <Input
@@ -34,6 +36,7 @@ function Login({ handleLogin }) {
         id="email"
         onChange={handleChange}
         placeholder='Введите электронную почту'
+        pattern={emailTest}
       />
       <Input
         nameinput='signin'
