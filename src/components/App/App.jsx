@@ -127,6 +127,7 @@ function App() {
       })
       .catch((err) => {
         console.log('Ошибка. Обновить данные пользователя на сервере не получилось: ', err);
+        setIsOpenEdit(false);
       })
       .finally(() => setIsSending(false))
   }
