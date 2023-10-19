@@ -3,13 +3,14 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import MoviesApi from '../../utils/MoviesApi';
 import { useCallback, useEffect, useState } from 'react';
 
-function Movies({ saveMovies, handleMovieLike,  handleDeleteMovie}) {
+function Movies({ saveMovies, handleMovieLike }) {
   const [downloadedMovies, setDownloadedMovies] = useState([]) // все фильмы, загруженные с beatfilm-movies.
   const [isSearchFilms, setIsSearchFilms] = useState('')  // текст в строке поиска фильмов.
   const [isChecked, setIsChecked] = useState(false); // состояние чекбокса.
   const [isLoadingMovies, setIsLoadingMovies] = useState(false) // прелоадер при загрузке фильмов.
   const [errorNoMovie, setErrorNoMovie] = useState(false) // вывод ошибки сервера при первой загрузке фильмов.
   const [selectedFilms, setSelectedFilms] = useState([]) //отобранные фильмы по строке поиска и чекбоксу
+  const [inputValue, setInputValue] = useState("");
   
     const selectionOfFilms = useCallback((input, isChecked, movies) => {
       setIsSearchFilms(input)
@@ -26,7 +27,7 @@ function Movies({ saveMovies, handleMovieLike,  handleDeleteMovie}) {
       }))   
     }, [])
 
-       function searchForMoviesFirst(input) {
+    function searchForMoviesFirst(input) {
       setIsLoadingMovies(true)
       MoviesApi.getMovies()
         .then((res) => {
@@ -50,6 +51,10 @@ function Movies({ saveMovies, handleMovieLike,  handleDeleteMovie}) {
         }
     }
 
+    function handleInputChange(evt) {
+      setInputValue(evt.target.value);
+    }
+
     useEffect(() => {
       if (localStorage.downloadedmovies && localStorage.searchfilms && localStorage.checkbox) {
           const search = JSON.parse(localStorage.searchfilms)
@@ -66,12 +71,11 @@ function Movies({ saveMovies, handleMovieLike,  handleDeleteMovie}) {
     function searchForMoviescheckbox() {
       if (isChecked) {
         setIsChecked(false)
-        selectionOfFilms(isSearchFilms, false, downloadedMovies)
-        localStorage.setItem('checkbox', JSON.stringify(false))
-      } else {
+        selectionOfFilms(inputValue, false, downloadedMovies)
+        
+    } else {
         setIsChecked(true)
-        selectionOfFilms(isSearchFilms, true, downloadedMovies)
-        localStorage.setItem('checkbox', JSON.stringify(true))
+        selectionOfFilms(inputValue, true, downloadedMovies)
       }
     }
     
@@ -85,6 +89,8 @@ function Movies({ saveMovies, handleMovieLike,  handleDeleteMovie}) {
           searchForMoviescheckbox={searchForMoviescheckbox}
           selectionOfFilms={selectionOfFilms}
           saveMovies={saveMovies}
+          handleInputChange={handleInputChange}
+          
          />
         <MoviesCardList
           movies={selectedFilms} 

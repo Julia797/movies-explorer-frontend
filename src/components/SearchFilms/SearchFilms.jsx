@@ -4,10 +4,11 @@ import useFormValidation from '../../hooks/useFormValidation';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom'
 
-function SearchFilms({ isChecked, setIsChecked, saveMovies, searchForMovies, checked, downloadedMovies, selectionOfFilms, isLoadingMovies, isSearchFilms, searchForMoviescheckbox, searchForMoviesFirst }) {
+function SearchFilms({ isChecked, setIsChecked, saveMovies, searchForMovies, checked, downloadedMovies, isSearchFilms, searchForMoviescheckbox, handleInputChange }) {
   const { values, handleChange, resetForm } = useFormValidation()
   const { pathname } = useLocation()
   const [isValid, setIsValid] = useState(true)
+  
 
   function handleSubmit(evt) {
     evt.preventDefault()
@@ -18,7 +19,7 @@ function SearchFilms({ isChecked, setIsChecked, saveMovies, searchForMovies, che
       setIsValid(false)
     }
   }
-  
+ 
   useEffect(() => {
     if ((pathname === 'saved-movies' && saveMovies.length === 0)) {
       resetForm({ search: '' })
@@ -39,7 +40,9 @@ function SearchFilms({ isChecked, setIsChecked, saveMovies, searchForMovies, che
           required 
           onChange={(evt) => {
             handleChange(evt)
-            setIsValid(true)}} 
+            setIsValid(true)
+            handleInputChange(evt)
+          }} 
           name='searchFilms'
           value={values.searchFilms || ''}
           /> 
