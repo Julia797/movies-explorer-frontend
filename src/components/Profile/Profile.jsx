@@ -3,14 +3,19 @@ import useFormValidation from '../../hooks/useFormValidation';
 import './Profile.css';
 import Input from '../Input/Input';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useEffect } from 'react';
 import { emailTest } from '../../utils/constants';
 
 function Profile({ handleUpdateUser, isOpenEdit, isSuccessful, handleButtonEditClick, outOfAccount }) {
+  const [checkButton, setCheckButton] = useState(false);
   const { values, errors, isValid, isInputValid, handleChange, resetForm } = useFormValidation()
   const currentUser = useContext(CurrentUserContext);
-
+  const [name, setName] = useState(currentUser.name);
+  const [updateName, setUpdateName] = useState(currentUser.name);
+  const [email, setEmail] = useState(currentUser.email);
+  const [updateEmail, setUpdateEmail] = useState(currentUser.email);
+  
   useEffect(() => {
     resetForm({ username: currentUser.name, email: currentUser.email })
   }, [resetForm, currentUser, isOpenEdit])
@@ -20,6 +25,18 @@ function Profile({ handleUpdateUser, isOpenEdit, isSuccessful, handleButtonEditC
       handleUpdateUser(values.username, values.email)
   }
   
+  function checkName(evt) {
+    const value = evt.target.value;
+    setName(value);
+    value === updateName ? setCheckButton(false) : setCheckButton(true)
+  }
+
+  function checkEmail(evt) {
+    const value = evt.target.value;
+    setEmail(value);
+    value === updateEmail ? setCheckButton(false) : setCheckButton(true)
+  }
+     
   return (
 
     isOpenEdit ?
@@ -31,6 +48,7 @@ function Profile({ handleUpdateUser, isOpenEdit, isSuccessful, handleButtonEditC
       isValid={isValid}
       onSubmit={onSubmitEdite}
       isSuccessful={isSuccessful}
+      checkButton={checkButton}
     >
       <fieldset className='profile profile_edit'>
       <><Input
@@ -44,11 +62,14 @@ function Profile({ handleUpdateUser, isOpenEdit, isSuccessful, handleButtonEditC
           minLength='2'
           maxLength='40'
           id='username'
-          onChange={handleChange}
+          onChange={(evt) => {
+            handleChange(evt)
+            checkName(evt)}}
           placeholder='Введите имя'
         />
           
         <Input
+           pattern={emailTest}
            nameinput='profile'
            name='email'
            type='email'
@@ -59,10 +80,11 @@ function Profile({ handleUpdateUser, isOpenEdit, isSuccessful, handleButtonEditC
            minLength='2'
            maxLength='40'
            id='email'
-           onChange={handleChange}
+           onChange={(evt) => {
+            handleChange(evt)
+            checkEmail(evt)}}
            placeholder='Введите электронную почту'
-           pattern={emailTest}
-        /></>
+          /></>
       </fieldset>
       
       </LoginRegistrationForm>
@@ -92,6 +114,7 @@ function Profile({ handleUpdateUser, isOpenEdit, isSuccessful, handleButtonEditC
           disabled={!isOpenEdit}
         />
         <Input
+          pattern={emailTest}
           nameinput='profile'
           name='email'
           type='email'
@@ -105,7 +128,6 @@ function Profile({ handleUpdateUser, isOpenEdit, isSuccessful, handleButtonEditC
           onChange={handleChange}
           placeholder='Введите электронную почту'
           disabled={!isOpenEdit}
-          pattern={emailTest}
         />
        </fieldset>
     </LoginRegistrationForm>

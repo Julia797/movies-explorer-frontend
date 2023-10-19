@@ -46,10 +46,10 @@ function Register({ handleRegister, isErrorAll }) {
           value={values.email}
           isInputValid={isInputValid.email}
           error={errors.email}
-          minLength="2"
-          maxLength="40"
           id="email"
           onChange={handleChange}
+         // onChange={(evt) => {
+         //   handleChange(evt)}}
           placeholder='Введите электронную почту'
           pattern={emailTest}
         />

@@ -114,7 +114,7 @@ function App() {
     .finally(() => setIsSending(false))
   }
   
-  function handleUpdateUser(username, email, resetForm) {
+  function handleUpdateUser(username, email) {
     setIsSending(true)
     setUserInfo(username, email, localStorage.token)
       .then(res => {

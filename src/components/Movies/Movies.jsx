@@ -62,7 +62,7 @@ function Movies({ saveMovies, handleMovieLike,  handleDeleteMovie}) {
           setErrorNoMovie(false)
         }
     }, [isChecked, setDownloadedMovies, selectionOfFilms])
-  
+
     function searchForMoviescheckbox() {
       if (isChecked) {
         setIsChecked(false)
