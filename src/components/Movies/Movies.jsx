@@ -8,9 +8,11 @@ function Movies({ saveMovies, handleMovieLike }) {
   const [isSearchFilms, setIsSearchFilms] = useState('')  // текст в строке поиска фильмов.
   const [isChecked, setIsChecked] = useState(false); // состояние чекбокса.
   const [isLoadingMovies, setIsLoadingMovies] = useState(false) // прелоадер при загрузке фильмов.
-  const [errorNoMovie, setErrorNoMovie] = useState(false) // вывод ошибки сервера при первой загрузке фильмов.
+  const [errorNoMovie, setErrorNoMovie] = useState(false) // вывод ошибки сервера при отсутствии фильма по запросу.
+  const [errorMoviesFirst, setErrorMoviesFirst] = useState(false)// вывод ошибки сервера при первой загрузке фильмов.
   const [selectedFilms, setSelectedFilms] = useState([]) //отобранные фильмы по строке поиска и чекбоксу
   const [inputValue, setInputValue] = useState("");
+  const [isValidSearch, setIsValidSearch] = useState(true)
   
     const selectionOfFilms = useCallback((input, isChecked, movies) => {
       setIsSearchFilms(input)
@@ -31,12 +33,11 @@ function Movies({ saveMovies, handleMovieLike }) {
       setIsLoadingMovies(true)
       MoviesApi.getMovies()
         .then((res) => {
-          setErrorNoMovie(false)
           setDownloadedMovies(res)
           selectionOfFilms(input, isChecked, res)
         })
         .catch(err => {
-          setErrorNoMovie(true)
+          setErrorMoviesFirst(true)
           console.log('Ошибка. Поиск фильмов завершился неудачей: ', err);
         })
         .finally(() => setIsLoadingMovies(false))
@@ -53,6 +54,7 @@ function Movies({ saveMovies, handleMovieLike }) {
 
     function handleInputChange(evt) {
       setInputValue(evt.target.value);
+      setIsValidSearch(true)
     }
 
     useEffect(() => {
@@ -64,18 +66,20 @@ function Movies({ saveMovies, handleMovieLike }) {
           setIsSearchFilms(search)
           setIsChecked(checked)
           selectionOfFilms(search, checked, movies)
-          setErrorNoMovie(false)
         }
     }, [isChecked, setDownloadedMovies, selectionOfFilms])
 
     function searchForMoviescheckbox() {
-      if (isChecked) {
-        setIsChecked(false)
-        selectionOfFilms(inputValue, false, downloadedMovies)
-        
-    } else {
-        setIsChecked(true)
-        selectionOfFilms(inputValue, true, downloadedMovies)
+      if(inputValue) {
+        if (isChecked) {
+          setIsChecked(false)
+          selectionOfFilms(inputValue, false, downloadedMovies)
+        } else {
+          setIsChecked(true)
+          selectionOfFilms(inputValue, true, downloadedMovies)
+        } 
+      } else {
+          setIsValidSearch(false)
       }
     }
     
@@ -90,13 +94,14 @@ function Movies({ saveMovies, handleMovieLike }) {
           selectionOfFilms={selectionOfFilms}
           saveMovies={saveMovies}
           handleInputChange={handleInputChange}
-          
-         />
+          isValidSearch={isValidSearch}
+        />
         <MoviesCardList
           movies={selectedFilms} 
           handleMovieLike={handleMovieLike}
           errorNoMovie={errorNoMovie}
           saveMovies={saveMovies}
+          errorMoviesFirst={errorMoviesFirst}
         />
       </> 
   )

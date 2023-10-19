@@ -6,7 +6,9 @@ function SavedMovies({ saveMovies, handleDeleteMovie }) {
   const [isSearchFilms, setIsSearchFilms] = useState('')  // текст в строке поиска фильмов.
   const [isChecked, setIsChecked] = useState(false); // состояние чекбокса.
   const [selectedFilms, setSelectedFilms] = useState(saveMovies) //отобранные фильмы по строке поиска и чекбоксу
-  
+  const [inputValue, setInputValue] = useState("");
+  const [isValidSearch, setIsValidSearch] = useState(true)
+
     const selectionOfFilms = useCallback((input, isChecked, movies) => {
     setIsSearchFilms(input)
     setSelectedFilms(movies.filter((item) => {
@@ -19,6 +21,11 @@ function SavedMovies({ saveMovies, handleDeleteMovie }) {
     }))   
   }, [])
 
+  function handleInputChange(evt) {
+    setInputValue(evt.target.value);
+    setIsValidSearch(true)
+  }
+  
   function searchForMovies(input) {
      selectionOfFilms(input, isChecked, saveMovies)
   }
@@ -27,15 +34,18 @@ function SavedMovies({ saveMovies, handleDeleteMovie }) {
     selectionOfFilms(isSearchFilms, isChecked, saveMovies)
   }, [selectionOfFilms, saveMovies, isChecked, isSearchFilms])
 
-
   function searchForMoviescheckbox() {
-    if (isChecked) {
-      setIsChecked(false)
-      selectionOfFilms(isSearchFilms, false, saveMovies)
+    if(inputValue) {
+      if (isChecked) {
+        setIsChecked(false)
+        selectionOfFilms(inputValue, false, saveMovies)
+      } else {
+        setIsChecked(true)
+        selectionOfFilms(inputValue, true, saveMovies)
+      } 
     } else {
-      setIsChecked(true)
-      selectionOfFilms(isSearchFilms, true, saveMovies)
-    }
+        setIsValidSearch(false)
+      }
   }
 
   return (
@@ -46,6 +56,8 @@ function SavedMovies({ saveMovies, handleDeleteMovie }) {
           searchForMoviescheckbox={searchForMoviescheckbox}
           saveMovies={saveMovies}
           isSearchFilms={isSearchFilms}
+          handleInputChange={handleInputChange}
+          isValidSearch={isValidSearch}
         />
         <MoviesCardList
           movies={selectedFilms}

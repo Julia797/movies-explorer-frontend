@@ -4,7 +4,7 @@ import Preloader from '../Preloader/Preloader'
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-function MoviesCardList({ movies, saveMovies, handleMovieLike, handleDeleteMovie, isLoadingMovies, errorNoMovie }) {
+function MoviesCardList({ movies, saveMovies, handleMovieLike, handleDeleteMovie, isLoadingMovies, errorNoMovie, errorMoviesFirst }) {
   const { pathname } = useLocation()
   const [visibleMovies, setVisibleMovies] = useState([]);
   const [isButtonOn, setIsButtonOn] = useState(false);
@@ -54,7 +54,7 @@ function MoviesCardList({ movies, saveMovies, handleMovieLike, handleDeleteMovie
       setIsButtonOn(false);
     }
   };
- 
+
   return (
     <>
       <section className="elements" aria-label="видеофильм">
@@ -81,11 +81,12 @@ function MoviesCardList({ movies, saveMovies, handleMovieLike, handleDeleteMovie
                         key={data._id}
                       />
                     )  
-                  }) : errorNoMovie ?
+                  }) : errorMoviesFirst ?
                         <span className="element__error">Во время запроса произошла ошибка. Возможно, проблема с 
                         соединением или сервер недоступен. Подождите немного и попробуйте ещё раз</span>
-                     : 
+                     : errorNoMovie ?
                         <span className='element__error'>Ничего не найдено</span>
+                     :  <span className='element__error'></span>
           } 
         </ul>
         {isButtonOn && pathname === '/movies' && <button className="elements__more" type="button" name="more" onClick={handleShowMore}>Ещё</button>}
