@@ -22,21 +22,8 @@ function SavedMovies({ saveMovies, handleDeleteMovie }) {
           return searchName;
         }
       }))
-      if (selectedFilms.length === 0) {
-       // setErrorNoMovie(true)
-      }
-    }, [selectedFilms.length])
-
-    useEffect(() => {
-      if (pathname === '/saved-movies') {
-        setErrorNoMovie(true)
-        console.log('fhdfhfdh');
-      } 
-       }, [pathname, selectedFilms.length])
-
-       console.log('selectedFilms.length = ' + selectedFilms.length);
-       console.log('errorNoMovie = ' + errorNoMovie);
-    
+    }, [])
+         
   function handleInputChange(evt) {
     setInputValue(evt.target.value);
     setIsValidSearch(true)
@@ -44,6 +31,7 @@ function SavedMovies({ saveMovies, handleDeleteMovie }) {
   
   function searchForMovies(input) {
      selectionOfFilms(input, isChecked, saveMovies)
+     setErrorNoMovie(true)
   }
 
   useEffect(() => {

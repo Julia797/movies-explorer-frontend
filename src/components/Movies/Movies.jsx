@@ -62,18 +62,12 @@ function Movies({ saveMovies, handleMovieLike }) {
       setInputValue(evt.target.value);
       setIsValidSearch(true)
     }
-console.log(setErrorNoMovie);
+
     useEffect(() => {
       if (pathname === '/movies')
       setInputValue(isSearchFilms);
     }, [isSearchFilms, pathname])
   
-    console.log(selectedFilms.length);
-    console.log('inputValue vovie =' + inputValue);
-    console.log('inputValue vovie length =' + inputValue.length);
-    console.log('строка поиска равна  ' + isSearchFilms);
-
-    
     useEffect(() => {
       if (localStorage.downloadedmovies && localStorage.searchfilms && localStorage.checkbox) {
           const search = JSON.parse(localStorage.searchfilms)
