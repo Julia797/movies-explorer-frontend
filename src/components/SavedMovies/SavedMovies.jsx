@@ -1,6 +1,7 @@
 import SearchFilms from '../SearchFilms/SearchFilms';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import { useCallback, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 function SavedMovies({ saveMovies, handleDeleteMovie }) {
   const [isSearchFilms, setIsSearchFilms] = useState('')  // текст в строке поиска фильмов.
@@ -8,19 +9,34 @@ function SavedMovies({ saveMovies, handleDeleteMovie }) {
   const [selectedFilms, setSelectedFilms] = useState(saveMovies) //отобранные фильмы по строке поиска и чекбоксу
   const [inputValue, setInputValue] = useState("");
   const [isValidSearch, setIsValidSearch] = useState(true)
+  const [errorNoMovie, setErrorNoMovie] = useState(false)
+  const { pathname } = useLocation()
 
     const selectionOfFilms = useCallback((input, isChecked, movies) => {
-    setIsSearchFilms(input)
-    setSelectedFilms(movies.filter((item) => {
-      const searchName = item.nameRU.toLowerCase().includes(input.toLowerCase())
-      if (isChecked) {
-        return searchName && item.duration <= 40;
-      } else {
-        return searchName;
+      setIsSearchFilms(input)
+      setSelectedFilms(movies.filter((item) => {
+        const searchName = item.nameRU.toLowerCase().includes(input.toLowerCase())
+        if (isChecked) {
+          return searchName && item.duration <= 40;
+        } else {
+          return searchName;
+        }
+      }))
+      if (selectedFilms.length === 0) {
+       // setErrorNoMovie(true)
       }
-    }))   
-  }, [])
+    }, [selectedFilms.length])
 
+    useEffect(() => {
+      if (pathname === '/saved-movies') {
+        setErrorNoMovie(true)
+        console.log('fhdfhfdh');
+      } 
+       }, [pathname, selectedFilms.length])
+
+       console.log('selectedFilms.length = ' + selectedFilms.length);
+       console.log('errorNoMovie = ' + errorNoMovie);
+    
   function handleInputChange(evt) {
     setInputValue(evt.target.value);
     setIsValidSearch(true)
@@ -58,11 +74,13 @@ function SavedMovies({ saveMovies, handleDeleteMovie }) {
           isSearchFilms={isSearchFilms}
           handleInputChange={handleInputChange}
           isValidSearch={isValidSearch}
+          setErrorNoMovie={setErrorNoMovie}
         />
         <MoviesCardList
           movies={selectedFilms}
           handleDeleteMovie={handleDeleteMovie}
           saveMovies={saveMovies}
+          errorNoMovie={errorNoMovie}
         />
       </> 
   )

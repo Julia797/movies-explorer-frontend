@@ -2,6 +2,7 @@ import SearchFilms from '../SearchFilms/SearchFilms';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import MoviesApi from '../../utils/MoviesApi';
 import { useCallback, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 function Movies({ saveMovies, handleMovieLike }) {
   const [downloadedMovies, setDownloadedMovies] = useState([]) // все фильмы, загруженные с beatfilm-movies.
@@ -13,6 +14,7 @@ function Movies({ saveMovies, handleMovieLike }) {
   const [selectedFilms, setSelectedFilms] = useState([]) //отобранные фильмы по строке поиска и чекбоксу
   const [inputValue, setInputValue] = useState("");
   const [isValidSearch, setIsValidSearch] = useState(true)
+  const { pathname } = useLocation();
   
     const selectionOfFilms = useCallback((input, isChecked, movies) => {
       setIsSearchFilms(input)
@@ -26,8 +28,12 @@ function Movies({ saveMovies, handleMovieLike }) {
         } else {
           return searchName;
         }
-      }))   
-    }, [])
+      }))
+
+      if (selectedFilms.length === 0) {
+        setErrorNoMovie(true)
+      }
+    }, [selectedFilms.length])
 
     function searchForMoviesFirst(input) {
       setIsLoadingMovies(true)
@@ -56,7 +62,18 @@ function Movies({ saveMovies, handleMovieLike }) {
       setInputValue(evt.target.value);
       setIsValidSearch(true)
     }
+console.log(setErrorNoMovie);
+    useEffect(() => {
+      if (pathname === '/movies')
+      setInputValue(isSearchFilms);
+    }, [isSearchFilms, pathname])
+  
+    console.log(selectedFilms.length);
+    console.log('inputValue vovie =' + inputValue);
+    console.log('inputValue vovie length =' + inputValue.length);
+    console.log('строка поиска равна  ' + isSearchFilms);
 
+    
     useEffect(() => {
       if (localStorage.downloadedmovies && localStorage.searchfilms && localStorage.checkbox) {
           const search = JSON.parse(localStorage.searchfilms)
@@ -82,7 +99,7 @@ function Movies({ saveMovies, handleMovieLike }) {
           setIsValidSearch(false)
       }
     }
-    
+       
   return (
     <>
         <SearchFilms
