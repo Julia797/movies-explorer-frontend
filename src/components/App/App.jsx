@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import './App.css';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
@@ -21,7 +21,9 @@ function App() {
   const [saveMovies, setSaveMovies] = useState(false)
   const [isErrorAll, setIsErrorAll] = useState(false)
   const [isSuccessful, setIsSuccessful] = useState(false)
+  const [errorNoSavedMovie, setErrorNoSavedMovie] = useState(false)
   const navigate = useNavigate()
+  const { pathname } = useLocation()
 
   function handleBurgerClick() {
     setIsOpen(true)
@@ -49,10 +51,16 @@ function App() {
     if (isSaved) {
       const updatedMovies = saveMovies.filter(item => item.movieId === (movie.id + 200));
       handleDeleteMovie(updatedMovies[0]._id)
+      if (updatedMovies.length === 0) {
+        setErrorNoSavedMovie(true)
+      } else {
+        setErrorNoSavedMovie(false)
+      }
     } else {
       addMovie(movie, localStorage.token)
         .then(res => {
           setSaveMovies([res, ...saveMovies]);
+          setErrorNoSavedMovie(false)
         })
         .catch((err) => {
           console.log('Ошибка. Сохранить фильм не получилось: ', err);
@@ -69,6 +77,11 @@ function App() {
           setIsLoggedIn(true)
           setIsCheckToken(false)
           setSaveMovies(dataInitialSavedMovie.reverse())
+          if (dataInitialSavedMovie.length === 0) {
+            setErrorNoSavedMovie(true)
+          } else {
+            setErrorNoSavedMovie(false)
+          }
     })
     .catch((err) => {
       console.log('Ошибка. Начальные данные не созданы: ', err);
@@ -113,7 +126,15 @@ function App() {
     })
     .finally(() => setIsSending(false))
   }
-  
+
+  useEffect(() => {
+    if ((pathname === 'saved-movies' || saveMovies.length === 0)) {
+      setErrorNoSavedMovie(true)
+    } else {
+      setErrorNoSavedMovie(false)
+    }
+  }, [pathname, saveMovies.length])
+   
   function handleUpdateUser(username, email) {
     setIsSending(true)
     setUserInfo(username, email, localStorage.token)
@@ -229,6 +250,8 @@ function App() {
                 name='mainSavedMovies' 
                 saveMovies={saveMovies}
                 handleDeleteMovie={handleDeleteMovie}
+                errorNoSavedMovie={errorNoSavedMovie}
+                //setErrorNoSavedMovie
               />
               <Footer />
               <HeaderPopup 

@@ -3,7 +3,6 @@ import './MoviesCard.css';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-
 function MoviesCard({ data, src, handleDeleteMovie, handleMovieLike, saveMovies}) {
   const { pathname } = useLocation();
   const [isLiked, setIsLiked] = useState(false)

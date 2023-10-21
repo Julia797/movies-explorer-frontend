@@ -1,17 +1,15 @@
 import SearchFilms from '../SearchFilms/SearchFilms';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import { useCallback, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 
-function SavedMovies({ saveMovies, handleDeleteMovie }) {
+function SavedMovies({ saveMovies, handleDeleteMovie, errorNoSavedMovie }) {
   const [isSearchFilms, setIsSearchFilms] = useState('')  // текст в строке поиска фильмов.
   const [isChecked, setIsChecked] = useState(false); // состояние чекбокса.
   const [selectedFilms, setSelectedFilms] = useState(saveMovies) //отобранные фильмы по строке поиска и чекбоксу
   const [inputValue, setInputValue] = useState("");
   const [isValidSearch, setIsValidSearch] = useState(true)
   const [errorNoMovie, setErrorNoMovie] = useState(false)
-  const { pathname } = useLocation()
-
+  
     const selectionOfFilms = useCallback((input, isChecked, movies) => {
       setIsSearchFilms(input)
       setSelectedFilms(movies.filter((item) => {
@@ -22,7 +20,13 @@ function SavedMovies({ saveMovies, handleDeleteMovie }) {
           return searchName;
         }
       }))
-    }, [])
+      if (selectedFilms.length === 0) {
+        setErrorNoMovie(true)
+      } else {
+        setErrorNoMovie(false)
+      }
+
+    }, [selectedFilms.length])
          
   function handleInputChange(evt) {
     setInputValue(evt.target.value);
@@ -31,12 +35,11 @@ function SavedMovies({ saveMovies, handleDeleteMovie }) {
   
   function searchForMovies(input) {
      selectionOfFilms(input, isChecked, saveMovies)
-     setErrorNoMovie(true)
-  }
+}
 
   useEffect(() => {
     selectionOfFilms(isSearchFilms, isChecked, saveMovies)
-  }, [selectionOfFilms, saveMovies, isChecked, isSearchFilms])
+  }, [selectionOfFilms, saveMovies, isChecked, isSearchFilms, selectedFilms.length])
 
   function searchForMoviescheckbox() {
     if(inputValue) {
@@ -62,13 +65,15 @@ function SavedMovies({ saveMovies, handleDeleteMovie }) {
           isSearchFilms={isSearchFilms}
           handleInputChange={handleInputChange}
           isValidSearch={isValidSearch}
-          setErrorNoMovie={setErrorNoMovie}
+          //setErrorNoMovie={setErrorNoMovie}
+         // errorNoSavedMovie={errorNoSavedMovie}
         />
         <MoviesCardList
           movies={selectedFilms}
           handleDeleteMovie={handleDeleteMovie}
           saveMovies={saveMovies}
           errorNoMovie={errorNoMovie}
+          errorNoSavedMovie={errorNoSavedMovie}
         />
       </> 
   )

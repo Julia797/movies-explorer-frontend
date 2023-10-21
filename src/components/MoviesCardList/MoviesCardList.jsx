@@ -4,7 +4,7 @@ import Preloader from '../Preloader/Preloader'
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-function MoviesCardList({ movies, saveMovies, handleMovieLike, handleDeleteMovie, isLoadingMovies, errorNoMovie, errorMoviesFirst }) {
+function MoviesCardList({ movies, saveMovies, handleMovieLike, handleDeleteMovie, isLoadingMovies, errorNoMovie, errorNoSavedMovie, errorMoviesFirst }) {
   const { pathname } = useLocation()
   const [visibleMovies, setVisibleMovies] = useState([]);
   const [isButtonOn, setIsButtonOn] = useState(false);
@@ -84,6 +84,8 @@ function MoviesCardList({ movies, saveMovies, handleMovieLike, handleDeleteMovie
                   }) : errorMoviesFirst ?
                         <span className="element__error">Во время запроса произошла ошибка. Возможно, проблема с 
                         соединением или сервер недоступен. Подождите немного и попробуйте ещё раз</span>
+                     : errorNoSavedMovie ? 
+                        <span className='element__error'>Нет сохраненных фильмов</span>
                      : errorNoMovie ?
                         <span className='element__error'>Ничего не найдено</span>
                      :  <span className='element__error'></span>

@@ -36,11 +36,10 @@ https://github.com/Julia797/movies-explorer-frontend/pull/2
  ### Поддомен: 
  https://api.bestfilms.julia.nomoredomainsicu.ru/
 
- ### Ссылка на бекэнд:
+ ### Ссылка на бэкенд:
 https://github.com/Julia797/movies-explorer-api
 
 ### Ссылка на фронтенд: 
 https://bestfilms.julia.nomoredomainsicu.ru/
 
 
-### IP: 51.250.11.69

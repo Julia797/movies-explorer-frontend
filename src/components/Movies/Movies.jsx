@@ -32,6 +32,8 @@ function Movies({ saveMovies, handleMovieLike }) {
 
       if (selectedFilms.length === 0) {
         setErrorNoMovie(true)
+      } else {
+        setErrorNoMovie(false)
       }
     }, [selectedFilms.length])
 
