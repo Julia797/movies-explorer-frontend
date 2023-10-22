@@ -80,7 +80,9 @@ function Profile({ handleUpdateUser, isOpenEdit, isSuccessful, handleButtonEditC
            minLength='2'
            maxLength='40'
            id='email'
-           onChange={handleChange}
+           onChange={(evt) => {
+            handleChange(evt)
+            checkEmail(evt)}}
            placeholder='Введите электронную почту'
           /></>
       </fieldset>
