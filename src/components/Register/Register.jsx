@@ -2,7 +2,7 @@ import LoginRegistrationForm from "../LoginRegistrationForm/LoginRegistrationFor
 import useFormValidation from "../../hooks/useFormValidation";
 import './Register.css';
 import Input from "../Input/Input";
-import { emailTest } from "../../utils/constants";
+import { EmailReg } from "../../utils/constants";
 
 function Register({ handleRegister, isErrorAll }) {
   const { values, errors, isValid, isInputValid, handleChange, resetForm } = useFormValidation()
@@ -11,8 +11,7 @@ function Register({ handleRegister, isErrorAll }) {
     evt.preventDefault()
     handleRegister(values.username, values.email, values.password, resetForm)
   }
-  console.log(emailTest);
-   return (
+  return (
     <LoginRegistrationForm
       nameForm='signup'
       title='Добро пожаловать!'
@@ -48,7 +47,7 @@ function Register({ handleRegister, isErrorAll }) {
           id="email"
           onChange={handleChange}
           placeholder='Введите электронную почту'
-          pattern={emailTest}
+          pattern={EmailReg}
         />
         <Input
           nameinput='signup'

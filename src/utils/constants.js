@@ -1,1 +1,1 @@
-export const emailTest = "^\\S+@\\S+\\.\\S+$";
+export const EmailReg = "^\\S+@\\S+\\.\\S+$";

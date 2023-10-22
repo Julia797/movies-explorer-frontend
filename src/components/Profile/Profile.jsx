@@ -5,7 +5,7 @@ import Input from '../Input/Input';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import { useContext, useState } from 'react';
 import { useEffect } from 'react';
-import { emailTest } from '../../utils/constants';
+import { EmailReg } from '../../utils/constants';
 
 function Profile({ handleUpdateUser, isOpenEdit, isSuccessful, handleButtonEditClick, outOfAccount }) {
   const [checkButton, setCheckButton] = useState(false);
@@ -69,7 +69,7 @@ function Profile({ handleUpdateUser, isOpenEdit, isSuccessful, handleButtonEditC
         />
           
         <Input
-           pattern={emailTest}
+           pattern={EmailReg}
            nameinput='profile'
            name='email'
            type='email'
@@ -87,9 +87,8 @@ function Profile({ handleUpdateUser, isOpenEdit, isSuccessful, handleButtonEditC
           /></>
       </fieldset>
       
-      </LoginRegistrationForm>
+    </LoginRegistrationForm>
   :
-   
     <LoginRegistrationForm
       nameForm='profile'
       title={`Привет, ${currentUser.name}!`}
@@ -114,7 +113,7 @@ function Profile({ handleUpdateUser, isOpenEdit, isSuccessful, handleButtonEditC
           disabled={!isOpenEdit}
         />
         <Input
-          pattern={emailTest}
+          pattern={EmailReg}
           nameinput='profile'
           name='email'
           type='email'
@@ -134,6 +133,4 @@ function Profile({ handleUpdateUser, isOpenEdit, isSuccessful, handleButtonEditC
   );
 }
 
-
 export default Profile;
-
