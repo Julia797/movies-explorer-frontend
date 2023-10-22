@@ -8,7 +8,7 @@ function MoviesCardList({ movies, saveMovies, handleMovieLike, handleDeleteMovie
   const { pathname } = useLocation()
   const [visibleMovies, setVisibleMovies] = useState([]);
   const [isButtonOn, setIsButtonOn] = useState(false);
-
+  
   const getCardsCount = () => {
     const screenWidth = window.innerWidth;
     if (screenWidth >= 1171) {
@@ -38,19 +38,25 @@ function MoviesCardList({ movies, saveMovies, handleMovieLike, handleDeleteMovie
       return 2;
     }
   };
- 
-  useEffect(() => {
-    setVisibleMovies(movies.slice(0, getCardsCount()));
-    setIsButtonOn(movies.length > getCardsCount());
-  }, [movies]);
 
+  useEffect(() => {
+    if (pathname === '/movies') {
+      setVisibleMovies(movies.slice(0, getCardsCount(window.innerWidth)));
+      setIsButtonOn(movies.length > getCardsCount(window.innerWidth));
+      window.addEventListener('resize', function() {
+        setVisibleMovies(movies.slice(0, getCardsCount(window.innerWidth)));
+        setIsButtonOn(movies.length > getCardsCount(window.innerWidth));
+      });
+    }
+  }, [movies, pathname]);
+ 
   const handleShowMore = () => {
     setVisibleMovies(prevVisibleMovies => [
       ...prevVisibleMovies,
       ...movies.slice(prevVisibleMovies.length, prevVisibleMovies.length + сount())
     ]);
 
-    if (visibleMovies.length + getCardsCount() >= movies.length) {
+    if (visibleMovies.length +сount() >= movies.length) {
       setIsButtonOn(false);
     }
   };

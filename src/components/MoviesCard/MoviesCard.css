@@ -40,9 +40,10 @@
   font-weight: 500;
   line-height: 16px;
   text-align: left;
-  padding: 14px 0 30px;
+  padding: 14px 0 14px;
   margin: 0;
   max-width: 295px;
+  min-height: 32px;
 }
 
 @media screen and (max-width: 320px) {
