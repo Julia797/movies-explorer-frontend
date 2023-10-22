@@ -11,7 +11,7 @@ function Register({ handleRegister, isErrorAll }) {
     evt.preventDefault()
     handleRegister(values.username, values.email, values.password, resetForm)
   }
-  
+  console.log(emailTest);
    return (
     <LoginRegistrationForm
       nameForm='signup'
@@ -22,7 +22,6 @@ function Register({ handleRegister, isErrorAll }) {
       onChange={handleChange}
       isErrorAll={isErrorAll}
     >
-    
       <fieldset className="form__input form__input_registrationForm">
         <Input
           nameinput='signup'
@@ -48,8 +47,6 @@ function Register({ handleRegister, isErrorAll }) {
           error={errors.email}
           id="email"
           onChange={handleChange}
-         // onChange={(evt) => {
-         //   handleChange(evt)}}
           placeholder='Введите электронную почту'
           pattern={emailTest}
         />

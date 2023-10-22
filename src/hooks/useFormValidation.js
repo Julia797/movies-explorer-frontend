@@ -11,11 +11,8 @@ function useFormValidation() {
     const value = e.target.value
     const form = e.target.form
     const validationMessage = e.target.validationMessage
-    //const valid = e.target.checkValidity()
-    const pattern = e.target.pattern
-    const valid = pattern ? new RegExp(pattern).test(value) : e.target.checkValidity()
-
-  
+    const valid = e.target.checkValidity()
+     
     setValues((values) => {
       return { ...values, [name]: value }
     }) 
