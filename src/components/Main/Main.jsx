@@ -36,6 +36,7 @@ function Main({ name, handleMovieLike, handleDeleteMovie, saveMovies, handleRegi
         handleUpdateUser={handleUpdateUser}
         outOfAccount={outOfAccount}
         isSuccessful={isSuccessful}
+        isErrorAll={isErrorAll}
       />
       :
       name ==='mainMovies' ?

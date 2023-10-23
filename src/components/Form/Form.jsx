@@ -14,7 +14,7 @@ function Form({ nameForm, title, nameButton, onSubmit, children, isValid, onClic
       <h1 className="form__title">{title}</h1>}
       {children}
       {nameForm === `profile`|| nameForm === 'profile-edit' ? 
-        <span className={`profile__res ${isSuccessful ? 'profile__res profile__res_active' : ''}`}>{isSuccessful ? 'Данные профиля успешно обновлены.' : 'При обновлении профиля произошла ошибка'}</span> : ''}
+        <span className={`profile__res ${isSuccessful || isErrorAll ? 'profile__res profile__res_active' : ''}`}>{isSuccessful ? 'Данные профиля успешно обновлены.' : 'При обновлении профиля произошла ошибка.'}</span> : ''}
       {nameForm === 'signup' ?  <span className={`profile__res ${isErrorAll ? 'profile__res profile__res_active' : ''}`}>При регистрации произошла ошибка</span> : ''}
       <button className={nameForm === 'profile' ? 'form__btn-enter form__btn-enter_profile' : 'form__btn-enter button'} type="submit" disabled={nameForm === 'profile-edit' ? (!isValid || !checkButton) : !isValid} aria-label={nameButton} onClick={onClick}>{nameButton}</button>
     </form>

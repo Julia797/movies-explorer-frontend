@@ -148,7 +148,11 @@ function App() {
       })
       .catch((err) => {
         console.log('Ошибка. Обновить данные пользователя на сервере не получилось: ', err);
-        setIsOpenEdit(false);
+        setIsErrorAll(true)
+        setTimeout(() => {
+          setIsOpenEdit(false);
+          setIsErrorAll(false)
+        }, 2000);
       })
       .finally(() => setIsSending(false))
   }
@@ -201,6 +205,7 @@ function App() {
                 handleUpdateUser={handleUpdateUser}
                 outOfAccount={outOfAccount}
                 isSuccessful={isSuccessful}
+                isErrorAll={isErrorAll}
               />
               <HeaderPopup 
                 isOpen={isOpen}
@@ -251,7 +256,6 @@ function App() {
                 saveMovies={saveMovies}
                 handleDeleteMovie={handleDeleteMovie}
                 errorNoSavedMovie={errorNoSavedMovie}
-                //setErrorNoSavedMovie
               />
               <Footer />
               <HeaderPopup 

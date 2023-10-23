@@ -7,7 +7,7 @@ import { useContext, useState } from 'react';
 import { useEffect } from 'react';
 import { EmailReg } from '../../utils/constants';
 
-function Profile({ handleUpdateUser, isOpenEdit, isSuccessful, handleButtonEditClick, outOfAccount }) {
+function Profile({ handleUpdateUser, isOpenEdit, isSuccessful, handleButtonEditClick, outOfAccount, isErrorAll }) {
   const [checkButton, setCheckButton] = useState(false);
   const { values, errors, isValid, isInputValid, handleChange, resetForm } = useFormValidation()
   const currentUser = useContext(CurrentUserContext);
@@ -49,6 +49,7 @@ function Profile({ handleUpdateUser, isOpenEdit, isSuccessful, handleButtonEditC
       onSubmit={onSubmitEdite}
       isSuccessful={isSuccessful}
       checkButton={checkButton}
+      isErrorAll={isErrorAll}
     >
       <fieldset className='profile profile_edit'>
       <><Input
