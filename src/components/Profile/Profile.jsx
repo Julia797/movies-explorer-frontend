@@ -2,32 +2,62 @@ import LoginRegistrationForm from '../LoginRegistrationForm/LoginRegistrationFor
 import useFormValidation from '../../hooks/useFormValidation';
 import './Profile.css';
 import Input from '../Input/Input';
-import { useState } from 'react';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
+import { useContext, useState } from 'react';
+import { useEffect } from 'react';
+import { EmailReg } from '../../utils/constants';
+import { useLocation } from 'react-router-dom';
 
-function Profile({ handleRegister }) {
-  const { values, errors, isValid, isInputValid, handleChange } = useFormValidation()
- 
-  const [isOpenEdit, setIsOpenEdit] = useState(false)
 
-  function handleButtonEditClick() {
-    setIsOpenEdit(true)
-  }
-
+function Profile({ handleUpdateUser, isOpenEdit, isSuccessful, handleButtonEditClick, outOfAccount, isErrorAll, setIsOpenEdit }) {
+  const [checkButton, setCheckButton] = useState(false);
+  const { values, errors, isValid, isInputValid, handleChange, resetForm } = useFormValidation()
+  const currentUser = useContext(CurrentUserContext);
+  const [name, setName] = useState(currentUser.name);
+  const [updateName, setUpdateName] = useState(currentUser.name);
+  const [email, setEmail] = useState(currentUser.email);
+  const [updateEmail, setUpdateEmail] = useState(currentUser.email);
+  const { pathname } = useLocation();
+  
+  useEffect(() => {
+    resetForm({ username: currentUser.name, email: currentUser.email })
+  }, [resetForm, currentUser, isOpenEdit])
+  
   function onSubmitEdite(evt) {
     evt.preventDefault()
-      setIsOpenEdit(true)
+      handleUpdateUser(values.username, values.email)
   }
-   
+  
+  function checkName(evt) {
+    const value = evt.target.value;
+    setName(value);
+    value === updateName ? setCheckButton(false) : setCheckButton(true)
+  }
+
+  function checkEmail(evt) {
+    const value = evt.target.value;
+    setEmail(value);
+    value === updateEmail ? setCheckButton(false) : setCheckButton(true)
+  }
+
+  useEffect(() => {
+    if (pathname === '/profile')
+    setIsOpenEdit(false);
+  }, [pathname, setIsOpenEdit])
+     
   return (
 
     isOpenEdit ?
 
     <LoginRegistrationForm
       nameForm='profile-edit'
-      title='Привет, Виталий!'
+      title={`Привет, ${currentUser.name}!`}
       nameButton='Сохранить'
       isValid={isValid}
       onSubmit={onSubmitEdite}
+      isSuccessful={isSuccessful}
+      checkButton={checkButton}
+      isErrorAll={isErrorAll}
     >
       <fieldset className='profile profile_edit'>
       <><Input
@@ -41,11 +71,14 @@ function Profile({ handleRegister }) {
           minLength='2'
           maxLength='40'
           id='username'
-          onChange={handleChange}
-          placeholder='Виталий'
+          onChange={(evt) => {
+            handleChange(evt)
+            checkName(evt)}}
+          placeholder='Введите имя'
         />
           
         <Input
+           pattern={EmailReg}
            nameinput='profile'
            name='email'
            type='email'
@@ -56,19 +89,21 @@ function Profile({ handleRegister }) {
            minLength='2'
            maxLength='40'
            id='email'
-           onChange={handleChange}
-           placeholder='pochta@yandex.ru'
-        /></>
+           onChange={(evt) => {
+            handleChange(evt)
+            checkEmail(evt)}}
+           placeholder='Введите электронную почту'
+          /></>
       </fieldset>
-      <span className='error-server'></span> 
-      </LoginRegistrationForm>
+      
+    </LoginRegistrationForm>
   :
-   
     <LoginRegistrationForm
       nameForm='profile'
-      title='Привет, Виталий!'
+      title={`Привет, ${currentUser.name}!`}
       nameButton='Редактировать'
-      onClick={handleButtonEditClick}
+      onSubmit={handleButtonEditClick}
+      outOfAccount={outOfAccount}
     >
       <fieldset className='profile'>
         <Input
@@ -83,10 +118,11 @@ function Profile({ handleRegister }) {
           maxLength='40'
           id='username'
           onChange={handleChange}
-          placeholder='Виталий'
+          placeholder='Введите имя'
           disabled={!isOpenEdit}
         />
         <Input
+          pattern={EmailReg}
           nameinput='profile'
           name='email'
           type='email'
@@ -98,7 +134,7 @@ function Profile({ handleRegister }) {
           maxLength='40'
           id='email'
           onChange={handleChange}
-          placeholder='pochta@yandex.ru'
+          placeholder='Введите электронную почту'
           disabled={!isOpenEdit}
         />
        </fieldset>
@@ -106,6 +142,4 @@ function Profile({ handleRegister }) {
   );
 }
 
-
 export default Profile;
-

@@ -11,8 +11,8 @@ function useFormValidation() {
     const value = e.target.value
     const form = e.target.form
     const validationMessage = e.target.validationMessage
-    const valid = e.target.validity.valid
-
+    const valid = e.target.checkValidity()
+     
     setValues((values) => {
       return { ...values, [name]: value }
     }) 
@@ -27,14 +27,15 @@ function useFormValidation() {
     
     setIsValid(form.checkValidity())
   }
+ 
+  const resetForm = useCallback((data = {}) => {
+    setValues(data)
+    setErrors({})
+    setIsInputValid({})
+    setIsValid(false)
+  },[])
 
-  function resetForm(newValues = {}, newErrors = {}, newIsValid = false, newIsInputValid = {}) {
-    setValues(prevValues => ({ ...prevValues, ...newValues }));
-    setErrors(newErrors);
-    setIsValid(newIsValid);
-    setIsInputValid(newIsInputValid);
-  }
-  const setValue = useCallback((name, value) => {
+    const setValue = useCallback((name, value) => {
     setValues((values) => {
       return { ...values, [name]: value }
     }) 

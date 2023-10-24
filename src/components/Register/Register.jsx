@@ -2,18 +2,25 @@ import LoginRegistrationForm from "../LoginRegistrationForm/LoginRegistrationFor
 import useFormValidation from "../../hooks/useFormValidation";
 import './Register.css';
 import Input from "../Input/Input";
+import { EmailReg } from "../../utils/constants";
 
-function Register({ handleRegister }) {
-  const { values, errors, isValid, isInputValid, handleChange } = useFormValidation()
-  
-   return (
+function Register({ handleRegister, isErrorAll }) {
+  const { values, errors, isValid, isInputValid, handleChange, resetForm } = useFormValidation()
+
+  function handleSubmit(evt) {
+    evt.preventDefault()
+    handleRegister(values.username, values.email, values.password, resetForm)
+  }
+  return (
     <LoginRegistrationForm
       nameForm='signup'
       title='Добро пожаловать!'
       nameButton='Зарегистрироваться'
       isValid={isValid}
+      onSubmit={handleSubmit}
+      onChange={handleChange}
+      isErrorAll={isErrorAll}
     >
-    
       <fieldset className="form__input form__input_registrationForm">
         <Input
           nameinput='signup'
@@ -27,7 +34,7 @@ function Register({ handleRegister }) {
           maxLength="40"
           id="username"
           onChange={handleChange}
-          placeholder='Виталий'
+          placeholder='Введите имя'
         />
         <Input
           nameinput='signup'
@@ -37,11 +44,10 @@ function Register({ handleRegister }) {
           value={values.email}
           isInputValid={isInputValid.email}
           error={errors.email}
-          minLength="2"
-          maxLength="40"
           id="email"
           onChange={handleChange}
-          placeholder='pochta@yandex.ru'
+          placeholder='Введите электронную почту'
+          pattern={EmailReg}
         />
         <Input
           nameinput='signup'

@@ -24,7 +24,7 @@
   row-gap: 38px;
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
+  padding: 0 0 60px 0;
   justify-content: center;
   list-style: none;
 }
@@ -51,4 +51,31 @@
     row-gap: 34px;
   }
 }
+
+.element__error {
+  text-align: center;
+}
   
+.elements__more {
+  display: block;
+  padding: 0;
+  margin: 0 auto;
+  width: 320px;
+  height: 36px;
+  border-radius: 6px;
+  background-color: rgba(249, 249, 249, 1);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+}
+
+@media screen and (max-width: 750px) {
+  .elements__more {
+    width: 240px;
+    height: 36px;
+  }
+}
+

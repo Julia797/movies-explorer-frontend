@@ -2,9 +2,15 @@ import LoginRegistrationForm from "../LoginRegistrationForm/LoginRegistrationFor
 import useFormValidation from "../../hooks/useFormValidation";
 import './Login.css';
 import Input from "../Input/Input";
+import { EmailReg } from "../../utils/constants";
 
-function Login({ handleLogin, isSending }) {
-  const { values, errors, isValid, isInputValid, handleChange } = useFormValidation()
+function Login({ handleLogin }) {
+  const { values, errors, isValid, isInputValid, handleChange, resetForm } = useFormValidation()
+
+  function handleSubmit(evt) {
+    evt.preventDefault()
+    handleLogin(values.email, values.password,  resetForm)
+  }
 
   return (
     <LoginRegistrationForm
@@ -12,6 +18,9 @@ function Login({ handleLogin, isSending }) {
       title='Рады видеть!'
       nameButton='Войти'
       isValid={isValid}
+      onSubmit={handleSubmit}
+      onChange={handleChange}
+      
     >
     <fieldset className="form__input form__input_loginForm">
       <Input
@@ -26,7 +35,8 @@ function Login({ handleLogin, isSending }) {
         maxLength="40"
         id="email"
         onChange={handleChange}
-        placeholder='pochta@yandex.ru'
+        placeholder='Введите электронную почту'
+        pattern={EmailReg}
       />
       <Input
         nameinput='signin'

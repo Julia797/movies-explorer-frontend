@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
 import './HeaderPopup.css';
-function HeaderPopup({ isOpen, onClose }) {
+function HeaderPopup({ isOpen, onClose, setIsOpen }) {
+
+  function onClickLink() {
+    setIsOpen(false) 
+  }
   
   return (
     <>
@@ -13,11 +17,11 @@ function HeaderPopup({ isOpen, onClose }) {
             onClick={onClose} />
           <div className='headerPopup__navigations'>
             <ul className='headerPopup__navigation'>
-              <li><Link to={'/'} className='headerPopup__title'>Главная</Link></li>
-              <li><Link to={'/movies'} className='headerPopup__title'>Фильмы</Link></li>
-              <li><Link to={'/saved-movies'} className='headerPopup__title'>Сохранённые фильмы</Link></li>
+              <li><Link to={'/'} className='headerPopup__title' onClick={onClickLink}>Главная</Link></li>
+              <li><Link to={'/movies'} className='headerPopup__title' onClick={onClickLink}>Фильмы</Link></li>
+              <li><Link to={'/saved-movies'} className='headerPopup__title'onClick={onClickLink}>Сохранённые фильмы</Link></li>
             </ul>
-            <Link to={'/profile'} className='headerPopup__linkAcc'>Аккаунт <div className='headerPopup__account'></div></Link>
+            <Link to={'/profile'} className='headerPopup__linkAcc' onClick={onClose}>Аккаунт <div className='headerPopup__account'></div></Link>
           </div>
         </div>
       </div>  

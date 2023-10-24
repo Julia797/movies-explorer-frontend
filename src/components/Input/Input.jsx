@@ -1,6 +1,6 @@
 import './Input.css';
          
-function Input({ nameinput, name, placeholder, type, title, value, error, id, isInputValid, minLength, maxLength, onChange, disabled }) {
+function Input({ nameinput, name, placeholder, type, title, value, error, id, isInputValid, pattern, minLength, maxLength, onChange, disabled }) {
   
   return (
    <>
@@ -11,6 +11,7 @@ function Input({ nameinput, name, placeholder, type, title, value, error, id, is
             <input
              type={type}
              id={id}
+             pattern={pattern}
              placeholder={placeholder}
              className={`form__item form__item_profile form__item_type_loginRegistrationForm form__item_type_${name} 
               ${isInputValid === undefined || isInputValid ? '' : 'form__item_type_error'}`}
@@ -29,6 +30,7 @@ function Input({ nameinput, name, placeholder, type, title, value, error, id, is
         <input
           type={type}
           id={id}
+          pattern={pattern}
           placeholder={placeholder}
           className={`form__item form__item_type_loginRegistrationForm form__item_type_${name} 
             ${isInputValid === undefined || isInputValid ? '' : 'form__item_type_error'}`}

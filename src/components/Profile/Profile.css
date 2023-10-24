@@ -7,19 +7,19 @@
   justify-content: flex-end;
   box-sizing: border-box;
   width: 410px;
-  padding: 123px 0 187px;
+  padding: 123px 0 128px;
   gap: 18px;
 }
 
 @media screen and (max-width: 768px) {
   .profile {
-    padding: 96px 0 177px;
+    padding: 96px 0 119px;
   }
 }
 
 @media screen and (max-width: 450px) {
   .profile {
-    padding: 79px 0 348px;
+    padding: 79px 0 288px;
     width: 260px;
   }
 }
@@ -28,15 +28,3 @@
   padding-bottom: 166px;
 }
 
-.error-server {
-  font-size: 11px;
-  font-weight: 400;
-  line-height: 13px;
-  text-align: center;
-  color: rgba(255, 0, 76, 1);
-  display: block;
-  height: 22px;
-  margin: 0;
-  padding: 0;
-  
-}
