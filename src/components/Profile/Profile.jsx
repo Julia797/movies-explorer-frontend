@@ -6,8 +6,10 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 import { useContext, useState } from 'react';
 import { useEffect } from 'react';
 import { EmailReg } from '../../utils/constants';
+import { useLocation } from 'react-router-dom';
 
-function Profile({ handleUpdateUser, isOpenEdit, isSuccessful, handleButtonEditClick, outOfAccount, isErrorAll }) {
+
+function Profile({ handleUpdateUser, isOpenEdit, isSuccessful, handleButtonEditClick, outOfAccount, isErrorAll, setIsOpenEdit }) {
   const [checkButton, setCheckButton] = useState(false);
   const { values, errors, isValid, isInputValid, handleChange, resetForm } = useFormValidation()
   const currentUser = useContext(CurrentUserContext);
@@ -15,6 +17,7 @@ function Profile({ handleUpdateUser, isOpenEdit, isSuccessful, handleButtonEditC
   const [updateName, setUpdateName] = useState(currentUser.name);
   const [email, setEmail] = useState(currentUser.email);
   const [updateEmail, setUpdateEmail] = useState(currentUser.email);
+  const { pathname } = useLocation();
   
   useEffect(() => {
     resetForm({ username: currentUser.name, email: currentUser.email })
@@ -36,6 +39,11 @@ function Profile({ handleUpdateUser, isOpenEdit, isSuccessful, handleButtonEditC
     setEmail(value);
     value === updateEmail ? setCheckButton(false) : setCheckButton(true)
   }
+
+  useEffect(() => {
+    if (pathname === '/profile')
+    setIsOpenEdit(false);
+  }, [pathname, setIsOpenEdit])
      
   return (
 
